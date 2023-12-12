@@ -1,0 +1,1015 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Optimized multi‐biometric enhancement analysis</title>
+				<funder ref="#_SnzZkfR">
+					<orgName type="full">Ecole nationale Supérieure d&apos;</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher>Institution of Engineering and Technology (IET)</publisher>
+				<availability status="unknown"><p>Copyright Institution of Engineering and Technology (IET)</p>
+				</availability>
+				<date type="published" when="2021-04-09">2021-04-09</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author role="corresp">
+							<persName><forename type="first">Saliha</forename><surname>Artabaz</surname></persName>
+							<email>s_artabaz@esi.dz</email>
+							<idno type="ORCID">0000-0002-9673-1507</idno>
+							<affiliation key="aff0">
+								<orgName type="department">Ecole nationale Supérieure d&apos;Informatique ESIOued-Smar</orgName>
+								<orgName type="laboratory">Laboratoire de Méthodes de Conception de Systèmes LMCS</orgName>
+								<address>
+									<settlement>Algiers</settlement>
+									<country key="DZ">Algeria</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Layth</forename><surname>Sliman</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Karima</forename><surname>Benatchba</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Ecole nationale Supérieure d&apos;Informatique ESIOued-Smar</orgName>
+								<orgName type="laboratory">Laboratoire de Méthodes de Conception de Systèmes LMCS</orgName>
+								<address>
+									<settlement>Algiers</settlement>
+									<country key="DZ">Algeria</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Mouloud</forename><surname>Koudil</surname></persName>
+						</author>
+						<author>
+							<affiliation key="aff3">
+								<orgName type="department">Ecole nationale Supérieure d&apos;Informatique ESI</orgName>
+								<orgName type="laboratory">Laboratoire de Méthodes de Conception de Systèmes LMCS</orgName>
+								<orgName type="institution">Oued-Smar</orgName>
+								<address>
+									<settlement>Algiers</settlement>
+									<country key="DZ">Algeria</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff4">
+								<address>
+									<postCode>326 -IET</postCode>
+									<settlement>Biometrics</settlement>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Optimized multi‐biometric enhancement analysis</title>
+					</analytic>
+					<monogr>
+						<title level="j" type="main">IET Biometrics</title>
+						<title level="j" type="abbrev">IET Biometrics</title>
+						<idno type="ISSN">2047-4938</idno>
+						<idno type="eISSN">2047-4946</idno>
+						<imprint>
+							<publisher>Institution of Engineering and Technology (IET)</publisher>
+							<biblScope unit="volume">10</biblScope>
+							<biblScope unit="issue">3</biblScope>
+							<biblScope unit="page" from="326" to="341"/>
+							<date type="published" when="2021-04-09" />
+						</imprint>
+					</monogr>
+					<idno type="MD5">ABEB01E78D637A3A7B3D88AC0EA33481</idno>
+					<idno type="DOI">10.1049/bme2.12026</idno>
+					<note type="submission">Received: 28 January 2020 -Revised: 29 October 2020 -Accepted: 13 January 2021</note>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.0" ident="GROBID" when="2023-12-10T20:22+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>A multi-biometric system uses different modalities to identify individuals more accurately. The authors analyse fusion efficiency of a significant number of multi-biometric fusion schemes. To do so, the study applies different functions that are generated using genetic programming (GP) on the 2000 multi-biometric instances produced by the fusion of different biometric matching scores. The functions are represented using a tree of arithmetic operations and are used for fusion at score level. First, genetic programming is implemented on the XM2VTS score database. The GP optimizes the half total error rate of fused matching scores. Then, a comparative study is performed based on our experiments on matching scores of different biometric baseline systems provided by the bio-secure database. This database provides 24 streams that we use to generate 2000 multi-biometric combinations. These multi-biometric instances combine matching scores of different instances, sensors and traits. To assess the quality of the fused scores and the quality of performing biometric baseline systems, we use weighted functions based on user-specific and group-specific normalization. Then, we propose a hybrid cat swarm optimization (CSO) based on the average-velocity inertia-weighted CSO and the normal mutation strategy-based CSO to compute the weights of the selected functions for the fused biometric systems. Finally, we present the statistical significance tests to confirm that the proposed functions outperform the existing functions based on arithmetic rules, normalization fusion and evolutionary algorithms.</p><p>This is an open access article under the terms of the Creative Commons Attribution License, which permits use, distribution and reproduction in any medium, provided the original work is properly cited.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">| INTRODUCTION</head><p>Multi-biometrics addresses several unimodal biometric systems drawbacks. Mostly, they are applied to reduce matching errors <ref type="bibr" target="#b0">[1]</ref> since the research experiments show that combining different traits reduces both false positive and false negative errors <ref type="bibr" target="#b1">[2]</ref><ref type="bibr" target="#b2">[3]</ref><ref type="bibr" target="#b3">[4]</ref><ref type="bibr" target="#b4">[5]</ref>. With recent user-friendly applications like patient identification, healthcare monitoring <ref type="bibr" target="#b5">[6,</ref><ref type="bibr" target="#b6">7]</ref>, mobile and smartphone identification for sensitive information and services protection <ref type="bibr" target="#b7">[8,</ref><ref type="bibr" target="#b8">9]</ref>, biometrics is dealing with new challenges like variable configurations and adaptive modalities combinations <ref type="bibr" target="#b9">[10,</ref><ref type="bibr" target="#b10">11]</ref> in addition to complex and interactive environment constraints that induce high-level data confidentiality risks <ref type="bibr" target="#b11">[12]</ref>. Providing similar contextual conditions in the framework testing, which allows different combinations and fusion methods testing, is highly desirable. Thus, the biometric system can adapt a fusion method according to the acquired modalities and successful features extraction.</p><p>Multi-biometrics fusion is applied at different levels: signal level (namely image level), feature level, score level, decision level and rank level. The most used among these in the literature is the score level <ref type="bibr" target="#b12">[13,</ref><ref type="bibr" target="#b13">14]</ref>. This level has many advantages: � Scores are much easier to fuse than features <ref type="bibr" target="#b2">[3]</ref>. � The score level provides more information than the decision level <ref type="bibr" target="#b2">[3]</ref>. � They are easier to assess from existing uni-biometric systems. � The fusion at this level provides better accuracy than fusion at other levels <ref type="bibr" target="#b14">[15,</ref><ref type="bibr" target="#b15">16]</ref>.</p><p>Fusion at score level considers different factors or parameters that must be optimized to ensure the success of the applied fusion strategy. On one hand, the authors in <ref type="bibr" target="#b16">[17]</ref> propose an innovative scheme to fuse scores by combining the weighted mean and quasi-arithmetic mean without any learning process, while <ref type="bibr" target="#b17">[18]</ref> uses consecutively a suite of derivatives on training data to estimate the vector score integration adapted to the multiclass problem that minimizes the probability of error. On the other hand, many evolutionary methods are applied to optimize these metrics with a learning process like differential evolution <ref type="bibr" target="#b18">[19,</ref><ref type="bibr" target="#b19">20]</ref>, particle swarm optimization (SO) <ref type="bibr" target="#b20">[21]</ref> and quasi-convex optimization <ref type="bibr" target="#b21">[22]</ref>. SO is suitable for different optimization applications. The use of SO is motivated by its ability to emerge intelligence using collaboration between individuals that has limited or no intelligence <ref type="bibr" target="#b22">[23]</ref>. This is a good opportunity to solve problems of high dimensionality that are complex to resolve by brain perception. Cat swarm optimization (CSO) is one of the most widely used and is inspired by the natural cat behaviour that models exploration and exploitation using an innovative technique with respect to the trade-off between the two phases <ref type="bibr" target="#b23">[24]</ref>. The authors in <ref type="bibr" target="#b23">[24]</ref> describe the different applications of CSO in computer vision and biometric recognition and confirm through their survey and performance evaluation that CSO outperforms PSO, Genetic Algorithm (GA), DE and other methods applied in different fields. Their results prove that CSO is a competitive algorithm that leads to the optimal fitness value for different problems. To the best of our knowledge, this method is not yet applied in score fusion factors computation like weighting. Therefore, we propose a CSO algorithm proposed to compute the fusion weights that are combined with the user-specific quality measure on pre-computed score fusion functions from genetic programming <ref type="bibr">(GP)</ref>.</p><p>The fusion at score level considers scores resulting from different traits, instances, sensors and algorithms. Therefore, to identify the best system adapted to the situation, we must consider all these parameters. Indeed, the experiments conducted in <ref type="bibr" target="#b15">[16]</ref> achieved different gain ratios for different combination methods. The experiments showed that a successful fusion depends on many factors including the availability of data for training and matchers, the accuracy of the matchers, the correlation of the scores and the chosen fusion. Consequently, assessing the efficiency of a fusing strategy requires testing the strategy on different score combinations before concluding whether the fusion method can outperform individual accuracy of the baseline systems. However, most of the research found in the literature compares fusion methods relying on their own baseline systems <ref type="bibr" target="#b2">[3,</ref><ref type="bibr" target="#b14">15,</ref><ref type="bibr" target="#b15">16]</ref>. However, this cannot affirm whether the enhancement occurs as a result of the fusion or the used baseline systems' performances. Therefore, for a predefined fusion strategy, we can search the best biometric combinations that work better than the fused baseline systems.</p><p>Here, we propose to combine GP with the proposed CSO algorithm to generate different weighted fusion functions represented in a tree of arithmetic rules. Then, we compare our proposal to the fusion strategies of main proposals in the literature such as the use of norms <ref type="bibr" target="#b4">[5]</ref>, DE, PSO and BSA <ref type="bibr" target="#b18">[19]</ref><ref type="bibr" target="#b19">[20]</ref><ref type="bibr" target="#b20">[21]</ref><ref type="bibr" target="#b24">25]</ref>. Our first version and application of GP is proposed in <ref type="bibr" target="#b25">[26]</ref> whose extended experiments of the best trees are conducted on the Biosecure score database <ref type="bibr" target="#b26">[27]</ref>. Then, we perform multiple simulations using GP to get closer to the optimized fitness value, within the defined number of generations, for the maximum number of individuals. These simulations allow us to select multiple trees that optimize the score fusion. These trees are used to benchmark and analyse fusion on an unlimited number of biometric output combinations that are constructed thanks to the scores provided by the Biosecure score database <ref type="bibr" target="#b26">[27]</ref>. This database includes non-correlated baseline systems of different traits and a quality assessment of the processed signals. The quality assessment must consider the acquired signal and the quality of the biometric system that processes it. The first evolve for each sample, where the second can be evaluated to provide the scalar that indicates its performance and reliability. Therefore, we aim to combine baseline systems weighting based on an evolutionary method with quality assessment computed from the baseline systems quality.</p><p>The available quality measure gives a scalar indicator based on different sources of quality <ref type="bibr" target="#b27">[28]</ref> such as the trait character, imaging and environment. We use the measures, provided by the Biosecure database, to weight the fusion functions. The proposed approach outperforms the baseline biometric subsystems. Then, a comparative study is conducted between the best-computed fusion functions that are obtained from the GP. Then, the statistical analysis of the tested multi-biometric scores fusion is described allowing us to show the ones which reduce the baseline biometric systems' errors for instance the equal error rate (EER) with or without the hybrid cat swarm optimization (HCSO) weighting.</p><p>In Section 2, we present the score level fusion applied in multi-biometrics. Section 3 describes GP used for generating the proposed functions, the HCSO algorithm applied to compute baseline score weighting and the tested databases. Then, we display and analyse the different proposed functions used to fuse multiple combinations of baseline biometric systems in Section 4. This leads us to propose a useful platform that gathers an unlimited number of multi-biometric fused scores to find the best combinations. Finally, we conclude and propose some perspectives of the work performed.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">| MULTI-BIOMETRICS AND SCORE LEVEL FUSION</head><p>Multi-biometrics are gaining popularity since they address unimodal biometric system weaknesses such as non-universality, noisy signals, low accuracy, and spoofing attacks. It is wellknown that multi-biometrics is mostly applied to reduce unibiometric systems errors according to the different studies published by researchers in this field <ref type="bibr" target="#b12">[13]</ref>. The uni-biometric systems are becoming less and less reliable to protect confidential data at a high level. Authors in <ref type="bibr" target="#b11">[12]</ref> demonstrates the effectiveness of fusion applied on Support Vector Machine (SVM) classifiers outputs, using the Dempster-Shafer evidence theory, that can provide a reliable biometric in complex interactive environments. In addition, fusion provides effective systems which combined with template protection can preserve and enhance system performances against spoofing attacks <ref type="bibr" target="#b28">[29]</ref>.</p><p>Fusion of multiple traits faces many challenges to ensure performances' precision and avoid biased results. These challenges include the multiple data sources incompatibility, matchers scores normalization and the noise, which influence systems performances, bringing false positive or false negative authentication.  </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1">| Score level fusion</head><p>The score level fusion is the most cited and used fusion <ref type="bibr" target="#b7">[8,</ref><ref type="bibr" target="#b8">9,</ref><ref type="bibr" target="#b14">15,</ref><ref type="bibr" target="#b29">30,</ref><ref type="bibr" target="#b30">31]</ref>, which is due to its low computational complexity. In addition, comparative studies have shown that fusion at the score level outperforms other levels <ref type="bibr" target="#b14">[15]</ref>. The proposition of <ref type="bibr" target="#b18">[19]</ref> discusses the use of differential evolution, which has a similar structure to GA, in parameters tuning to reduce the overlapping of genuine and impostor distribution. Also, authors in <ref type="bibr" target="#b19">[20]</ref> use DE to find the confidence factors of the belief assignments that reduce the weighted error rate. The belief assignments representing the transformed scores are then fused using proportional conflict redistribution (PCR). The same factors are tuned using PSO in <ref type="bibr" target="#b20">[21]</ref>, and the fusion is performed using the Dempster Shafer and PCR. PCR is also used to resolve conflicting beliefs from different classifiers whose performance is optimized with the evolutionary backtracking search optimization algorithm that searches the best confidence factors that boost or remove classifiers scores <ref type="bibr" target="#b24">[25]</ref>. Also, there is another method which optimizes the fusion process using the quasi-convex optimization <ref type="bibr" target="#b21">[22]</ref> that requires domain-specific knowledge on feature similarity score distributions. Table <ref type="table">1</ref> describes some of the works proposed in the literature.</p><p>The comparative study in <ref type="bibr" target="#b29">[30]</ref> shows that the score level slightly surpasses both feature and decision level. However, due to the limited number of tests, the work does not provide a significance test to confirm the score level superiority. A recent work proposes a unique blend of belief assignment and decision-making methods in Dezert-Smarandache theory framework <ref type="bibr" target="#b14">[15]</ref>. They tested fusion of different datasets where</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>TA B L E 1 Review of fusion methods</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Modalities Methods References</head><p>Multi-spectral palmprint Different t-conorm compared to sum, SVM <ref type="bibr" target="#b7">[8]</ref> Iris, face GA features selectionSVM score fusion <ref type="bibr" target="#b8">[9]</ref> Speech, lipreading Average <ref type="bibr" target="#b29">[30]</ref> NIST BSSR1 multi-biometric score database (fingerprint and face), face, iris dataset Dezert-Smarandache theory DSmT <ref type="bibr" target="#b14">[15]</ref> Palm/phalanges print Sum, product, min, max, hamacher t-norm, frank t-norm, yager's t-norm <ref type="bibr" target="#b4">[5]</ref> Face, palmprint, signature, speech Sum rule compared to the unimodal system <ref type="bibr" target="#b30">[31]</ref> Fingerprint, iris, left ear and right ear DE, exponent control, and Kernel mapping <ref type="bibr" target="#b18">[19]</ref> Fingerprint and voice DE and proportional conflict redistribution <ref type="bibr" target="#b19">[20]</ref> Face and voice PSO, Dempster Shafer and Belief functions <ref type="bibr" target="#b20">[21]</ref> Two face databases Quasi-convex optimization <ref type="bibr" target="#b21">[22]</ref> Iris, finger vein and fingerprint Evolutionary backtracking search optimization algorithm <ref type="bibr" target="#b24">[25]</ref> Abbreviation: GA, Genetic Algorithm. only one contains two traits (NIST BSSR1), and the two other databases (FRGC, IRIS dataset) are used for multi-algorithm and multi-sample fusion (Table <ref type="table">2</ref>). Using multiple databases in multi-biometric fusion analysis can be suitable to compare their performances. However, fusion cannot guarantee performance enhancement. The used modalities that belong to different persons are not dependent. Despite this, multiple works perform their experimental study on combined databases to demonstrate the effectiveness of their fusion proposal. The use of standard multimodal databases remains the best option according to the availability of the chosen modalities.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>TA B L E 2 Some publicly available databases</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Database</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2">| Normalization and weighting</head><p>Normalization and weighting system's outputs are necessary to preserve and improve the provided system accuracy. Normalization is usually used to transform scores of different sources into a common domain. Recent researches <ref type="bibr" target="#b4">[5,</ref><ref type="bibr" target="#b7">8]</ref> use normalization methods as fusion operations. They combine couples of scores in flow. Their results seem to be interesting when compared to SVM and Sum rule, but need further investigations <ref type="bibr" target="#b7">[8]</ref>. On one hand, normalization is needed to combine heterogeneous scores outputs of uni-biometric systems. The parameters of normalization methods are computed in the training step and are tested in the validation step. On the other hand, the main problem that encounters the biometric evaluation is the disparity between scores of samples belonging to the same class: genuine or impostor. This causes misidentification of the real class and results in false acceptance and false rejection <ref type="bibr" target="#b31">[32]</ref>. The client-specific normalization is a good solution that can suffer from the lack of samples. Therefore, authors in <ref type="bibr" target="#b31">[32]</ref> discuss the usefulness of group-specific normalization methods to overcome this problem.</p><p>The quality measurement <ref type="bibr" target="#b32">[33]</ref> provides a predictor of the system performances. Sample quality is defined as 'scalar quantity that is related monotonically to the performance of biometric matchers' <ref type="bibr" target="#b32">[33]</ref>.</p><p>Many recent investigations <ref type="bibr" target="#b1">[2,</ref><ref type="bibr" target="#b33">[34]</ref><ref type="bibr" target="#b34">[35]</ref><ref type="bibr" target="#b35">[36]</ref><ref type="bibr" target="#b36">[37]</ref> are interested in the sample quality. They use the sample quality scalars to get a well-adjusted fusion function. Another application considers the system quality to indicate to the fusion approach the relevance of each uni-biometric system. This quality evaluation allows the fusion process to provide an adapted combination according to the identified biometric signals for each authentication <ref type="bibr" target="#b37">[38]</ref>. Here, the main issue is to preserve accuracy even if the signal quality changes from an authentication to another. This can be interpreted as considering the quality scalar as a quantification of the evidence degradation due to noisy signals.</p><p>Authors in <ref type="bibr" target="#b36">[37]</ref> use an image reconstruction module that optimizes the false acceptance rate based on the quality measurement of the processed signal. Otherwise, it is important to notice that the perception of a supervised biometric system is out-of-date in recent user-friendly applications that require more convenience <ref type="bibr" target="#b38">[39]</ref>. Therefore, quality evaluation is crucial to establish a reliable multi-biometric system that is adapted to the variation of the processed data <ref type="bibr" target="#b33">[34]</ref>. To summarise, the studied works related to this field employ signal or biometric system quality to ensure the consistency of the biometric decision. Other researchers consider the quality evaluation of the biometric system reliability <ref type="bibr" target="#b34">[35]</ref>.</p><p>Improving system accuracy using a fusion method on a limited number of multi-biometric schemes does not attest its efficiency. Indeed, we can reach improved accuracy using a fusion strategy thanks to the baseline system combination.</p><p>Here, the authors aim to experiment different functions to fuse different scores outputs of uni-biometric systems and verify this assumption. Therefore, the authors propose a useful platform <ref type="bibr" target="#b25">[26]</ref> to test the predefined fusion functions and classify the different biometric system combinations according to their accuracy enhancement. Thereby, the platform gives the best combinations and fusion methods according to the required security level (high, medium, and low). In addition, it determines if the used fusion functions give equivalent accuracy for different multi-biometric combinations. That ensures that the adopted fusion gives steady performances in different situations. It has been proven that typical operations are the best ones in combining limited number of uni-biometric systems <ref type="bibr" target="#b13">[14]</ref>. Therefore, the authors aim to propose different fusion functions based on these operations, and study and compare between them on different fused uni-biometric systems. Further, the authors analyse the impact of normalization and quality integration on performances of the studied multibiometric combinations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">| MATERIALS AND METHODS</head><p>Choosing a fusion method in score level is very crucial to enhance the provided multi-biometric system performances. The work of the authors provides performance analysis of different fusion functions (see Table <ref type="table">8</ref>) that combine elementary operations like sum, product, min and max along many multibiometric scores combinations generated from the score database. To accomplish that, we start by explaining the GP applied previously <ref type="bibr" target="#b25">[26]</ref> and enhanced to be tested and compared on a new and different database. Then, we define the proposed HCSO to reduce errors of a subset of multi-biometric that we analyse through the analysis performed here. After that, we describe the databases that we use in our experimental study. Finally, we discuss the proposed experiments.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">| GENETIC PROGRAMMING</head><p>We use GP to get a subset of optimal functions among the constructed ones that are represented using a tree structure. This section explains the used GP simulations that conduct us to preliminary results discussed in <ref type="bibr" target="#b25">[26]</ref>. The aim of the authors is to re-explore the proposed optimization and test a diversity of functions that have good performances. The mutation and crossover operations allow exploring search space of different trees by modifying operations on the selected nodes. As we perform tests on a score database, we can vary the number of leaves of the initial population to match the number of input scores of the tested score database. Figure <ref type="figure" target="#fig_3">1</ref> recapitulates the GP parameters. Figure <ref type="figure">2</ref> summarizes the applied GP to get the best trees or functions that we use for fusion and test on the score database. All the population trees are tested using the evaluation protocol offered by the XM2VTS database. As we perform testing on different databases, we give details of the train and test data later.</p><p>As shown in Figure <ref type="figure">2</ref>, in each simulation, we start with the initial population, generated randomly or from the previous simulation by varying the death nodes (between 2 and 8) and the number of nodes that corresponds to a predefined interval for the number of leaves (at least 8 leaves that support the input scores). Afterwards, we evaluate the half total error rate (HTER) of each tree that combines the database scores. Then, according to the fitness of the population or the number of generations, the process continues with tree transformations until it reaches the best population. In our case, we succeed to optimize all the population to get a mixture of functions with an HTER in a reduced interval. Here we present details of the GP used to explore the search space:</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">| Hybrid CSO (AVICSO and NMCSO)</head><p>Now, we combine average-inertia weighted CSO (AICSO) <ref type="bibr" target="#b39">[40]</ref> with normal mutation strategy-based CSO (NMCSO) <ref type="bibr" target="#b40">[41]</ref>. The first introduces a balance between the global and the local search where the second reinforces the global search to avoid premature convergence to local optima. In our case, we only apply the average on the velocity using this formula: </p><formula xml:id="formula_0">x iþ1 ¼ x i þ ðv iþ1 þ v i Þ 2<label>ð1Þ</label></formula><p>Now, the problem is defined as the search of scores weights and fusion functions that optimize the EER of the studied multi-biometric system. The modification of the used function by each cat of the CSO population occurs when we detect that the current function does not reduce the EER.</p><p>CSO algorithm is based on two phases that simulate the cat's behaviour which are seeking mode and tracing mode. To find the optimal weights, we based our optimization on the development set and test these weights on the evaluation set. The proposed HCSO takes the following steps to get the optimal solutions:</p><formula xml:id="formula_1">x iþ1 ¼ x i þ ðSRD * x i * Nð0; 1ÞÞ<label>ð2Þ</label></formula><p>Step 1 Initialize all parameters of seeking and tracing mode and evaluate the fitness of N cats represented by their decision variables that are the function fusion chosen randomly combined to our scores weights initialized randomly in the defined velocity range. The weights are modified in steps 3 and 4, while the function number is controlled to diversify solutions if we do not find solutions that reduce the function error.</p><p>Step 2 Classify the cats into seeking and tracing mode according to the mixture ratio (MR) that defines the ratio of cats in seeking mode.</p><p>Step 3 Go through the seeking mode and update the copies (added according to seeking memory pool SMP-1) of parent cats with normal mutation, instead of traditional random mutation, and SRD (seeking range of the selected dimension) parameter that defines the mutative ratio. The normal updates the cats positions that are randomly distributed according to the range of the resting cats. The used formula is as follows:</p><p>The CDC (counts of dimension to change) dimensions define the ratio of random dimensions that are modified.</p><p>Then evaluate the copies and select the next position for each cat.</p><p>Step 4 Go through tracing mode by updating dimensions of the cats in movement according to w that defines an inertia value to the velocity formula defined by:</p><formula xml:id="formula_2">V k;d ¼ w iter * V k;d þ r * c * À X best;d -X k;d �<label>ð3Þ</label></formula><p>The decreasing value of w enables one to maintain a global search at the beginning and gradually move to local search. This updated velocity for each dimension d is then added to the position of cat k .</p><p>Step 5 Check bounds of the solution and explore other functions for the best solution if there is no fitness improvement after a defined number of iterations. In that case, we propose to enhance the global search by exploring other bad solutions. Then, combine cats of seeking and tracing mode and repeat step 2 to step 5 until reaching the fixed number of iterations.</p><p>The HCSO algorithm is proposed to test the generated multi-biometric instances and improve those that need improvement. Also, it allows us to bring out the best functions and confirm or not our function ranking according to nonoptimized weighting scores. The chosen parameters are described in Table <ref type="table">3</ref>: -331</p><formula xml:id="formula_3">TA B L E</formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3">| Databases</head><p>First, we need to present the databases used in our experiments. We choose these databases as they are constructed with respect to the biometric database protocols. Furthermore, they are more suitable for our comparative study as they give a great number of scores computed from different biometric systems.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3.1">| XM2VTS score database</head><p>We use the XM2VTS score database <ref type="bibr" target="#b13">[14]</ref>, where the scores are computed based on the publicly available XM2VTS face and speech database. These scores give access to the provided baseline systems with their documentation for further experiments. Publishing score results of these baseline systems is important for researchers to compare them in more detail with their obtained scores. However, fusion, in this context, is less considered as it is more useful to use scores for combining on common settings instead of a simple comparison of outputs. This database provides well-defined protocols (train and test data details are described in Table <ref type="table">4</ref>) and a set of evaluation tools such as the DET curve, expected performance curve (EPC), and the HTER significance test, which we use in our fitness evaluation as an optimization metric. The Biosecure score database is a benchmark of qualitydependent, client-specific, and cost-sensitive fusion algorithms. It contains fingerprint, face and Iris modalities acquired with different sensors and scenarios. Baseline systems are evaluated using biometric verification systems cited in Table 5 <ref type="bibr" target="#b26">[27]</ref>. The benchmark contains 24 streams of matching scores from two sessions divided into development set and evaluation set as represented in Table <ref type="table" target="#tab_6">6</ref>.</p><p>The database simulates a real test environment for fusion schemes such as scores of cross-devices, quality evaluation of acquired traits and failures due to sensors or unmeasurable quality. In addition, it provides tools for analysing system performances based on the processed data.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.4">| Multi-biometric optimization analysis</head><p>Here, we aim to analyse the impact of fusion on the performances of biometric systems. Thus, we need to generate different combinations of existing biometric systems as shown in Figure <ref type="figure" target="#fig_2">3</ref>. Then, we apply multiple fusion strategies on the selected scores. This selection, carried out on n provided scores, gives a subset of scores that are used in the fusion process. We use the development set to compute normalisation parameters. Then, we test each multi-biometric combination using the evaluation set. The random selection provides 2000 multibiometric instances and covers different modalities and traits' instances that tests sensor cross-matching. We use the same fusion functions tested in <ref type="bibr" target="#b25">[26]</ref> in the extended comparative study, and we compare them with typical fusion operations, normalization functions and evolutionary methods applied in score fusion.</p><p>First, we use GP results obtained previously from the XM2VTS <ref type="bibr" target="#b25">[26]</ref>. Figure <ref type="figure">4</ref>(a) shows the graph oscillations that illustrate the progress of GP from the first to the last simulation. It shows the percentage of minimal HTER obtained for the population at each generation. Figure <ref type="figure">4</ref>(b) illustrates the fitness average according to the number of crossover and mutation. The GP provides a set of the best trees that represent a fusion function of elementary operations. Figure <ref type="figure">5</ref> shows the enhancement of the average HTER with GP simulation along 100 generations using the crossover that evolves the population to the optimal value and the roulette selection that enlarges the exploration. The mutation allows avoiding premature convergence. As a result, the HTER average is reduced to a range of [0, 5%] in the last experiments <ref type="bibr" target="#b25">[26]</ref> that decreases under 1% using two successive simulations. After that, we start our experimental study according to the following steps:</p><p>1. First, a set of trees is selected from our previous simulation.</p><p>The selection was conducted randomly along all generations to get a set of generations according to the HTER. Then we select different trees of each one. 2. We use these trees to fuse matching scores provided by different biometric systems of the Biosecure database. 3. We use the development set to compute the min-max standard deviation applied in normalization. 4. First, we apply a user-specific weighting using the normalized database quality measures giving the sample fidelity to the claimed ID, multiplied by the standard deviation of minmax for each score (computed from the development set). We compute the weight as follows:</p><formula xml:id="formula_4">� 1 2 * À ðx t -x Þ 2 þ À x q -x � 2 � 1 = 2 � -1 * σ min scores;max scores<label>ð4Þ</label></formula><p>where x t is the template quality (claimed id) and x q is the query quality (true id). This is a measure of dissimilarity between the two measurements. -333</p><p>5. Second, we use Frobenius norm for the HCSO algorithm to rescale the distribution of client and impostor using a group-centred strategy <ref type="bibr" target="#b31">[32]</ref> that aggregates the score matching of different samples belonging to the same group.</p><p>In our context, we consider only two groups that are genuine and impostor. The normalization is the norm 2 between the two vectors and is computed from the development set and applied on the evaluation set.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">| EXPERIMENTS AND DISCUSSION</head><p>In the experiments conducted, we get the optimized population illustrated in Figure <ref type="figure">5</ref> (the last population). As shown in this figure, the error range [0.67, 72.89]% of the initial population is reduced after the first simulation to [0.3, 0.87]%, then [0.1, 0.34]%. We get the best trees from the generated populations and use them in the next experimental study. We compare our Area Under Curve and HTER achieved in the XM2VTS score database with two evolutionary methods that use the same evaluation metrics (see Table <ref type="table">7</ref>).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">| Experimental study</head><p>In the experimentation, we aim to test different configurations to analyse the impact of using the same functions and varying the fused uni-biometric scores. The study is essential as it demonstrates that fusion depends on the fusion function and the scores that are fused <ref type="bibr" target="#b0">[1]</ref>. Also, we compare the proposed functions and the HCSO function to other typical operations, the fusion normalization proposed in the literature <ref type="bibr" target="#b4">[5]</ref>, and the applied evolutionary algorithms for fusion weighting <ref type="bibr" target="#b20">[21,</ref><ref type="bibr" target="#b24">25]</ref>.</p><p>We use the algorithm presented here:</p><p>We perform the experiments on the Biosecure score database <ref type="bibr" target="#b26">[27]</ref>, a collection of matching scores computed from the Biosecure biometric databases that proposes a quality evaluation of the captured signals based on the features richness, environmental effects and signal properties. The quality is a crucial information about the studied fusion schemes to discard undesired influence of high scores provided by poor quality traits. We select a subset of fx10functions that provides low HTER error in the XM2VTS database that is representative of groups of functions with similar HTER.</p><p>The selected functions are shown in Table <ref type="table">8</ref>. Based on these functions, we search the optimized weights using the proposed HCSO algorithm that explores them to find the best one. The experiments are done on MATLAB 20a. The HCSO optimization is performed on two PCs: Intel i5 processor, 8 GB RAM, and Intel i7 processor, 16 GB RAM, and takes three days for 1000 multi-biometric scores using parallel execution with 6 MATLAB workers.</p><p>Figure <ref type="figure">6</ref> illustrates the statistics (MIN, MAX, AVG and STD) of the cited functions that are tested using the evaluation set of the score database. These functions are classified according to the variance between the two sessions (see similarly. We consider that the two rankings are similar if the difference is less than 1. Function 3 is the best function with EER less than 33%. In Figure <ref type="figure">7</ref>, we can observe that functions 1 and 2 give better result for the best multi-biometric fusion from two simulations and provide the lowest EER -0.0006%. Our results remain coherent because function 2 is one of the best-ranked functions. However, it is the less selected by the HCSO algorithm for 2.40% of the multi-biometric instances. In Figure <ref type="figure">8</ref>, we present statistics of the tested fusion functions on multiple multi-biometric fusion schemes. It illustrates the percentage of enhanced multi-biometric performances under the corresponding EER on the x-axis for each sub-set of functions. As we decrease the number of functions that must provide a reduced EER, the number of multi-biometric instances increases. For example, six different functions enhance the EER of 7.85% of the tested ones under 3% while 70.40% of them have only one function with the same EER. These results seem interesting as they demonstrate the influence of the fused baseline outputs scores on the resulted EER. Nevertheless, we provide 40 multi-biometric fusion schemes that are optimised to an EER less than 0.001%. This is not verified if we increase the number of functions which explain the decreasing ratio until 0%. In addition, the simulation demonstrates a significant enhancement compared to operations: sum, product, min, max. The proposed functions provide an EER less than typical operations for 89.5% of the 2000 multi-biometric combinations considering only the quality weighting. We compare our results to the recently used Hamacher t-norm and Frank t-norm normalization methods that we implement on the tested data of the Biosecure database. Also, Table <ref type="table">10</ref> gives EER comparison with the state-of-theart results. The HCSO weighting optimization gives the lowest EER average. As shown in Table <ref type="table">10</ref>, only 50% of the tested multi-biometric scores are fused successfully in the best case. Our functions outperform the two best norms that give good results in <ref type="bibr" target="#b4">[5]</ref>, PSO <ref type="bibr" target="#b20">[21]</ref>, and Backtracking search optimization algorithm <ref type="bibr" target="#b24">[25]</ref>. The proposed HCSO algorithm enhances the selected function using the score weighting and reaches more than 87.5% EER reduction compared to typical operations (see Figure <ref type="figure">9</ref>). After 50 iterations, more than half of the multi-biometric combinations have less than 1% EER as demonstrated in Figure <ref type="figure" target="#fig_4">11</ref>.</p><p>The performed experimental study confirms the assumption that having good results after fusion does not assert the robustness of the chosen fusion method. Here, we get a significant STD for some functions like f1, as seen in Figure <ref type="figure">6</ref>. This means that the resulted functions depend on the selected scores of the biometric systems. The robustness of the chosen baseline systems used in fusion plays a crucial role in performance enhancement. Therefore, comparing different fusion functions based on the same data and baseline systems is required to affirm whether fusion has improved baseline system performances or not. Besides, testing different scenarios is always important because the ideal case does not exist. Generally, system failure is caused by system weaknesses to face some special scenarios, which are not considered, like sensor failure or insufficient image quality that affect decisionmaking. Hence, we must deal with these drawbacks to prevent system failure in a real environment. The chosen scores database is built upon some of these scenarios. In the experiments conducted, we test quality weights that we propose based on score quality available in the Biosecure database. We compare it to a normalized score without employing weights. The results are presented along 2000 multi-biometric combinations in Figure <ref type="figure" target="#fig_5">10</ref>. As shown, normalization provides the lowest values. However, if we omit zero-values, mostly caused by missing values in the database, we can see that quality weighting provides a steady range and reduces significant EER fluctuation. However, max peaks are caused by missing quality scalars for some scores in the testing database.</p><p>Figure <ref type="figure" target="#fig_1">12</ref> compares between the EER of 1000 combinations using user-specific quality weighting and the added HCSO weights. Combining the two quality measures for baseline scores and those related to the signal quality is more performing as demonstrated by these results.</p><p>In conclusion, searching for the best combination, instead of proving the effectiveness of a unique process, remains   important in future studies. Here, we optimize performances to reach the best multi-biometric systems on two simulations illustrated in Figure <ref type="figure">7</ref>. This multi-biometric system gives nearby errors for the ten functions on session 1 of the evaluation set. The EER is in the range of [0.0002 6.88]%. However, the best functions with small variance (less than 1.5%) between the two sessions are 1, 2 and 4 in this case. With the HCSO optimization, function 1 is the most selected for 24.30% of the tested multi-biometric combinations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">| Significance test</head><p>To prove that the proposed functions outperform the typical fusion operations, we use the t-test to approve the significance of the variation between the two sets. First, we use a paired test to analyse the average difference in one direction. We get a t-value1.63 less than the critical t-value 1.64. So, the hypothesis of significant improvement is assumed (P &lt; 0.1). The proposed fusion is significantly better than typical fusion operations with 90% confidence interval. Second, we use a paired test to analyse average difference assuming that the two variances are different. The test is almost successful (P = 0.05 &lt; 0.1 and t value = 1.58 &lt; 1.64).</p><p>Next, we perform a significance t-test between pairs of our proposed functions and the four typical operations. Results are significant for all pairs as seen in Table <ref type="table">12</ref> except for function 8 whose average is close to sum's average. Our functions perform better than typical operations do.</p><p>The comparison between our functions and the typical fusion operator is illustrated in Figure <ref type="figure" target="#fig_6">13</ref>. It represents the number of multi-biometric combinations, from 1000 tested combinations with the proposed functions that outperform the typical operations. Fct2 is the function that yields the best enhancement comparing to the Sum operator, while it reaches proximate percentage to Fct1 comparing to Prod and Min operations. [Fct4-Fct10] gives approximately the same results that outperform Max and Prod ones for more than 60% of multi-biometric combinations.</p><p>In summary, the percentage of success exceeds 90.4% compared to the typical operations. Figure <ref type="figure" target="#fig_6">13</ref> describes the total number of multi-biometric combinations for which we find at least one function that outperforms sum, prod, max and min. Also, the number of functions that succeeds in each multi-biometric system is numbered, where each series represents one of the typical functions, in Figure <ref type="figure" target="#fig_6">13(b</ref>). The results of max and sum approach the min and prod, respectively.  Finally, we use the ANOVA test to confirm that the results of our experiments are statistically significant. The H0 hypothesis of the ANOVA test is that the tested functions do not optimize the EER, whereas the H1 hypothesis states that the tested functions optimize the EER.</p><p>Table <ref type="table">11</ref> shows the result of the ANOVA test; the probability of H0 hypothesis is very low (p-value = 6.59e-32). It confirms that the results of our experiments are statistically significant, and the tested functions optimize EER.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3">| Multi-biometric fusion</head><p>In the experiments, we reach an EER under 0.013% and we get three multi-biometric fusion schemes that optimize the EER to the range of [0.0006%, 1.30%] from baseline scores with EER in the range of [1%, 99.55%]. This means that we reach a range improvement of 98%. Our functions outperform the results obtained in <ref type="bibr" target="#b41">[42]</ref> using Random Subspace of AdaBoost (RS-ADA) for fusion which reaches an EER of 1.98%.</p><p>Table <ref type="table">13</ref> describes the fused traits in these multi-biometric schemes. The traits are face, multiple instances of fingerprint, multiple captures using different sensors and iris. Furthermore, the fusion is done on scores-the result of matching between fingerprint query and template from different sensors. This confirms the usability and significance of quality evaluation for weighting scores in such cases. Figure <ref type="figure" target="#fig_5">14</ref> gives the evaluation of the 10 fusion functions on one of the best multi-biometric fusion, on two tested sessions. Function 2 is the best function in this case as demonstrated previously in Table <ref type="table">9</ref> using our ranking method. The HCSO reduces the EER of function 1 from 1.33% to 0.9%.</p><p>The example illustrated in Figure <ref type="figure" target="#fig_5">14</ref> shows that fusion allows reducing errors caused by divergent scores. Indeed, function 2, 5 and 8 give already good results and optimize Area Under Curve. For instance, the fused scores represent respectively the Face (CANON), Face (CANON with Flash), Iris and two fingerprints taken with different devices as described in the database. The other scores are filtered for dummies values included in the tested database.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5">| CONCLUSIONS AND FUTURE WORK</head><p>Here, the authors propose a new multi-biometric fusion scheme based on optimized and weighted functions. The fusion functions are generated using the GP based on arithmetic operations. The score weighting optimization is performed using the HCSO based on average-inertia weighted CSO and Normal Mutation CSO. The authors conduct the experimentation on the Biosecure score database to compare different combinations of the provided scores and find the best solutions that carry out a fixed range of EER. The proposed hybrid CSO optimizes fusion score weights and reach at least 80% enhancement of the tested multi-biometric combinations. The significance test confirms the improvement of our weighted scores fusion compared to typical fusion operations and weights' optimization using evolutionary algorithms applied on similar databases or approaching modalities. With different baseline systems, having probably divergent performances, the system improvement cannot be ensured by combining their scores. Therefore, associating weights to scores is essential in multi-biometric fusion. Quality weighting applied to user scores and classifier scores brings additional information about the used sensor, user behaviour and classifier performances. The experimental study compares a significant number of multi-biometric combinations instead of a limited number. Therefore, this allows analysing more expressively how much fusion and quality integration in the biometric process is important to get better results and confirm the effectiveness of each function to improve multiple configurations rather than a configured one. This can be used in the different contexts to verify whether the merit of fusion methods outstrips the performances of baseline systems. In future work, it has been planned to test another variant of CSO to reduce the time cost using parallel CSO and combine it with the current version.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head></head><label></label><figDesc>0.9, 0.4] (itMax values) ARTABAZ ET AL.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>F I G U R E 1 F I G U R E 2</head><label>12</label><figDesc>Updated genetic programming parameters Genetic programming on the XM2VTS score database 3.3.2 | Biosecure score database</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>F I G U R E 3</head><label>3</label><figDesc>Multi-biometric score fusion evaluation ARTABAZ ET AL.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>1 0</head><label>1</label><figDesc>EER of normalized and weighted fused normalized scores computed for 2000 multi-biometric combinations of the evaluation set 0.00%</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>1 1</head><label>11</label><figDesc>(a) Multi-biometric combinations percentages according to their EER after one iteration and (b) EER of the multi-biometric combinations on the evaluation set after 50 iterations of the HCSO algorithm Comparison of EER using user-specific quality weighting with the HCSO weighting ARTABAZ ET AL.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>1</head><label>1</label><figDesc>(a) Number of multi-biometric scores combinations where at least one function outperforms the typical operations and (b) corresponding number of multi-biometric combinations and number of succeeded functions</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head>TA B L E 13 Face</head><label>13</label><figDesc>Best multi-biometric fusion details resolution) Thermal: right/left thumb, right index, Left index, left middle finger -LDA-based face verifier Optical: left thumb, right index NIST fingerprint system 2 Webcam (low resolution) Thermal: right thumb, right index Left index, left middle finger -LDA-based face verifier Optical: Right/left thumb, right index. 3 Webcam (low resolution) Optical: right middle finger Thermal: left thumb Left eye LDA-based face verifier Thermal: right/left index, right middle finger F I G U R E 1 4 ROC curves (EER = 0.8% for Function 2) of all the used functions compared to a subset of fused scores and baseline systems ARTABAZ ET AL.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><head></head><label></label><figDesc></figDesc><graphic coords="5,309.32,278.70,227.85,287.83" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_4"><head>6</head><label></label><figDesc>Data details of the Biosecure score database<ref type="bibr" target="#b24">[25]</ref> </figDesc><table /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_5"><head>Data sets Number of match scores per subject Development Evaluation</head><label></label><figDesc></figDesc><table><row><cell>ARTABAZ ET AL.</cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell>Session 1</cell><cell></cell><cell>Genuine</cell><cell>1</cell><cell>1</cell></row><row><cell></cell><cell></cell><cell>Impostor</cell><cell>103*4</cell><cell cols="2">206*4</cell></row><row><cell>Session 2</cell><cell></cell><cell>Genuine</cell><cell>2</cell><cell>2</cell></row><row><cell></cell><cell></cell><cell>Impostor</cell><cell>103*4</cell><cell cols="2">126*4</cell></row><row><cell cols="6">TA B L E 7 Comparison of GP optimization with state-of-the-art</cell></row><row><cell>results</cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell></cell><cell>DE [19]</cell><cell>DE [20]</cell><cell>PSO [21]</cell><cell>Our GP</cell></row><row><cell cols="2">XM2VTS AUC</cell><cell>0.99981</cell><cell>-</cell><cell>-</cell><cell>0.99991</cell></row><row><cell cols="2">XM2VTS HTER</cell><cell>-</cell><cell>1.119</cell><cell>-</cell><cell>0,1</cell></row><row><cell>XM2VTSEER</cell><cell></cell><cell>-</cell><cell>-</cell><cell>1.887</cell><cell>0,11</cell></row><row><cell>Fct4</cell><cell cols="4">S 1 +avg(min((min(S 2 , S 3 ))+S 4 +S 5 ,S 6 ]),min(S 7 ,S 8 ));</cell></row><row><cell>Fct5</cell><cell cols="4">avg(max(max(S 1 , S 2 ),(S 3 +((S 4 *S 5 )-S 6 ))),avg(S 7 ,S 8 ));</cell></row><row><cell>Fct6</cell><cell cols="4">max(avg(S 1 , S 2 ),S 3 )+avg(S 4 ,S 5 )+min(S 6 ,S 7 )+S 8</cell></row><row><cell>Fct7</cell><cell cols="4">avg(S 1 , S 2 )*S 3 +avg(S 4 ,S 5 )+min(S 6 ,S 7 )+S 8</cell></row><row><cell>Fct8</cell><cell cols="4">S 1 +avg(max(avg(S 2 +S 3 , S 4 +S 5 ),S 6 ),min(S 7 ,S 8 ));</cell></row><row><cell>Fct9</cell><cell cols="5">avg(avg(min(S 1 , min(max(S 2 ,S 3 ),S 4 )),S 5 ), min(avg(S 6 ,S 7 ), S 8 ));</cell></row><row><cell>Fct10</cell><cell cols="4">avg(avg(S 1 , avg(S 2 ,S 3 )),min(S 4 ,S 5 )+S 6 +S 7 +S 8 );</cell></row></table><note><p>Our GP outperforms DE and PSO applied on the same database. TA B L E 8 Non exhaustive list of functions generated on the XM2VTS score database Function Fct1 avg (S 1 ,avg(min(min(S 2 ,S 3 )+S 4 *S 5 ,S 6 ),min(S 7 ,S 8 ))); Fct2 S 1 +avg(min(avg(S 2 +S 3 , min(S 4 ,S 5 )),S 6 ),min(S 7 ,S 8 )); Fct3 S 1 +avg(max(avg(S 2 +S 3 , avg(S 4 ,S 5 )),S 6 ),min(S 7 ,S 8 ));</p></note></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_6"><head>Table 6 )</head><label>6</label><figDesc>to measure the function performance variation. In this ranking, While the new ranking that considers the 2000 combinations is similar for 4 functions with the previous simulation of 1000 combinations, the HCSO algorithm ranks 6 functions AVG and STD equal error rate of the tested fusion functions on 1000 and 2000 multi-biometric combinations TA B L E 9 Functions ranking results according to statistics and HCSO results Comparison between two of the best combinations of biometric scores from two simulations with 1000 and 2000 multi-biometric instances</figDesc><table><row><cell>(a)</cell><cell>Best Individual RaƟo</cell><cell>0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1 1.1</cell><cell>1</cell><cell>7</cell><cell>13</cell><cell>19</cell><cell>25</cell><cell>31</cell><cell cols="2">37</cell><cell cols="2">43</cell><cell cols="2">49</cell><cell cols="2">55</cell><cell cols="2">61</cell><cell>67</cell><cell>73</cell><cell>79</cell><cell>85</cell><cell>91</cell><cell>97</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell cols="7">GeneraƟon</cell><cell></cell><cell></cell></row><row><cell>(b)</cell><cell></cell><cell></cell><cell></cell><cell cols="6">MutaƟon Number</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell cols="2">Crossover Number</cell></row><row><cell></cell><cell></cell><cell>0.4</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="2">Average Fitness</cell><cell>0.2</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell></cell><cell>0</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell></cell><cell cols="2">0.00</cell><cell></cell><cell cols="2">50.00</cell><cell cols="14">100.00 150.00 Number of OperaƟons 200.00 250.00</cell><cell>300.00</cell></row><row><cell cols="2">80.00%</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="2">70.00%</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="2">60.00%</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="2">50.00%</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="2">40.00%</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="2">30.00%</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="2">20.00%</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="2">10.00%</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="2">0.00%</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell></cell><cell>1</cell><cell>6</cell><cell>11</cell><cell>16</cell><cell>21</cell><cell>26</cell><cell>31</cell><cell>36</cell><cell cols="2">41</cell><cell cols="2">46</cell><cell cols="2">51</cell><cell cols="2">56</cell><cell>61</cell><cell>66</cell><cell>71</cell><cell>76</cell><cell>81</cell><cell>86</cell><cell>91</cell><cell>96</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell cols="7">First GeneraƟon</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell cols="3">Last GeneraƟon</cell></row></table><note><p><p><p><p><p>F I G U R 4 Impact of mutation and crossover number on fitness average</p><ref type="bibr" target="#b25">[26]</ref> </p>F I G U R E 5 The Fitness of initial and last generations on the XM2VTS score database after only two simulations 334we compute the sum of ranking considering that Session 2 is more important as recommended in the database documentation. We use the sum of these ranks to show the best functions. As a result, Function 3, 8, 5 and 2 whose averages of ranks is less than 5 are the best ones as illustrated in Table</p>9</p>. The HCSO algorithm gives a different ranking by selecting the best function according to the EER and the fused matching scores. In fact, function 5 and 8 remains the most recurrent with functions 1 and 6. ARTABAZ ET AL.</p></note></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_7"><head></head><label></label><figDesc>Cumulative ratio of multi-biometric fusion schemes according to the number of functions and fixed maximum EER TA B L E 10 EER statistics of compared fusion functions with t-norms and evolutionary methods Percentage of enhanced multi-biometric scores combinations using our fusion functions comparing with usual fusion operations</figDesc><table><row><cell>56.90% 75.75% 88.90% 97.20% 99.00% 11.15% 29.40% 51.90% 80.30% 91.80% 15.00% 10.00% F I G U E 8 Method 0.00% 10.00% 20.00% 30.00% 40.00% 50.00% 60.00% 70.00% 80.00% 90.00% 100.00% Hamacher t-norm [5] Frank t-norm [5] PSO [21] BSA [25] Our functions without HCSO weighting Our functions with HCSO weighting Abbreviation: BAS, Backtracking search optimization algorithm 4.20% 11.10% 30.25% 57.90% 76.80% 5.00% Multi-biometric instances 2.95% 1.65% 7.85% 5.15% 25.25% 18.80% 51.75% 43.35% 70.40% 62.65% 3.00% 2.00% 10 8 6 4 3 2 1 1.00% 2.60% 12.00% 33.70% 50.65% 1.40% EER Std average 419 13.52 13 12.3 ----1000 [5.25, 13.36] 1000 8.27% 0 0.2 0.4 0.6 0.8 1 1.2 Fct1 Fct2 Fct3 Fct4 Fct5 Fct6 Fct7 Fct8 Fct9 0.00% 0.45% 3.35% 13.60% 28.25% 1.20% EER average 0.10% 21 25.12 --[9.28, 13.35] 4.31% Fct10 HCSO Fct 2.00% Enhancement success percentage FuncƟons F I G U R E 9 336 -</cell><cell>2.00% Min EER 0.01% 0.13 0.19 1.887 1.57 0.0006 0.00004 Sum Prod Max Min ARTABAZ ET AL.</cell></row></table></figure>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div><head>ACKNOWLEDGEMENTS</head><p>This study is supported by <rs type="funder">Ecole nationale Supérieure d'</rs><rs type="projectName">Informatique ESI and Ecole d'ingénieur généraliste en informatique et technologies du numérique Efrei</rs>.</p></div>
+			</div>
+			<listOrg type="funding">
+				<org type="funded-project" xml:id="_SnzZkfR">
+					<orgName type="project" subtype="full">Informatique ESI and Ecole d&apos;ingénieur généraliste en informatique et technologies du numérique Efrei</orgName>
+				</org>
+			</listOrg>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">A comprehensive overview of biometric fusion</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Singh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Singh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Ross</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.inffus.2018.12.003</idno>
+		<ptr target="https://doi.org/10.1016/j.inffus.2018.12.003" />
+	</analytic>
+	<monogr>
+		<title level="j">Inf. Fusion</title>
+		<imprint>
+			<biblScope unit="volume">52</biblScope>
+			<biblScope unit="page" from="187" to="205" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Score-level fusion for cancelable multi-biometric verification</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Dwivedi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Dey</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.patrec.2018.04.022</idno>
+		<ptr target="https://doi.org/10.1016/j.patrec.2018.04.022" />
+	</analytic>
+	<monogr>
+		<title level="j">J. Pattern Recogn. Lett</title>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">A principled approach to score level fusion in multimodal biometric systems</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Dass</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="s">Lecture Notes in Computer Science</title>
+		<imprint>
+			<biblScope unit="volume">3546</biblScope>
+			<biblScope unit="page" from="1049" to="1058" />
+			<date type="published" when="2005">2005</date>
+			<publisher>Springer</publisher>
+			<pubPlace>Berlin</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Biometric Fusion for Palm-Vein-Based Recognition Systems</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Piciucco</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Maiorana</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Campisi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Communications in Computer and Information Science</title>
+		<imprint>
+			<biblScope unit="volume">766</biblScope>
+			<biblScope unit="page" from="18" to="28" />
+			<date type="published" when="2017">2017</date>
+			<publisher>TIWDC Springer</publisher>
+			<pubPlace>Cham</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Accurate human recognition by score-level and feature-level fusion using palm-phalanges print</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">S</forename><surname>Gopal</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Arabian J. Sci. Eng</title>
+		<imprint>
+			<biblScope unit="volume">43</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="543" to="554" />
+			<date type="published" when="2018">2018</date>
+			<publisher>Springer</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<monogr>
+		<title level="m" type="main">Multi-modal motion-capture-based biometric systems for emergency response and patient rehabilitation</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">L</forename><surname>Gavrilova</surname></persName>
+		</author>
+		<editor>Kisku, D., Gupta, P., Sing, J.</editor>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="160" to="184" />
+		</imprint>
+	</monogr>
+	<note>Design and Implementation of Healthcare Biometric Systems</note>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<monogr>
+		<title level="m" type="main">Pre-Clinical ASD screening using multi-biometricsbased systems</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Wadhera</surname></persName>
+		</author>
+		<editor>Kisku, D., Gupta, P., Sing, J.</editor>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<publisher>IGI Global</publisher>
+			<biblScope unit="page" from="185" to="211" />
+			<pubPlace>Hershey, PA</pubPlace>
+		</imprint>
+	</monogr>
+	<note>Design and Implementation of Healthcare Biometric Systems</note>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Score Level Fusion of Multispectral Palmprint with Triangular Conorm</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Afzal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Srivastava</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Intl. J. Emerging Res. Manag. Technol</title>
+		<imprint>
+			<biblScope unit="volume">6</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="88" to="91" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Multimodal biometric: iris and face recognition based on feature selection of iris with GA and scores level fusion with SVM</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Bouzouina</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Hamami</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of bioengineering for smart technologies (BioSMART)</title>
+		<meeting>bioengineering for smart technologies (BioSMART)<address><addrLine>Paris, France</addrLine></address></meeting>
+		<imprint>
+			<publisher>IEEE IEEE</publisher>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="1" to="7" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Biometric authentication techniques and its future</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Sivakumar</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Biometric Authentication in Online Learning Environments</title>
+		<editor>
+			<persName><forename type="first">A</forename><surname>Kumar</surname></persName>
+		</editor>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="122" to="149" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">How AI and biometrics are driving next-generation authentication</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Brostoff</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Biometr. Technol. Today</title>
+		<imprint>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="7" to="9" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">The research of identity authentication based on multiple biometrics fusion in complex interactive environment</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. Netw. Intel</title>
+		<imprint>
+			<biblScope unit="volume">4</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="124" to="139" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Introduction to multi-biometrics</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Ross</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Nandakumar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">K</forename><surname>Jain</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Handbook of Biometrics</title>
+		<editor>
+			<persName><forename type="first">R</forename><surname>Patrick</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">A</forename><surname>Arun</surname></persName>
+		</editor>
+		<meeting><address><addrLine>Boston</addrLine></address></meeting>
+		<imprint>
+			<publisher>Anil, Flynn Springer</publisher>
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Database, protocol and tools for evaluating scorelevel fusion algorithms in biometric authentication</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Poh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Bengio</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. Pattern Recogn</title>
+		<imprint>
+			<biblScope unit="volume">39</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="223" to="233" />
+			<date type="published" when="2006">2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Score-level fusion using generalized extreme value distribution and DSmT, for multi-biometric systems</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Sharma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Das</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Joshi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. IET Biometr</title>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<monogr>
+		<title level="m" type="main">Studies of Biometric Fusion</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Ulery</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2006">2006</date>
+			<publisher>National Institute of Standards and Technology United States Department of Commerce</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Weighted quasi-arithmetic mean based score level fusion for multi-biometric systems</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Herbadji</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IET Biometr</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="91" to="99" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Vector score alpha integration for classifier late fusion</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Safont</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Salazar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Vergara</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Pattern Recogn. Lett</title>
+		<imprint>
+			<biblScope unit="volume">136</biblScope>
+			<biblScope unit="page" from="48" to="55" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<monogr>
+		<title level="m" type="main">Differential evolution based score level fusion for multimodal biometric systems</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Mukherjee</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<publisher>IEEE</publisher>
+			<biblScope unit="page" from="1" to="7" />
+			<pubPlace>Orlando, FL, USA</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Score level fusion algorithm using differential evolution and proportional conflict redistribution rule</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Mezai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Hachouf</surname></persName>
+		</author>
+		<idno>001051-001056</idno>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE</title>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+			<pubPlace>Budapest</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Score-level fusion of face and voice using particle swarm optimization and belief functions</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Mezai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Hachouf</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Trans. Human-Machine Syst</title>
+		<imprint>
+			<biblScope unit="volume">45</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="761" to="772" />
+			<date type="published" when="2015">2015</date>
+			<publisher>IEEE</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Quasi-convex optimization of metrics in biometric score fusion</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Gong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Su</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Sixth international conference on image and graphics</title>
+		<meeting><address><addrLine>Anhui</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="998" to="1003" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">A Survey of Using Swarm Intelligence Algorithms in IoT</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Sun</surname></persName>
+		</author>
+		<idno type="DOI">10.3390/s20051420</idno>
+		<ptr target="http://dx.doi.org/10.3390/s" />
+	</analytic>
+	<monogr>
+		<title level="j">Sensors</title>
+		<imprint>
+			<biblScope unit="volume">20</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page">1420</biblScope>
+			<date type="published" when="2020">2020. 20051420</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Cat Swarm Optimization Algorithm: A Survey and Performance Evaluation</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">M</forename><surname>Ahmed</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">A</forename><surname>Rashid</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">A M</forename><surname>Saeed</surname></persName>
+		</author>
+		<idno type="DOI">10.1155/2020/4854895</idno>
+		<ptr target="https://doi.org/10.1155/2020/4854895" />
+	</analytic>
+	<monogr>
+		<title level="j">Computational Intelligence and Neuroscience</title>
+		<imprint>
+			<biblScope unit="volume">2020</biblScope>
+			<biblScope unit="page" from="1" to="20" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Robust multimodal biometric system based on optimal score level fusion model</title>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">S</forename><surname>Walia</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.eswa.2018.08.036</idno>
+		<ptr target="http://dx.doi.org/10.1016/j.eswa.2018.08.036" />
+	</analytic>
+	<monogr>
+		<title level="j">Expert Systems with Applications</title>
+		<imprint>
+			<biblScope unit="volume">116</biblScope>
+			<biblScope unit="page" from="364" to="376" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<monogr>
+		<title level="m" type="main">Study of score fusion and quality weighting in the bio-secure DS2 Database. Soft Computing in Data Science</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Artabaz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Layth</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<publisher>Springer</publisher>
+			<biblScope unit="volume">1100</biblScope>
+			<biblScope unit="page" from="252" to="261" />
+			<pubPlace>Singapore</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">A multimodal biometric test bed for quality-dependent, cost-sensitive and client-specific score-level fusion algorithms</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Poh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Bourlai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Kittler</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.patcog.2009.09.011</idno>
+		<ptr target="http://dx.doi.org/10.1016/j.patcog.2009.09.011" />
+	</analytic>
+	<monogr>
+		<title level="j">Pattern Recognition</title>
+		<imprint>
+			<biblScope unit="volume">43</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="1094" to="1105" />
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<monogr>
+		<author>
+			<persName><forename type="first">E</forename><surname>Tabassi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Grother</surname></persName>
+		</author>
+		<title level="m">Biometric sample quality. Encyclopedia of Biometrics</title>
+		<meeting><address><addrLine>Boston MA</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Template protection based on chaotic map and DNA encoding for multimodal biometrics at feature level fusion</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. Inform. Hiding Multimedia Signal Process</title>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="1" to="10" />
+			<date type="published" when="2019-01">January. 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Comparative study on feature, score and decision level fusion schemes for robust multi-biometric systems</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">C</forename><surname>Lip</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">A</forename><surname>Ramli</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Frontiers in Computer Education</title>
+		<editor>
+			<persName><forename type="first">S</forename><surname>Sambath</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">E</forename><surname>Zhu</surname></persName>
+		</editor>
+		<meeting><address><addrLine>Berlin; Heidelberg</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2012">2012</date>
+			<biblScope unit="page" from="941" to="948" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Combination of physiological and behavioral modalities based on score level fusion</title>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">D</forename><surname>Supreetha Gowda</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Hemantha Kumar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Imran</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of electrical computer and communication technologies (ICECCT)</title>
+		<meeting>electrical computer and communication technologies (ICECCT)<address><addrLine>Coimbatore</addrLine></address></meeting>
+		<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="1" to="5" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Group-specific score normalization for biometric systems</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Poh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">A</forename><surname>Kittlerrattani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Tistarelli</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">computer society conference on computer vision and pattern recognition -Workshops</title>
+		<meeting><address><addrLine>San Francisco, CA</addrLine></address></meeting>
+		<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2010">2010</date>
+			<biblScope unit="page" from="38" to="45" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">Performance of biometric quality measures</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Grother</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Tabassi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Proc. IEEE Trans. Pattern Anal. Machine Intel</title>
+		<imprint>
+			<biblScope unit="volume">29</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="531" to="543" />
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Discriminative multimodal biometric authentication based on quality measures</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Fierrez-Aguilar</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. Pattern Recogn</title>
+		<imprint>
+			<biblScope unit="volume">38</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page" from="777" to="779" />
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Normalization and weighting techniques based on genuine-impostor score fusion in multibiometric systems</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Kabir</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">O</forename><surname>Ahmad</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">N S</forename><surname>Swamy</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. IEEE Trans. Inform. Forensics Security</title>
+		<imprint>
+			<biblScope unit="volume">13</biblScope>
+			<biblScope unit="issue">8</biblScope>
+			<date type="published" when="1989">1989-2000 (2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Finger-Knuckle-Print Verification with Score Level Adaptive Binary Fusion</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Advanced Biometrics</title>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<publisher>Springer</publisher>
+			<pubPlace>Cham</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">Biometrics systematic uncertainty and the user</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Theofanos</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceeding of biometrics: theory applications and systems</title>
+		<meeting>eeding of biometrics: theory applications and systems</meeting>
+		<imprint>
+			<publisher>IEEE Crystal City</publisher>
+			<date type="published" when="2007">2007</date>
+			<biblScope unit="page" from="1" to="6" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">A Dynamically Weighted Multi-Modal Biometric Security System</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Brown</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Bradshaw</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of Southern Africa telecommunication networks and applications</title>
+		<meeting>Southern Africa telecommunication networks and applications<address><addrLine>South Africa</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="254" to="258" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<monogr>
+		<title level="m" type="main">Biometric sample quality and its application to multimodal authentication systems. Doctoral dissertation. Dept. Signals Systems and Radiocommunications</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Alonso-Fernandez</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2008">2008</date>
+			<publisher>Universidad Politecnica de Madrid</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Average-inertia weighted cat swarm optimization</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Orouskhani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Mansouri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Teshnehlab</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the international conference in swarm intelligence</title>
+		<meeting>the international conference in swarm intelligence<address><addrLine>Chongqing; China</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2011-06">June 2011</date>
+			<biblScope unit="page" from="321" to="328" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">Cat swarm optimization with normal mutation for fast convergence of multimodal functions</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Pappula</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Ghosh</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Appl. Soft Comput</title>
+		<imprint>
+			<biblScope unit="volume">66</biblScope>
+			<biblScope unit="page" from="473" to="491" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<monogr>
+		<title level="m" type="main">Overview of the combination of biometric matchers. Information Fusion</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Lumini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Nanni</surname></persName>
+		</author>
+		<ptr target="https://www.sciencedirect.com/science/article/abs/pii/S1566253516300446" />
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="volume">33</biblScope>
+			<biblScope unit="page" from="71" to="85" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>
