@@ -3,9 +3,9 @@ from Services.AdobeSerivcesHandler import AdobeServicesHandler
 
 # ArticleBuilder utilisant des stratégies
 from Services.GrobidServicesHandler import GrobidServicesHandler
-from Strategies.TextExtractionStrategy import TextExtractionStrategy
-from Strategies.DictExtractionStrategy import DictExtractionStrategy
-from dotenv import XML_FILE_PATH
+from Services.Strategies.TextExtractionStrategy import TextExtractionStrategy
+from Services.Strategies.DictExtractionStrategy import DictExtractionStrategy
+from env import XML_FILE_PATH
 
 class PDFProcessor(TextExtractionStrategy, DictExtractionStrategy):
     def __init__(self):

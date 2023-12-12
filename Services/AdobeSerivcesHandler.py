@@ -8,7 +8,7 @@ from adobe.pdfservices.operation.execution_context import ExecutionContext
 from adobe.pdfservices.operation.io.file_ref import FileRef
 from adobe.pdfservices.operation.pdfops.extract_pdf_operation import ExtractPDFOperation
 
-from dotenv import *
+from env import *
 
 from Services.FileHandler import FileHandler
 

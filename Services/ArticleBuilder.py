@@ -5,14 +5,15 @@ from datetime import datetime
 
 from Models.Article import Article
 
-from Strategies.ExtractTitle import ExtractTitle
-from Strategies.ExtractText import ExtractText
-from Strategies.ExtractAbstract import ExtractAbstract
-from Strategies.ExtractAuthors import ExtractAuthors
-from Strategies.ExtractBibliography import ExtractBibliography
-from Strategies.ExtractKeywords import ExtractKeywords
-from Strategies.ExtractInstitutions import ExtractInstitutions
-from Strategies.ExtractPublicationDate import ExtractPublicationDate
+from Services.Strategies.ExtractTitle import ExtractTitle
+from Services.Strategies.ExtractText import ExtractText
+from Services.Strategies.ExtractAbstract import ExtractAbstract
+from Services.Strategies.ExtractAuthors import ExtractAuthors
+from Services.Strategies.ExtractBibliography import ExtractBibliography
+from Services.Strategies.ExtractKeywords import ExtractKeywords
+from Services.Strategies.ExtractInstitutions import ExtractInstitutions
+from Services.Strategies.ExtractPublicationDate import ExtractPublicationDate
+
 
 
 

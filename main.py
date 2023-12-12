@@ -5,11 +5,12 @@ from starlette.responses import JSONResponse
 from Services.ArticleBuilder import ArticleBuilder
 from Services.FileHandler import FileHandler
 from Services.PDFProcessor import PDFProcessor
-from dotenv import *
+from env import *
 import concurrent.futures
 from pydantic import BaseModel
 
 #docker run --rm -d --init --ulimit core=0 -p 8070:8070 lfoppiano/grobid:0.8.0
+#uvicorn main:app --reload
 
 # URL = "https://drive.google.com/uc?id=1eZy2sbuF1TD5dJg0ZGJwXUGycp4rc61m&export=download"
 

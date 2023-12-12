@@ -5,7 +5,7 @@ from zipfile import ZipFile
 import requests
 import xmltodict
 
-from dotenv import UNZIP_PATH
+from env import UNZIP_PATH
 
 
 class FileHandler:
