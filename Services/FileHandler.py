@@ -2,6 +2,7 @@ import json
 import os
 from zipfile import ZipFile
 
+import PyPDF2 as PyPDF2
 import requests
 import xmltodict
 
@@ -53,6 +54,16 @@ class FileHandler:
     def extractGoogleFileId(previewLink):
         # Extract file ID from the preview link
         return previewLink.split("/file/d/")[1].split("/view")[0]
+
+    @staticmethod
+    def checkPDFCorruption(pdfPath):
+        try:
+            with open(pdfPath, 'rb') as pdf_file:
+                pdf_reader = PyPDF2.PdfReader(pdf_file)
+            return True
+        except Exception as e:
+            print(e)
+            return False
 
 
 

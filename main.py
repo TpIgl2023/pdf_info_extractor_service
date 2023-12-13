@@ -22,10 +22,16 @@ class PostUrlModel(BaseModel):
 
 @app.post("/")
 async def read_root(data: PostUrlModel):
-
+    print(f"Received URL: {data}")
     url = data.URL
 
+
+    print("Starting the download process")
+
     FileHandler.downloadFileLink(url, FILE_PATH)
+
+    if not FileHandler.checkPDFCorruption(FILE_PATH):
+        return JSONResponse(content={"error": "Corrupted PDF file"})
 
     pdfProcessor = PDFProcessor()
     # Turn the PDF into text/dict
@@ -38,8 +44,6 @@ async def read_root(data: PostUrlModel):
     # Get results
     fileText = text_future.result()
     fileDict = dict_future.result()
-
-
 
     # Takes fileText and FileDict to build the articlee
     articleBuilder = ArticleBuilder(fileText,fileDict)
