@@ -1,6 +1,5 @@
-from abc import ABC , abstractmethod
-
-class ExtractAbstract(ABC):
-    @abstractmethod
+class ExtractAbstract():
     def extractAbstract(self):
-        pass
+            if self.dict['teiHeader']['profileDesc']['abstract'] != None:
+                self.article.abstract = self.dict['teiHeader']['profileDesc']['abstract']['div']['p']
+            return self

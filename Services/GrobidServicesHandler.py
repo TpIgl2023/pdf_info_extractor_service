@@ -1,18 +1,18 @@
 import xmltodict
-
+from grobid_client.grobid_client import GrobidClient
 from Services.FileHandler import FileHandler
-from Services.GrobidClientSingleton import GrobidClientSingleton
+
 
 
 class GrobidServicesHandler:
+
+    grobid_client = GrobidClient(config_path="./grobid_client_python/config.json")
     def __init__(self):
         pass
 
-    grobidClient = GrobidClientSingleton()
-
     @staticmethod
     def pdfToXML(file_path,nb=1):
-        GrobidClientSingleton._instance.grobid_client.process("processFulltextDocument", file_path, n=nb)
+        GrobidServicesHandler.grobid_client.process("processFulltextDocument", file_path, n=nb)
 
     @staticmethod
     def xmlToDict(xml_path):
@@ -31,3 +31,4 @@ class GrobidServicesHandler:
         dict =  GrobidServicesHandler.xmlToDict(xml_path)
         FileHandler.deleteFile(xml_path)
         return dict
+

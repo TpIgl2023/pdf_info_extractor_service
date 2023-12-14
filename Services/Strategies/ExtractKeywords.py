@@ -1,6 +1,9 @@
-from abc import ABC , abstractmethod
 
-class ExtractKeywords(ABC):
-    @abstractmethod
+class ExtractKeywords():
     def extractKeywords(self):
-        pass
+        try:
+            keywords = self.dict['teiHeader']['profileDesc']['textClass']['keywords']['term']
+            self.article.keywords = keywords
+        except:
+            pass
+        return self

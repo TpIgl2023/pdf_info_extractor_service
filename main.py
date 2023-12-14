@@ -1,9 +1,9 @@
-
 from fastapi import FastAPI
 from starlette.responses import JSONResponse
 
 from Services.ArticleBuilder import ArticleBuilder
 from Services.FileHandler import FileHandler
+
 from Services.PDFProcessor import PDFProcessor
 from env import *
 import concurrent.futures

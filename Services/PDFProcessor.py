@@ -1,4 +1,3 @@
-from Services.GrobidClientSingleton import GrobidClientSingleton
 from Services.AdobeSerivcesHandler import AdobeServicesHandler
 
 # ArticleBuilder utilisant des stratégies
@@ -12,7 +11,7 @@ class PDFProcessor(TextExtractionStrategy, DictExtractionStrategy):
         self.textHandler = AdobeServicesHandler
         self.objectHandler = GrobidServicesHandler
 
-    grobidClient = GrobidClientSingleton().grobid_client
+    grobidClient = GrobidServicesHandler.grobid_client
 
 
     def extractText(self,pdf_path):

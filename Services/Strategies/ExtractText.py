@@ -1,6 +1,4 @@
-from abc import ABC , abstractmethod
-
-class ExtractText(ABC):
-    @abstractmethod
+class ExtractText():
     def extractText(self):
-        pass
+        self.article.text = self.text
+        return self
