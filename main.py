@@ -1,6 +1,7 @@
 from datetime import datetime
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException, Security
+from fastapi.security import APIKeyHeader
 from starlette.responses import JSONResponse
 
 from Services.ArticleBuilder import ArticleBuilder
@@ -9,7 +10,10 @@ from Services.FileHandler import FileHandler
 from Services.PDFProcessor import PDFProcessor
 from env import *
 from pydantic import BaseModel
+from Middlwares.Auth import get_api_key
 
+
+api_key_header = APIKeyHeader(name="X-API-Key")
 #docker run --rm -d --init --ulimit core=0 -p 8070:8070 lfoppiano/grobid:0.8.0
 #uvicorn main:app --reload
 
@@ -22,8 +26,7 @@ class PostUrlModel(BaseModel):
     URL: str
 
 @app.post("/")
-async def read_root(data: PostUrlModel):
-
+async def read_root(data: PostUrlModel,api_key: str = Security(get_api_key),):
 
     url = data.URL
 
@@ -56,5 +59,6 @@ async def read_root(data: PostUrlModel):
 
 
 @app.get("/")
-async def read_root():
-    return {"Hello": "World"}
+def protected_route(api_key: str = Security(get_api_key)):
+    # Process the request for authenticated users
+    return {"message": "Access granted!"}
