@@ -18,12 +18,9 @@ from Services.Strategies.ExtractPublicationDate import ExtractPublicationDate
 
 
 class ArticleBuilder(ExtractAuthors, ExtractBibliography, ExtractAbstract, ExtractTitle, ExtractText, ExtractKeywords, ExtractInstitutions, ExtractPublicationDate):
-    def __init__(self,articleText,articleDict):
+    def __init__(self,articleDict):
         self.article = Article()
-        self.text = articleText
         self.dict = articleDict
-
-    #TODO : Extract the text with Grobid
 
     def buildInstance(self):
         return self.article
@@ -38,7 +35,3 @@ class ArticleBuilder(ExtractAuthors, ExtractBibliography, ExtractAbstract, Extra
             .extractBibliography()\
             .extractPublicationDate()\
             .buildInstance()
-
-
-
-

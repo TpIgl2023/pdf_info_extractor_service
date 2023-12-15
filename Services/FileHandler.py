@@ -30,10 +30,16 @@ class FileHandler:
         with open(file_path, 'r', encoding="utf-8") as xml_file:
             xml_data = xml_file.read()
             dict_data = xmltodict.parse(xml_data)
-            if 'TEI' in dict_data:
-                return dict_data['TEI']
-            else:
-                raise Exception("Invalid XML file")
+            return dict_data
+
+
+
+    @staticmethod
+    def dictToJSON(dict, file_path):
+        # Open the file and write the dictionary as JSON
+        with open(file_path, 'w') as file:
+            json.dump(dict, file, indent=4)  # indent parameter for pretty formatting
+
     @staticmethod
     def deleteFile(fileName):
         if os.path.exists(fileName):
@@ -64,6 +70,19 @@ class FileHandler:
         except Exception as e:
             print(e)
             return False
+
+    @staticmethod
+    def jsonToDict(path):
+        with open(path) as f:
+            data = json.load(f)
+            return data
+
+    @staticmethod
+    def writeText(text, path):
+        with open(path, 'w', encoding='utf-8') as f:
+            f.write(text)
+
+
 
 
 

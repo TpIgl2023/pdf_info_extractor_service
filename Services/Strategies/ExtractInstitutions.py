@@ -1,3 +1,4 @@
+from Services.Strategies.ExtractAuthors import ExtractAuthors
 
 
 class ExtractInstitutions():
@@ -5,12 +6,12 @@ class ExtractInstitutions():
     def extract_affiliations(authors):
         affiliations = set()
         if isinstance(authors, dict):
-            myAffiliations = ArticleBuilder.extract_affiliation_from_author(authors)
+            myAffiliations = ExtractAuthors.extract_affiliation_from_author(authors)
             if myAffiliations != None:
                 affiliations.add(myAffiliations)
         elif isinstance(authors, list):
             for author in authors:
-                myAffiliations = ArticleBuilder.extract_affiliation_from_author(author)
+                myAffiliations = ExtractAuthors.extract_affiliation_from_author(author)
                 if myAffiliations != None:
                     affiliations.add(myAffiliations)
         affiliations.discard("N/A")

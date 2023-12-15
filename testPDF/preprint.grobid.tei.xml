@@ -1,0 +1,710 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Boosting Metaheuristics with Hybridized Low-Level Machine Learning for Enhanced Performance in Flow Shop Permutation Problems</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Chenni</forename><surname>Nidhal Eddine</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Bendaho</forename><surname>Sarra</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Nair</forename><surname>Marwa</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Berriche</forename><surname>Aymene</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Yamani</forename><forename type="middle">Mohammed</forename><surname>Kamel</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Adjal</forename><forename type="middle">Mehdi</forename><surname>Zakaria</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Bessedik</forename><surname>Malika</surname></persName>
+						</author>
+						<title level="a" type="main">Boosting Metaheuristics with Hybridized Low-Level Machine Learning for Enhanced Performance in Flow Shop Permutation Problems</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date/>
+						</imprint>
+					</monogr>
+					<idno type="MD5">9F303E85B9E549615E898626C080051C</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.0" ident="GROBID" when="2023-12-10T17:55+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>Combinatorial optimization</term>
+					<term>Permutation Flow Shop Scheduling Problem</term>
+					<term>Machine learning</term>
+					<term>Makespan</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>The Permutation Flow Shop Scheduling Problem (PFSP) is a well-known combinatorial optimization problem that has been extensively studied in the literature. Traditional approaches, such as metaheuristics, have been widely used to tackle this problem, but often face limitations related to parameter selection, computational time, and the generation of initial solutions. To address these challenges, this paper proposes the utilization of two machine learning models based on the CatBoost regressor algorithm, tailored to the number of machines involved in the scheduling problem. By combining these two models with the Ant Colony Optimization (ACO) metaheuristic, we enhance its performance significantly. The first model focuses on generating high-quality initial solutions that outperform the commonly used NEH heuristic, all while maintaining computational efficiency. On the other hand, the second model is designed to expedite the enhancement of a given schedule through an efficient local search approach. To assess the efficacy of our proposed approach, we conducted extensive experiments, comparing its performance against traditional techniques using Taillard instances as benchmarks. The results of our evaluation consistently showcased the superiority of our approach, surpassing the performance of the benchmarked methods.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>I. INTRODUCTION</head><p>Optimization is a fundamental concept in various fields, including operations research, economics, and computer science. Essentially, optimization involves finding the best possible solution from a set of alternatives, taking into account specific objectives, constraints, and variables. It aims to maximize desired outcomes or minimize undesired results, thereby improving efficiency, effectiveness, and resource utilization.</p><p>The permutation flow shop problem (PFSP) is a wellknown NP-hard optimization challenge <ref type="bibr" target="#b0">[1]</ref> that arises in different domains such as manufacturing, scheduling, and logistics. It involves determining an optimal sequence of tasks on a set of machines, considering the constraints of each machine, and minimizing a specific objective function. Efficiently solving this problem is crucial for enhancing productivity, reducing costs, and improving operational performance.</p><p>Finding an optimal solution for PFSP is exponentially difficult as the problem size increases. Therefore, exact approaches are often impractical and limited to specialized algorithms such as branch and bound or dynamic programming. These methods can only handle small-sized problems effectively. since they aim to find the optimal solution by exhaustively exploring all possible permutations of tasks and evaluating their associated objective function values. In contrast, for larger scheduling problems, alternative solution approaches are commonly employed, such as heuristics, meta-heuristics (e.g., Tabu search, swarm optimization, or genetic algorithms), and artificial intelligence techniques like constraint programming and neural networks. The use of these methods allows for approximate solutions that are computationally more feasible and provide reasonably good results.</p><p>Metaheuristics have been widely employed in the Permutation Flow Shop Scheduling Problem (PFSP) and have demonstrated impressive performance. However, these approaches have certain limitations, primarily associated with parameter selection, computational time, and the generation of initial solutions, particularly in population-based methods. To address these challenges, our objective is to leverage machine learning techniques to mitigate these issues, specifically focusing on improving the generation of initial solutions and reducing the time required for local search in metaheuristics. To accomplish this, we have trained two machine learning models based on the CatBoost model, which comprises a collection of decision tree estimators tailored to the number of machines in the problem. The first model is designed to generate high-quality initial solutions that surpass the performance of the NEH heuristic while maintaining a comparable level of speed. The second model aims to enhance a given schedule promptly, allowing for instantaneous improvements in the solution quality.</p><p>Our machine learning models were extensively evaluated on Taillard instances by comparing their performance to the most commonly used techniques in the literature for each specific task. For the first model, we specifically compared its performance against the widely recognized NEH heuristic. Similarly, for the second model, we conducted a benchmarking analysis against popular local search metaheuristics such as iterated local search (ILS) and Tabu Search (TS). The outcome of these comparisons was highly promising, as our machine learning models consistently outperformed the traditional techniques. This impressive performance improvement further solidifies the effectiveness of employing machine learning in addressing the challenges associated with initial solution generation and enhancing the efficiency of local search algorithms within the PFSP domain.</p><p>The two proposed models have been integrated into the Ant Colony Optimization (ACO), a population-based metaheuristic. This integration involves using the generative model to produce initial solutions, which are then used to initialize the pheromone intensities instead of starting from random intensities. Additionally, the improvement model is employed to apply local search techniques in order to refine the intermediate solutions.</p><p>In order to thoroughly evaluate the effectiveness of our approach, we conducted comparison experiments with stateof-the-art techniques that are commonly employed for solving the Permutation Flow Shop Problem (PSFP). These experiments allowed us to assess the performance of our hybrid ACO metaheuristic against existing approaches.</p><p>The remaining sections of the paper are structured as follows. The following section offers a concise literature review of the various methodologies utilized to tackle the Permutation Flow Shop Scheduling Problem (PFSP). It emphasizes the application of metaheuristics, discusses their limitations, and explores the incorporation of machine learning techniques to augment their performance. This is followed by the "Problem Description" section, where we outline the specifications and the formal description of the problem. Subsequently, we discuss our methodology, including Dataset Generation, which details the process used to create the dataset for training. We also present the construction of our machine learning models, outlining the steps involved and evaluating their performance. Afterwards, we transition to the "Results and Comparisons" section, where we thoroughly analyze the performance of our integrated models within the Ant Colony Optimization (ACO) metaheuristic and compare it against alternative techniques. Finally, we conclude the paper with a comprehensive summary of our findings and contributions.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>II. LITERATURE REVIEW</head><p>In the quest for effective solutions to the flowshop scheduling problem, researchers have explored different approaches that can be broadly categorized into : exact approaches and approximate approaches including heuristics and metaheuristics.</p><p>One commonly used exact approach for solving the flowshop scheduling problem is based on dynamic programming <ref type="bibr" target="#b9">[10]</ref>. This method constructs a table to store the optimal solutions for subproblems. By systematically filling the table and considering all possible permutations, the optimal sequence of tasks can be determined.</p><p>Another exact approach frequently employed for flowshop permutation problems is B&amp;B which was firstly introduced for scheduling problems by IIgnall and Schrage (1965) and Lomnicki (1965), addressing the makespan minimization in a three-machine PFSP and using proper criteria for branching and pruning nodes. Since then, studies improved this method exploring more efficient techniques of branching and pruning <ref type="bibr" target="#b10">[11]</ref>.</p><p>A wide range of heuristics have been developed to solve the PFSP. These heuristics have been extensively discussed in the literature and many studies have compared their effectiveness with regard to computational performance. One of the earliest and most well-known approaches for PFSP, is the Johnson's rule proposed by Johnson in 1954 <ref type="bibr" target="#b21">[22]</ref>, it focuses on the assignment of tasks to only two machines. The algorithm identifies the task with the shortest processing time and assigns it to the machine with the least remaining processing time. This process is repeated until all jobs have been allocated. Palmer <ref type="bibr" target="#b24">[25]</ref> has proposed a method which is an extension of the SPT (Shortest Processing Time) rule, in which tasks are ranked in ascending order of their tendency to have longer operating times. Campbell, Dudek and Smith <ref type="bibr" target="#b23">[24]</ref> also introduced a method based on Johnson's rule. It builds m-1 schedules by clustering the m original machines into two virtual machines and solving the generated two machine problem by repeatedly using Johnson's rule. Gupta, using Johnson's rule, introduces a new slope index <ref type="bibr" target="#b25">[26]</ref>, and the final sequence is obtained by sorting the jobs in ascending order of this index. Nawaz, Enscore and Ham <ref type="bibr" target="#b22">[23]</ref>proposed a heuristic called "NEH" which consists of finding the scheduling of jobs according to the decreasing order of their total operating times and it builds the final sequence in a constructive way, adding a new job at each step and finding the best partial solution.</p><p>Based on a recent survey <ref type="bibr" target="#b16">[17]</ref>, metaheuristics (MH) can be categorized into two distinct types based on their approach: single-solution-based MH and population-based MH.</p><p>Metaheuristics that operate on a single solution basis can leverage local search techniques with or without memory. Examples of memory-less local search methods include Iterated Local Search (ILS) <ref type="bibr" target="#b11">[12]</ref>, Variable Neighborhood Descent (VND), Generalized Variable Neighborhood Search (GVNS) <ref type="bibr" target="#b8">[9]</ref>, and Greedy Randomized Adaptive Search Procedures (GRASP) <ref type="bibr" target="#b26">[27]</ref>. On the other hand, metaheuristics with memory incorporate techniques such as Tabu Search (TS), while those inspired by natural phenomena include Simulated Annealing (SA). These metaheuristics offer a robust and effective approach for exploring and refining solutions within the search space, making them particularly wellsuited for addressing complex optimization problems like PFSP. What makes these metaheuristics appealing is their iterative improvement mechanism, where they continually search the neighborhood of the current solution and move towards better-quality solutions. This iterative process begins with an initial solution and applies local search operators repeatedly, exploring neighboring solutions with the aim of finding an optimal or near-optimal solution within a reasonable computational time.</p><p>Alternatively, population-based metaheuristics (MH) employ a collection of solutions to explore the search space. Several widely recognized population-based MH algorithms have proven to be highly effective when applied to the Permutation Flow Shop Problem (PFSP). Genetic Algorithms (GA), inspired by biology, start with an initial population of potential solutions and gradually improve them using genetic operations such as selection, crossover and mutation. By evaluating and favouring the most suitable individuals, genetic algorithms make it possible to find high-quality solutions to difficult optimisation problems. Another bio-inspired technique is Particle Swarm Optimization (PSO) <ref type="bibr" target="#b15">[16]</ref>, which is based onself-organising principles that enable a group of living organisms to act together in a complex way, based on simple simple rules. Tasgetiran et al. introduced an enhancement to the search process by incorporating a local search based on Variable Neighborhood Search (VNS) technique aiming to improve the quality of intermediate individuals during the search, leading to refined solutions. Ant Colony Optimization (ACO) <ref type="bibr" target="#b14">[15]</ref> is a population-based cooperative search metaphor inspired by the foraging behaviour of real ants. One of the ideas behind ACO is to use the equivalent of the pheromone path used by real ants as a means of cooperation and communication within an artificial ant colony. Another efficient metaheuristic that has garnered significant interest in the field of optimization is JAYA algorithm <ref type="bibr" target="#b17">[18]</ref>, it has been first applied to the PFSP in <ref type="bibr" target="#b12">[13]</ref>, its key characteristic involves simultaneously moving closer to the best solution and moving away from the worst solution of the given population, increasing its sensitivity to the quality of initial solutions.</p><p>Numerous literature review studies have been conducted <ref type="bibr" target="#b16">[17]</ref>, exploring the amalgamation of Machine Learning (ML) techniques and Metaheuristics (MH) for specific or diverse purposes. A taxonomy of hybridizations between Machine Learning (ML) and Metaheuristics (MH) can be established based on the use of the ML in the MH :</p><p>• Problem-level : where ML models can be used to approximate objective function, handle constraints, or to break large space problems into smaller ones. In the work presented by <ref type="bibr" target="#b27">[28]</ref>, an example of data space decomposition for a dynamic job shop scheduling problem was demonstrated. The approach involved clustering jobs based on their processing times. • Low-level : ML can be used to find good parameters of the MH including : initialisation, evolution and parameter setting. In this context, Radha Ramanan et al. <ref type="bibr" target="#b18">[19]</ref> used an ANN with an improvement heuristic for the initialization of the population of a GA for the PFSP. A recent paper <ref type="bibr" target="#b20">[21]</ref> introduced a deep reinforcement learning approach for the flexible flowshop scheduling problem using proximal policy opotimization (PPO). • High-level : where ML is mainly used for MH selection or generation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>III. PROBLEM DESCRIPTION</head><p>The flow-shop scheduling problem is defined by a set of m machines (M 1 , M 2 , M 3 ...M m ) and n unrelated tasks (J 1 , J 2 , J 3 ...J n ), considering that the number of machines and tasks is finite. Each task consists of a specific set of processes for an equal number of machines, with each process having a processing time P ij (where P ij represents the processing time of task i on machine j). The processes for each task must be executed in the same given order of machines, meaning that for all tasks, the processes are performed on machine 1, then on machine 2, until the last process is reached on machine m. The objective is to find an efficient sequence of tasks on the given machines that completes all processes in the minimal completion time known as the makespan criterion, while adhering to certain constraints <ref type="bibr" target="#b2">[3]</ref>. This problem is deterministic since the processing times are known in advance. The notation for the classic flow-shop scheduling problem with the makespan criterion (C max ) was initially introduced by Conway et al. <ref type="bibr" target="#b3">[4]</ref>. They used notations such as n/m/F/C max or F//C max , which are equivalent to F/prmu/C max in the case of permutations.</p><p>A sequence is represented by a job permutation π = {π 1 , π 2 , . . . , π n } , n jobs (j = 1, 2, . . . , n) will be sequenced through all m machines (k = 1, 2, . . . , m) using the same permutation. C (π j , m) denotes the completion time of job π j on machine m. The calculation of completion time for n-job m-machine problem is given as follows:</p><formula xml:id="formula_0">C (π 1 , 1) = P π1,1 C (π j , 1) = C (π j-1 , 1) + P πj ,1 C (π 1 , k) = C (π 1 , k -1) + P π1,k C (π j , k) = max {C (π j-1 , k) , C (π j , k -1)} + P πj ,k with j = 2, .., n and k = 2, .., m</formula><p>Searching for the optimal sequence leads to identifying a permutation π * in the set of all permutations Π such that</p><formula xml:id="formula_1">C max (π * ) ≤ C (π n , m) ∀π ∈ Π</formula><p>There are several assumptions that are made regarding this problem <ref type="bibr" target="#b1">[2]</ref>:</p><p>• Each job can only be processed on a single machine simultaneously.</p><p>• Each machine can handle one job at a time. • Preemption is not allowed i.e. jobs cannot be interrupted once processing begins. • The setup times of the jobs on machines are included in the processing times. • Machines are available continuously, without any downtime.</p><p>• In-process inventory is allowed. If the next machine on the sequence needed by a job is not available, the job can wait and join the queue at that machine. In the present study, we examine a flow shop setup that encompasses five machines and has the flexibility to accommodate various number of jobs.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>IV. METHODOLOGY</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A. Catboost Estimator</head><p>CatBoost <ref type="bibr" target="#b4">[5]</ref> is a gradient boosting framework that has gained significant attention for its effective use in regression tasks. One notable advantage of CatBoost is its ability to handle categorical features seamlessly. Additionally, it incorporates advanced regularization techniques that address the challenge of overfitting <ref type="bibr" target="#b5">[6]</ref>, a common issue in regression modeling. By integrating techniques like ordered target statistics and gradient-based adjustments, CatBoost effectively prevents the model from memorizing the training data and enables better generalization to unseen data. This regularization capability enhances the reliability and accuracy of the regression predictions.</p><p>CatBoost's performance as a regression model has been validated in various benchmarks and competitions <ref type="bibr" target="#b6">[7]</ref>. Its ability to handle categorical features, advanced regularization techniques, and support for missing values make it a powerful tool for researchers and practitioners in the field of regression modeling. With its robust capabilities, CatBoost serves as a valuable asset in tackling complex regression problems and delivering accurate predictions in diverse domains.</p><p>Considering the numerous advantageous features discussed, we have made the decision to employ CatBoost as the foundation for our two regression models.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>B. Generative model 1) Data generation:</head><p>We generate problem instances consisting of seven and ten jobs using the Taillard benchmarks of 20 or 50 jobs. These problem instances are solved using the Branch &amp; Bound algorithm, which involves complete enumeration to find the optimal solutions. The input for our model will be derived from these solved instances. A total of 10,000 exemplars are generated through this process. Specifically, each seven-job problem yields seven inputoutput pairs known as exemplars, while each ten-job problem produces ten exemplars as will be detailed next.</p><p>2) Model architecture: The proposed model is a CatBoost regressor that takes as input a vector of size 3m, where m represents the number of machines. This design requires separate and individually trained models for flowshops with different numbers of machines. The input values need to be normalized since they must fall between zero and one. In this study, the minimum and maximum processing times in the flowshops range from 1 to 99 minutes. To ensure proper normalization, an equation is used with a divisor of 100.</p><p>Each job is represented by a vector with elements that describe its processing time, relative to machine workloads, and other jobs in the schedule. The input for the model consists of 3m values distributed as follows:</p><p>• The first m values represent the job's processing times on each machine. • The middle m nodes represent the average processing times on each machine. • The last m nodes represent the standard deviation of processing times on each machine. The model is trained to capture the relationships between jobs within a given batch. The use of average processing times and standard deviations ensures clear differentiation between the same jobs in different batches, facilitating the training process. For example, Job 1 in batch 1,2,3,4,5 will be distinct from Job 1 in batch 1,2,3,4,6. The first m values in the vector representing Job 1 will always be the same, while the subsequent ten values will vary based on the batch of jobs it belongs to.</p><p>The output consists of a single value, regardless of the number of machines (m). The output node produces values ranging from 0.1 to 0.9. When a job is presented to the model, the values assigned to the input vector are calculated using the following equations:</p><formula xml:id="formula_2">job q=         </formula><p>pi,q 100 q = 1, . . . , m p(q-m) 100 q = m + 1, . . . , 2m</p><formula xml:id="formula_3">X (q-2m) -n p2 (q-2m) (n-1)×10 4 q = 2m + 1, . . . , 3m<label>where</label></formula><formula xml:id="formula_4">p(k) = 1 n n i=1 p i,k where k = q -m<label>and</label></formula><formula xml:id="formula_5">X (l) = n i=1 p 2 i,k</formula><p>where l = q -2m for example taking the processing times in the next the input vector for J1 will be the concatenation of three m sized vector as mentioned in the next figure The generated vector will be processed by the CatBoost model, which will produce a value between 0.1 and 0.9. This process is repeated for each job in the schedule, resulting in a complete vector of n values . The job corresponding to the smallest value in that vector will be assigned as the first job, the job with the next smallest value will be the second job, and so on. This sequencing method is illustrated in the accompanying figure. 3) Performance evaluation: To assess the generative model's performance before integrating it into a metaheuristic, we conduct a comparison with the NEH heuristic. This evaluation is carried out on the fourth benchmark of Taillard, which comprises 50 jobs and five machines. The comparison results, including the deviation and time obtained, are presented in the following figures: Upon analysis, it is evident that the generative model produces highly comparable results to the NEH heuristic, with the model even surpassing the heuristic in 5 instances. Notably, a significant difference is observed in terms of execution time between the two approaches.</p><p>C. Improvement model 1) Data generation: Following the approach used in the previous model, we created problem instances comprising seven and ten jobs using the Taillard benchmarks that consisted of 20 or 50 jobs. Subsequently, we selected random job schedules and applied the best-known improvement metaheuristics, GVNS (General Variable Neighborhood Search) <ref type="bibr" target="#b8">[9]</ref> and Tabu Search, to enhance these schedules. The input for our model is derived from these improved instances.</p><p>Through this process, a total of 20,000 exemplars are generated. Specifically, each seven-job problem generates seven input-output pairs known as exemplars, while each ten-job problem produces ten exemplars. The details of these exemplars will be further elaborated in the subsequent discussion.</p><p>2) Model architecture: In this model, the objective is to predict an improved schedule based on a given schedule and its corresponding processing times. The input vector for the model includes the same information as before. However, in order to incorporate local information about each job, we consider a window of two jobs. This means that, in addition to the original information, we include the processing times of the two previous jobs and the two next jobs of the current job in the input vector. Furthermore, we add a value that represents the current position of the job in the schedule to be improved.</p><p>Consequently, the input vector will have a size of 3m + 4m + 1 , where 3m represents the original information about processing times of the current job, the mean and the std of processing times in each machine, 4m represents the additional information about the surrounding jobs, and 1 represents the current position value. This expanded input vector allows the model to consider more contextual details when predicting an improved schedule. In cases where a job does not have previous jobs, we use a padding of 0 in the input vector to represent the missing processing times. Similarly, if a job does not have next jobs, we use a padding of 1 in the input vector. These padding values are chosen to represent the minimum and maximum processing times in the dataset, respectively. By using these padding values, we ensure that all jobs in the input vector have the same size, regardless of their position in the schedule. To illustrate the generation of an input vector, consider the example shown in the accompanying figure. In this scenario, we take Job 1 as the current job. The window of jobs surrounding Job 1 includes the processing times of the two previous jobs, which are 5 and 4, and the processing times of the two next jobs, which are 2 and 3. Additionally, we include the position of the current job, which in this case is 3 out of 5. By incorporating this information into the input vector, we capture the contextual details necessary for the model to make predictions and improve the schedule effectively. The model operates by receiving an input vector associated with one job at a time and predicting a value ranging from 0.1 to 0.9 for each job. When considering all the jobs, a vector of n values is obtained. This vector of values is then transformed into a new improved schedule, where the job corresponding to the smallest predicted value becomes the first job in the improved schedule, the job with the second smallest value becomes the second job, and so on exactly as we did in the generative model (Fig. <ref type="figure" target="#fig_1">2</ref>). In essence, the predicted values guide the ordering of the jobs, resulting in a more optimized and improved schedule.</p><p>3) Performance evaluation: In order to assess the independent performance of our model as an improvement method, we conducted a comparison with three wellknown improvement metaheuristics: GVNS (General Variable Neighborhood Search), ILS (Iterated Local Search) <ref type="bibr" target="#b11">[12]</ref>, and Tabu Search. The evaluation was conducted on the benchmark4 dataset of Taillard, which consists of 50 jobs and 5 machines.</p><p>We present the results of this comparison in the following two graphs. It should be noted that to ensure reasonable computation times, we used a small number of iterations for all the metaheuristics. We observed highly comparable results in terms of deviation when comparing our model to ILS and Tabu Search. In fact, our model even outperformed them in certain instances. However, the most notable aspect was the remarkable time efficiency of our method. The time taken by our model was significantly lower compared to the traditional improvement metaheuristics. This aspect highlights the impressive performance of our model in terms of both solution quality and computational efficiency. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>V. RESULTS AND DISCUSSION</head><p>The generative and improvement models can be combined with various metaheuristics to create hybrid approaches. However, for our experiment, we specifically utilized the ant colony system as the chosen metaheuristic. In this section, we will provide a concise overview of the ant colony metaheuristic and explain the process of integrating our two previous models with it. Subsequently, we will conduct empirical studies and comparisons, including a comparison with the non-hybridized ant colony system, as well as other metaheuristics such as GA, Jaya <ref type="bibr" target="#b12">[13]</ref>, and PSO <ref type="bibr" target="#b13">[14]</ref>.</p><p>Taking into consideration that the tests were conducted on a computer equipped with the Windows 11 operating system, an 11th generation i7 processor, and 32GB of RAM.</p><p>1) Ant Colony system : Here, we have implemented the ant colony system method proposed by Ying et al. <ref type="bibr" target="#b14">[15]</ref>, where they consider the application of the MAX-MIN Ant System (MMAS) to the PFSP. The performance of ACO approaches in terms of solution quality and convergence speed can be further enhanced by incorporating a local search phase (Stützle and Hoos, 1997; Dorigo and Gambardella, 1997), in which ants are allowed to improve their solutions through a local search procedure. Thus, they applied the MAX-MIN Ant System to the FSP using a fast local search procedure to enhance the solutions constructed by the ants. The algorithm steps are detailed in the following pseudo-code.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Algorithm 1 MAX-MIN ant system</head><p>Initialize the pheromone trails </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Return best solution found</head><p>Explanation of the steps in the pseudo-code:</p><p>1)-Initialize the pheromone trails: The pheromone trails are represented in the form of a complete graph with a number of nodes corresponding to the tasks, and the amount of pheromone is represented by the weight of the edge. Initially, the pheromone matrix (weights) is initialized to 1.</p><p>2)-Construct a solution for the ant: The construction of a solution, as depicted in the following figure, begins by randomly selecting a job and then proceeds to other jobs in the matrix based on the pheromone intensity present on the current job's edge as well as the edges of other jobs. The construction process terminates once a complete solution is obtained. Try moving the job to every position in the sequence if (better schdule found) then 4:</p><p>update the schedule end if 6: end for 4)-Update the pheromone trails: Finally, the pheromone intensities will be updated by adding a predefined amount of pheromones to the edges traversed by the solution generated through the local search. Additionally, all intensities will be reduced by a predefined evaporation rate. The update method is detailed as follows: arc_w ← max(pmin, min(pmax, arc_w)) end for 2) Hybridizing the ant colony system with machine learning: Our models can be effectively integrated with the ant colony system to enhance its performance. The generative model serves a crucial purpose by providing an initial solution, which is utilized to initialize the pheromone intensity in the graph. This initialization step goes beyond simply setting the pheromone values to maximum or minimum values and instead leverages the generative model's output to provide more informed guidance to the ants during their search. This improved initialization contributes to better exploration and exploitation of the solution space. Additionally, the improvement model takes over the traditional local search phase, allowing it to refine and enhance the solutions constructed by the ants. This integration of the improvement model further improves the overall solution quality and search efficiency of the ant colony system.</p><p>• Empirical study: Our main focus will be on determining the optimal number of iterations and the number of ants needed to achieve satisfactory performance when hybridizing with our models. This is because the other parameters, such as pheromone deposit and evaporation rate, will continue to have a consistent impact on both ant systems. the results are shown in the next two figures, we used instance 5 of the first Taillard's benchmark, It is observed that the hybrid ant system achieves excellent results with a significantly lower number of iterations and ants. • AS and Hybrid AS: We will examine the performance of both the hybrid Ant System (HAS) and the regular AS. To evaluate their performance, we conducted tests on the first benchmark of Taillard. The results, presented below, include the deviation (deviation from the optimal solution) and execution time. It is evident that the hybrid AS exhibits deviations that are very close to those of the regular AS, and in some instances, it even surpasses it. However, a substantial disparity is observed in terms of execution time, making the hybrid AS the preferred choice due to its faster speed without compromising the quality of solutions. 3) Comparison to state-of-the-art metaheuristics: In order to provide a more comprehensive evaluation of the Hybrid Ant System (HAS), we conducted further comparisons with other state-of-the-art metaheuristics such as Genetic Algorithm (GA), Jaya, and Particle Swarm Optimization (PSO). The subsequent figures clearly illustrate that our approach exhibits competitive performance. Through a rigorous evaluation, we compared the results obtained from our method with those achieved by the aforementioned metaheuristics. Despite the inherent complexity of the problem, our approach consistently attained comparable or even superior solutions in terms of both quality and efficiency. These results strongly indicate the effectiveness and competitiveness of our approach when compared to the existing state-of-the-art metaheuristic algorithms. This paper introduces two novel regression machine learning models specifically designed for the flow shop permutation problem. These models serve two purposes: generat-ing initial solutions and improving existing solutions. The versatility of these models lies in their ability to seamlessly integrate with any metaheuristic algorithm, making them highly valuable in the field of research. Through rigorous testing and evaluation, the proposed approach have demonstrated competitive results compared to state-of-theart approaches. These findings highlight the potential of the models in enhancing the performance and effectiveness of existing methods in the field.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Fig. 1 .</head><label>1</label><figDesc>Fig. 1. The input encoding for job 1</figDesc><graphic coords="4,365.04,488.62,141.12,178.82" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Fig. 2 .</head><label>2</label><figDesc>Fig. 2. The decoding process for the outputs into a sequence of jobs.</figDesc><graphic coords="5,123.48,129.04,105.84,128.49" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Fig. 3 .</head><label>3</label><figDesc>Fig. 3. The Deviation from Taillard's Upper Bounds in the Results</figDesc><graphic coords="5,88.20,387.74,176.40,140.44" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Fig. 5 .</head><label>5</label><figDesc>Fig. 5. The input encoding for job1</figDesc><graphic coords="6,100.80,92.93,151.21,276.21" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Fig. 6 .</head><label>6</label><figDesc>Fig. 6. The Deviation from Taillard's Upper Bounds in the Results</figDesc><graphic coords="6,324.72,107.28,221.77,172.70" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>Fig. 8 .Algorithm 2</head><label>82</label><figDesc>Fig. 8. Construction of a Solution by an Ant</figDesc><graphic coords="7,70.56,554.15,211.68,115.42" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head>Algorithm 3</head><label>3</label><figDesc>Update pheromone trails for (each arc) do 2: arc_weight*= (1-evaporation_rate) if (arc passed by the ant) then</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_7"><head>Fig. 9 .</head><label>9</label><figDesc>Fig. 9. Deviation Variation of HAS with Iteration Changes</figDesc><graphic coords="8,88.20,100.57,176.41,117.61" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_8"><head>Fig. 11 .Fig. 12 .</head><label>1112</label><figDesc>Fig. 11. Deviation Variation between AS and HAS</figDesc><graphic coords="8,85.68,572.74,181.45,134.59" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_9"><head>Fig. 13 .</head><label>13</label><figDesc>Fig. 13. Deviation Variation between HAS and other metaheuristics</figDesc><graphic coords="8,313.20,414.50,246.96,101.89" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1 :</head><label>1</label><figDesc></figDesc><table><row><cell>table:</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell>M1</cell><cell>M2</cell><cell>M3</cell><cell>M4</cell><cell>M5</cell></row><row><cell>J1</cell><cell>24</cell><cell>32</cell><cell>54</cell><cell>14</cell><cell>16</cell></row><row><cell>J2</cell><cell>15</cell><cell>44</cell><cell>18</cell><cell>10</cell><cell>32</cell></row><row><cell>J3</cell><cell>45</cell><cell>23</cell><cell>14</cell><cell>8</cell><cell>41</cell></row><row><cell>J4</cell><cell>12</cell><cell>4</cell><cell>25</cell><cell>36</cell><cell>4</cell></row><row><cell>J5</cell><cell>15</cell><cell>16</cell><cell>18</cell><cell>22</cell><cell>18</cell></row></table><note><p>Example of a processing times matrix representing the processing times of 5 jobs on 5 machines.</p></note></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head></head><label></label><figDesc>Update the pheromone trails ∀, τ ij τ max ≥ τ ij ≥ τ min end while</figDesc><table><row><cell cols="2">2: Initialize the number of ants</cell></row><row><cell></cell><cell>Initialize the pheromone deposit and evaporation rate</cell></row><row><cell>4:</cell><cell></cell></row><row><cell></cell><cell>while (stopping criteria not met) do</cell></row><row><cell>6:</cell><cell>construct a solution for the ant</cell></row><row><cell></cell><cell>Improve solution by local search</cell></row><row><cell>8:</cell><cell></cell></row><row><cell>10:</cell><cell></cell></row></table></figure>
+		</body>
+		<back>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Flowshop-scheduling problems with makespan criterion: a review</title>
+		<author>
+			<persName><forename type="first">Reza</forename><surname>Hejazi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">*</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Saghafian</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal of Production Research</title>
+		<imprint>
+			<biblScope unit="volume">43</biblScope>
+			<biblScope unit="page" from="2895" to="2929" />
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">An artificial neural network based heuristic for flow shop scheduling problems</title>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">R</forename><surname>Ramanan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Sridharan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">S</forename><surname>Shashikant</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">N</forename><surname>Haq</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Intelligent Manufacturing</title>
+		<imprint>
+			<biblScope unit="volume">22</biblScope>
+			<biblScope unit="page" from="279" to="288" />
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Permutation flow shop scheduling problem with makespan criterion: literature review</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">N H</forename><surname>Zaied</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">M</forename><surname>Ismail</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">S</forename><surname>Mohamed</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. Theor. Appl. Inf. Technol</title>
+		<imprint>
+			<biblScope unit="volume">99</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="830" to="848" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<monogr>
+		<author>
+			<persName><forename type="first">Louis</forename><forename type="middle">W</forename><surname>Miller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Richard</forename><surname>Walter</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Conway</forename><surname>William</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Maxwell</surname></persName>
+		</author>
+		<title level="m">Theory of Scheduling</title>
+		<imprint>
+			<date type="published" when="1967">1967</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<monogr>
+		<title level="m" type="main">CatBoost: gradient boosting with categorical features support</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">V</forename><surname>Dorogush</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Ershov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Gulin</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1810.11363</idno>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">CatBoost for big data: an interdisciplinary review</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">T</forename><surname>Hancock</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">M</forename><surname>Khoshgoftaar</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of big data</title>
+		<imprint>
+			<biblScope unit="volume">7</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="1" to="45" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Comparison between XGBoost, LightGBM and CatBoost using a home credit dataset</title>
+		<author>
+			<persName><forename type="first">Al</forename><surname>Daoud</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal of Computer and Information Engineering</title>
+		<imprint>
+			<biblScope unit="volume">13</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="6" to="10" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">CatBoost model and artificial intelligence techniques for corporate failure prediction</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">B</forename><surname>Jabeur</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Gharib</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Mefteh-Wali</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">B</forename><surname>Arfi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Technological Forecasting and Social Change</title>
+		<imprint>
+			<biblScope unit="volume">166</biblScope>
+			<biblScope unit="page">120658</biblScope>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">A general variable neighborhood search algorithm for the no-idle permutation flowshop scheduling problem</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">F</forename><surname>Tasgetiren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Buyukdagli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><forename type="middle">K</forename><surname>Pan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">N</forename><surname>Suganthan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Swarm, Evolutionary, and Memetic Computing: 4th International Conference</title>
+		<meeting><address><addrLine>Chennai, India</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer International Publishing</publisher>
+			<date type="published" when="2013-12-19">2013. 2013. December 19-21, 2013</date>
+			<biblScope unit="page" from="24" to="34" />
+		</imprint>
+	</monogr>
+	<note>Proceedings, Part I</note>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">A solution to a special class of flow shop scheduling problems</title>
+		<author>
+			<persName><forename type="first">Salvador</forename><surname>Michael</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Symposium on the theory of scheduling and its applications</title>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="1973">1973</date>
+			<biblScope unit="page" from="83" to="91" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">A comprehensive review of Branch-and-Bound algorithms: Guidelines and directions for further research on the flowshop scheduling problem</title>
+		<author>
+			<persName><forename type="first">Caio</forename><surname>Paziani Tomazella</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Marcelo</forename><forename type="middle">Seido</forename><surname>Nagano</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Expert Systems with Applications</title>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">An iterated local search algorithm for the permutation flowshop problem with total flowtime criterion</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Dong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Computers and Operations Research</title>
+		<imprint>
+			<biblScope unit="volume">36</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page" from="1664" to="1669" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">A discrete Jaya algorithm for permutation flow-shop scheduling problem</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Mishra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Shrivastava</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal of Industrial Engineering Computations</title>
+		<imprint>
+			<biblScope unit="volume">11</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="415" to="428" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Particle swarm optimization algorithm for permutation flowshop sequencing problem</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">F</forename><surname>Tasgetiren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Sevkli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><forename type="middle">C</forename><surname>Liang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Gencyilmaz</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Ant Colony Optimization and Swarm Intelligence: 4th International Workshop</title>
+		<meeting><address><addrLine>Brussels, Belgium; Berlin Heidelberg</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2004-09-05">2004. 2004. September 5-8, 2004</date>
+			<biblScope unit="volume">4</biblScope>
+			<biblScope unit="page" from="382" to="389" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">An ant colony system for permutation flow-shop sequencing</title>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">C</forename><surname>Ying</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">J</forename><surname>Liao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Computers and Operations Research</title>
+		<imprint>
+			<biblScope unit="volume">31</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page" from="791" to="801" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Particle swarm optimization algorithm for permutation flowshop sequencing problem</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Tasgetiren</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Fatih</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Proceedings</title>
+		<imprint>
+			<biblScope unit="volume">4</biblScope>
+			<date type="published" when="2004-09-05">2004. September 5-8, 2004. 2004</date>
+			<publisher>Springer</publisher>
+			<pubPlace>Brussels, Belgium; Berlin Heidelberg</pubPlace>
+		</imprint>
+	</monogr>
+	<note>Ant Colony Optimization and Swarm Intelligence: 4th International Workshop</note>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<monogr>
+		<title level="m" type="main">Machine learning into metaheuristics: A survey and taxonomy of data-driven metaheuristics</title>
+		<author>
+			<persName><forename type="first">El-Ghazali</forename><surname>Talbi</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="1" to="30" />
+		</imprint>
+	</monogr>
+	<note>In: Working paper</note>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Jaya : A simple and new optimization algorithm for solving constrained and unconstrained optimization problems</title>
+		<author>
+			<persName><surname>Rao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal of Industrial Engineering Computations</title>
+		<imprint>
+			<biblScope unit="volume">7</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="19" to="34" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">An artificial neural network based heuristic for flow shop scheduling problems</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Ramanan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rajagopalan</forename><surname>Radha &amp; Sridharan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sarang</forename><surname>Kulkarni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Haq</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10845-009-0287-5</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Intelligent Manufacturing</title>
+		<imprint>
+			<biblScope unit="volume">22</biblScope>
+			<biblScope unit="page" from="279" to="288" />
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<monogr>
+		<title level="m" type="main">Hybrid algorithms based on combining reinforcement learning and metaheuristic methods to solve global optimization problems</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Seyyedabbasi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Aliyev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Kiani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">U</forename><surname>Gulle</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Basyildiz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A</forename><surname>Shah</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<publisher>Knowledge-Based Systems</publisher>
+			<biblScope unit="volume">223</biblScope>
+			<biblScope unit="page">107044</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">A Deep Reinforcement Learning Approach to the Flexible Flowshop Scheduling Problem with Makespan Minimization</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IEEE 9th Data Driven Control and Learning Systems Conference (DDCLS)</title>
+		<imprint>
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Optimal two-and three-stage production schedules with setup times included</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Johnson</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Naval Research Logistics Quarterly</title>
+		<imprint>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="61" to="68" />
+			<date type="published" when="1954">1954</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">A Heuristic algorithm for the m-machine, n-job flow shop sequencing problem</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Nawaz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Enscore</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Ham</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">OMEGA. International Journal of Management Science</title>
+		<imprint>
+			<biblScope unit="volume">11</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="91" to="95" />
+			<date type="published" when="1983">1983</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">A heuristic algorithm for n-jobs m-machines sequencing problem</title>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">R</forename><surname>Campbell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">M</forename><surname>Smith</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Management Science</title>
+		<imprint>
+			<biblScope unit="volume">16</biblScope>
+			<biblScope unit="page" from="630" to="637" />
+			<date type="published" when="1970">1970</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Sequencing jobs through a multi-stage. Process in the minimum total time-a quick method of obtaining a near optimum</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Palmer</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Operations Research</title>
+		<imprint>
+			<biblScope unit="volume">16</biblScope>
+			<biblScope unit="page" from="45" to="61" />
+			<date type="published" when="1965">1965</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">A functional heuristic algorithm for the flow shop scheduling problem</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Gupta</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Operational Research Quarterly</title>
+		<imprint>
+			<biblScope unit="volume">22</biblScope>
+			<biblScope unit="page" from="27" to="39" />
+			<date type="published" when="1971">1971</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">A hybrid data mining GRASP with pathrelinking</title>
+		<author>
+			<persName><forename type="first">Hugo</forename><surname>Barbalho</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Computers &amp; Operations Research</title>
+		<imprint>
+			<biblScope unit="volume">40</biblScope>
+			<biblScope unit="page" from="3159" to="3173" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">A clustering-based modified variable neighborhood search algorithm for a dynamic job shop scheduling problem</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Adibi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Shahrabi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">The International Journal of Advanced Manufacturing Technology</title>
+		<imprint>
+			<biblScope unit="volume">70</biblScope>
+			<date type="published" when="2014-02">2014. 02 2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

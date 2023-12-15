@@ -1,0 +1,1419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Product Quality Assessment in the Internet of Things: A Consumer-Oriented Approach</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher>MDPI AG</publisher>
+				<availability status="unknown"><p>Copyright MDPI AG</p>
+				</availability>
+				<date type="published" when="2022-03-12">12 March 2022</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Mohammed</forename><forename type="middle">Sharief Abdelrahman</forename><surname>Naem</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Mouloud</forename><surname>Koudil</surname></persName>
+							<email>m_koudil@esi.dz</email>
+							<affiliation key="aff2">
+								<orgName type="laboratory">LMCS</orgName>
+								<orgName type="institution">Ecole Nationale Supérieure d&apos;Informatique</orgName>
+								<address>
+									<addrLine>Oued Smar 16309</addrLine>
+									<country key="DZ">Algeria</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Zineeddine</forename><surname>Ouldimam</surname></persName>
+							<email>fz_ouldimam@esi.dz</email>
+							<idno type="ORCID">0000-0002-0457-2642</idno>
+							<affiliation key="aff2">
+								<orgName type="laboratory">LMCS</orgName>
+								<orgName type="institution">Ecole Nationale Supérieure d&apos;Informatique</orgName>
+								<address>
+									<addrLine>Oued Smar 16309</addrLine>
+									<country key="DZ">Algeria</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Product Quality Assessment in the Internet of Things: A Consumer-Oriented Approach</title>
+					</analytic>
+					<monogr>
+						<title level="j" type="main">Sensors</title>
+						<title level="j" type="abbrev">Sensors</title>
+						<idno type="eISSN">1424-8220</idno>
+						<imprint>
+							<publisher>MDPI AG</publisher>
+							<biblScope unit="volume">22</biblScope>
+							<biblScope unit="issue">6</biblScope>
+							<biblScope unit="page">2215</biblScope>
+							<date type="published" when="2022-03-12">12 March 2022</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">20ECE93B77678D68CD8F363CCF20522F</idno>
+					<idno type="DOI">10.3390/s22062215</idno>
+					<note type="submission">Received: 15 February 2022 Accepted: 6 March 2022</note>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.0" ident="GROBID" when="2023-12-10T20:22+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>Naem, M.S.A.</term>
+					<term>Koudil, M.</term>
+					<term>Ouldimam, Z. Product Quality IoT</term>
+					<term>product-quality</term>
+					<term>assessment</term>
+					<term>a consumer-oriented-approach</term>
+					<term>IoT recommender Conceptualization, M.S.A.N. and M.K.</term>
+					<term>methodology, M.S.A.N. and M.K.</term>
+					<term>software, Z.O.</term>
+					<term>formal analysis, M.S.A.N.</term>
+					<term>investigation, M.S.A.N.</term>
+					<term>resources, M.S.A.N. and Z.O.</term>
+					<term>data curation, M.S.A.N.</term>
+					<term>writing-original draft preparation, M.S.A.N.</term>
+					<term>writing-review and editing, M.S.A.N. and M.K.</term>
+					<term>visualization, M.S.A.N. and Z.O.</term>
+					<term>supervision, M.K.</term>
+					<term>project administration, M.S.A.N. and Z.O</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>This paper proposes a consumer-oriented approach to IoT product recommendations. It is designed to help new consumers choose high-quality IoT products that best meet their needs. We used hybrid techniques to implement the proposed approach. Experiments were also conducted to implement an intelligent IoT marketing system at the Rehab marketplace. The system has shown good results in its performance, usability, and user satisfaction. These results confirm the applicability and effectiveness of the approach in assessing and recommending IoT products.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1.">Introduction</head><p>In 1999, Kevin Ashton devised the term "Internet of Things" at Procter &amp; Gamble (P&amp;G). He discussed his vision of a new computer application that collects data around us to automatically control many daily activities <ref type="bibr" target="#b0">[1]</ref>.</p><p>The Internet of Things (IoT) has become a rapidly growing model for smart applications, relying on the rapid development of wireless communications, and advanced sensing/actuation technologies <ref type="bibr" target="#b1">[2,</ref><ref type="bibr" target="#b2">3]</ref>.An IoT product represents any smart solution developed based on IoT technology, including devices, service, application appliances, platform, and ecosystems <ref type="bibr" target="#b3">[4]</ref>. It integrates various software/hardware components, where IoT devices are connected together over the Internet to collect data and then exchange and analyze information <ref type="bibr" target="#b4">[5]</ref>. These products are usually designed to address real-world problems according to a specific application scenario, such as wearable devices, advanced metering infrastructure, agricultural drones, autonomous robots, remote monitoring systems, fleet management, fire alarm systems, etc. <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b5">6,</ref><ref type="bibr" target="#b6">7]</ref>.</p><p>Nowadays, IoT markets are growing at a rapid rate; service providers have provided a wide range of IoT-based solutions to facilitate various aspects of life. Huge numbers of IoT devices were produced and countless services were created. For instance, Libelium and Telus IoT markets have more than 300 solutions covering various sectors <ref type="bibr" target="#b7">[8,</ref><ref type="bibr" target="#b8">9]</ref>. Due to the market pressure and the increasing demand for IoT products, IoT markets are filled with many poor-quality products especially in terms of device quality <ref type="bibr" target="#b9">[10]</ref>. It should be noted that a wide range of low-cost IoT devices are being produced everywhere, while many of them are being released without sufficient testing. This can greatly affect quality assurance and customer satisfaction. Furthermore, some functions may be ignored or reduced, making these devices vulnerable to multiple limitations and threats <ref type="bibr" target="#b10">[11]</ref><ref type="bibr" target="#b11">[12]</ref><ref type="bibr" target="#b12">[13]</ref><ref type="bibr" target="#b13">[14]</ref>.</p><p>These technical issues greatly affect the ability of potential IoT consumers to get IoT products that meet their desires and requirements. Many of them want to take advantage of smart products to facilitate some aspects of their daily life. However, they do not have enough experience to get quality products. Often, they do not find any useful recommendations on which products are best for their needs <ref type="bibr" target="#b3">[4,</ref><ref type="bibr" target="#b14">15,</ref><ref type="bibr" target="#b15">16]</ref>. To tackle this situation, the paper proposes a consumer-oriented approach to help new consumers choose IoT products that best serve their needs from products available in the market. Based on the quality definitions, satisfying a consumer's requirements on a particular product indicates that it is a high-quality product. Hence, the proposed approach aims to satisfy these requirements by filtering the lists of announced IoT products using machine learning techniques. It mainly focuses on assessing the features of IoT products based on the experiences of past consumers and quality experts. Then, it recommends to new consumers the best quality products. The hybrid approach can be an effective machine learning approach to do the job. It allows combining content-based filtering (CB) and collaborative filtering (CF) techniques, to obtain accurate predictions as well as heuristics. As a result, a set of useful recommendations will be generated to help new consumers, allowing them to make the right decisions before buying or using any product and saving their money.</p><p>To validate the proposed approach, a case study was presented for an IoT marketplace called "Rehab". An Intelligent IoT Marketing System (IIoTMS) was developed to help a large group of consumers. The study found that the new system effectively contributed to serving them and achieved satisfactory results. The rest of the paper is organized as follows: Section 2 is the related work. Section 3 introduces the methodology. Section 4 provides experimental setups. Section 5 presents the results. Section 6 provides a discussion. Section 7 provides a conclusion.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.">Related Works</head><p>This section reviews related work, as two main aspects associated with this article will be covered: <ref type="bibr" target="#b0">(1)</ref> Quality assessment of the IoT. (2) IoT based recommendations.</p><p>Regarding the first aspect, many studies indicate that the IoT model still lacks a unified interpretation of quality. It does not yet have a quality reference model that can be used to assess the quality of its products. Therefore, several studies have attempted to suggest relevant models inspired by conventional software quality models, as in <ref type="bibr" target="#b16">[17]</ref><ref type="bibr" target="#b17">[18]</ref><ref type="bibr" target="#b18">[19]</ref><ref type="bibr" target="#b19">[20]</ref>. Despite these efforts, the quality characteristics associated with conventional software are not well suited to the IoT. It has unique features that distinguish it from conventional software, such as mobility, automation, interoperability, scalability, etc.</p><p>In the same vein, some studies have sought to develop a quality model that fits the requirements of IoT. In <ref type="bibr" target="#b20">[21,</ref><ref type="bibr" target="#b21">22]</ref>, the authors provided a catalogue of non-functional requirements to eliminate conflicts between the quality characteristics in HCI ubiquitous computing and IoT applications. It is a general catalogue that can be used to deal with various aspects during the development of IoT applications. In <ref type="bibr" target="#b22">[23]</ref>, the authors provided an estimation approach to assess the quality of IoT applications. This is an approach based on a multi-dimensional matrix of QoS factors. Nevertheless, we also noticed that researchers do not agree on the factors that influence the quality of IoT.</p><p>Regarding the second aspect, the development of recommendation systems for IoT is a new arena that is attracting a number of researchers <ref type="bibr" target="#b23">[24]</ref>. There are endeavors to implement IoTSRS in a variety of IoT domains but they face many challenges compared to traditional recommender systems. In <ref type="bibr" target="#b24">[25]</ref>, the authors proposed a personalized recommendation system. They have developed a multi-objective recommendation model to solve the big data overload caused by internet vehicles, abundant environmental and mobile data. The study was used a real-world dataset and focused on examining recommendation accuracy, recommendation novelty, and coverage. In <ref type="bibr" target="#b25">[26]</ref>, the authors proposed a framework for evaluating the performance of the Recommendation interface. The framework allows users to adjust their own characteristics and goals. Further, a deep neural network is trained to predict the efficiency of recommendations. In <ref type="bibr">[27]</ref>, the authors proposed an approach to assess trust and reputation of things in a multi-internet of things (MIoT) scenario. Among these scenarios, they discussed MIoT architecture of a large shopping center consisting of several buildings. Every building has a smart device that is connected to other devices in other buildings, including temperature sensors, video surveillance, fire sensors, presence sensors, etc. The customer's personal device can act as a personal shopper providing them with appropriate suggestions (RS). This is actualized by interacting with other MIoT objects, browsing through other stores' offerings, and then using machine learning algorithms to improve the quality of recommendations. In this proposal, the authors focus on the concept of trust and reputation of IoT devices. From a literature review, the closest work to this study is discussed in <ref type="bibr" target="#b27">[28]</ref>. It is an IoT service recommendation (IoTSRS) that has been proposed to recommend users based on the objects they own. The researchers suggested a hyper-graph based model for the IoT recommendation system.</p><p>In <ref type="bibr" target="#b28">[29]</ref>, the authors extended the previous proposed model, while also studying the usefulness of adopting the traditional recommendation approaches on IoT service recommendation. In <ref type="bibr" target="#b29">[30]</ref>, the authors proposed an IoT food recommender inside a refrigerator for healthy living. This is a system to recommend food recipes to the user with the ability to identify the raw food available in the refrigerator and ensure their safety.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.">Methodology</head><p>This section introduces the research methodology. It discusses several considerations that will be taken into account in assessing the quality of IoT products. It also explains a set of processes needed to formulate useful recommendations that can help new consumers.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1.">Quality Assessment Considerations</head><p>Quality has been defined by ISO in (8402-1986) standard as: "The totality of features and characteristics of a product or service that bear on its ability to satisfy stated or implied needs" (ITU-T 2008). In another update of the (900-2005) standard, ISO definition was developed to become "The degree to which a set of inherent characteristics fulfil requirements" <ref type="bibr" target="#b30">[31,</ref><ref type="bibr" target="#b31">32]</ref>.</p><p>Based on these definitions, the study assumes that we can objectively decide whether the product is good or not, and even useful or not, according to the user's experiences (past consumers, quality experts). Past consumers can identify and assess the quality features of IoT products they have used before. They can also rate similar products and identify new features based on their impressions. Quality experts can also help identify/verify features of new products as well as rate each product.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2.">Systemic Processes</head><p>In general, consumer needs can be classified into two main types: (1) Explicit requirements. (2) Implicit requirements <ref type="bibr" target="#b30">[31]</ref>. Satisfying both explicit/implicit requirements on products means that they are of sufficient quality from a consumer perspective. However, this requires a goal-oriented process to exclude low quality products.</p><p>The proposed methodology defines two main phases for achieving this goal: (1) Establishment and assessment. (2) Recommendations formulation. Each phase includes several processes, which will be implemented as potential function of a hybrid recommendation system. There are different actors that must interact to perform the related activities according to predefined roles and permissions, including IoT suppliers, quality experts, and past consumers. To describe the sequence of phases and their associated processes, we present a hierarchical diagram, as shown in Figure <ref type="figure" target="#fig_1">1</ref>.</p><p>The recommendation system (RS) is among the most popular and influential Artificial Intelligent applications around the world <ref type="bibr" target="#b32">[33]</ref>, which can be defined as "software tools and techniques providing suggestions for items to be used by a user" <ref type="bibr" target="#b33">[34]</ref>. "Item" refers to the type of specific recommendation given to users, such as for products, movies, books, etc. RS is a collection of opinions, evaluations, impressions, or even knowledge given by some people in the form of initial recommendations (input), and then aggregated for subsequent use by others (appropriate recipients) <ref type="bibr" target="#b24">[25,</ref><ref type="bibr" target="#b25">26,</ref><ref type="bibr" target="#b32">33,</ref><ref type="bibr" target="#b33">34]</ref>. The recommendation system (RS) is among the most popular and influential Artificial Intelligent applications around the world <ref type="bibr" target="#b32">[33]</ref>, which can be defined as "software tools and techniques providing suggestions for items to be used by a user" <ref type="bibr" target="#b33">[34]</ref>. "Item" refers to the type of specific recommendation given to users, such as for products, movies, books, etc. RS is a collection of opinions, evaluations, impressions, or even knowledge given by some people in the form of initial recommendations (input), and then aggregated for subsequent use by others (appropriate recipients) <ref type="bibr" target="#b24">[25,</ref><ref type="bibr" target="#b25">26,</ref><ref type="bibr" target="#b32">33,</ref><ref type="bibr" target="#b33">34]</ref>.</p><p>The most important requirement for building an RS database is to identify the key objects of the system (items, users) and the associated relationships <ref type="bibr" target="#b32">[33,</ref><ref type="bibr" target="#b33">34]</ref>. It is necessary to classify the data accurately to facilitate the inference of useful information (i.e., consumer preferences or user ratings). In the same context, there are two main concepts that play an important role in evaluating the quality of recommendations in this type of application: (1) Trust. (2) Reputation. Trust is a concept based on personal and subjective events. These events are described by factors and evidence. Reputation is a collective measure of trust, and these measures are based on impressions or ratings from members of the community [27].</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2.1.">Establishment and Assessment Phase</head><p>This phase is necessary to create a knowledge base for IoT products available in the market. It defines a set of activities needed to collect information about these products, as shown in Figure <ref type="figure" target="#fig_3">2</ref>. These activities will be carried out by RS users using three main processes, including product announcement, quality features identification, and product assessment. The most important requirement for building an RS database is to identify the key objects of the system (items, users) and the associated relationships <ref type="bibr" target="#b32">[33,</ref><ref type="bibr" target="#b33">34]</ref>. It is necessary to classify the data accurately to facilitate the inference of useful information (i.e., consumer preferences or user ratings). In the same context, there are two main concepts that play an important role in evaluating the quality of recommendations in this type of application:</p><p>(1) Trust. (2) Reputation. Trust is a concept based on personal and subjective events. These events are described by factors and evidence. Reputation is a collective measure of trust, and these measures are based on impressions or ratings from members of the community [27].</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2.1.">Establishment and Assessment Phase</head><p>This phase is necessary to create a knowledge base for IoT products available in the market. It defines a set of activities needed to collect information about these products, as shown in Figure <ref type="figure" target="#fig_3">2</ref>. These activities will be carried out by RS users using three main processes, including product announcement, quality features identification, and product assessment.</p><p>In this scenario, each person connected to the RS is interested in a particular type of activity that is somehow related to shopping. Users play many roles ranging from vendors, suppliers, or consumers, to quality experts. It is a framework similar to a MIoT architecture, where users are located in many places and use different types of smart devices, including smartphones, laptops, smart glasses, etc. To represent the interaction of actors, a UML activity diagram was designed to illustrate the sequence of activities, as shown in Figure <ref type="figure" target="#fig_6">3</ref>.</p><p>The supplier (IoT vendors) represents a group of IoT-based organizations that offer a variety of smart IoT solutions, such as service providers, device vendors, etc. Quality expert represents a group of people who have enough experience in IoT products. The experts will be involved in various assessment-related tasks such as verifying the quality features of IoT products, determining appropriate metrics and weights, and rating new products. Past consumer represents a group of people who have previously used IoT products (past users). They have their own impressions of various IoT products. Thus, they will play an important role in enriching the rating process by assessing the quality of the newly announced products based on their experiences (rating features, defining new features). In this scenario, each person connected to the RS is interested in a particular type of activity that is somehow related to shopping. Users play many roles ranging from vendors, suppliers, or consumers, to quality experts. It is a framework similar to a MIoT architecture, where users are located in many places and use different types of smart devices, including smartphones, laptops, smart glasses, etc. To represent the interaction of actors, a UML activity diagram was designed to illustrate the sequence of activities, as shown in Figure <ref type="figure" target="#fig_6">3</ref>.  The supplier (IoT vendors) represents a group of IoT-based organizations that offer a variety of smart IoT solutions, such as service providers, device vendors, etc. Quality expert represents a group of people who have enough experience in IoT products. The experts will be involved in various assessment-related tasks such as verifying the quality features of IoT products, determining appropriate metrics and weights, and rating new products. Past consumer represents a group of people who have previously used IoT </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Products Announcement</head><p>Smart IoT products are often delivered in several forms, such as services, applications, systems, platforms, etc., with different use cases <ref type="bibr" target="#b34">[35]</ref><ref type="bibr" target="#b35">[36]</ref><ref type="bibr" target="#b36">[37]</ref>.</p><p>This process is dedicated to gathering necessary information about recently released IoT products in the markets. IoT suppliers are supposed to periodically announce their released products in a central database. Products information will be shared between various actors to assess these products.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Quality Features Identification</head><p>Quality features are mentioned in the literature using several synonyms such as attributes, qualities, characteristics, parameters, factors, or even aspects <ref type="bibr" target="#b37">[38]</ref>, depending on the context. For instance, any IoT product can have a number of quality features such as usability, portability, performance, etc.</p><p>This process is concerned with assigning appropriate quality features to each declared product. It can also be described as an ongoing process in which related activities do not stop (machine learning process). Both experts and past consumers are responsible for determining the quality features of each new product based on their experience/expertise. However, the users who will play this role must have good awareness and sufficient experience. As a result, new features will be identified or assigned every time a new product is announced either manually by consumers/experts or automatically using some heuristics methods.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Products Assessment</head><p>This process is at the heart of our approach, which will be implemented as a machine learning process. A large amount of information can be used to predict consumers' preferences scheme, including user-profiles and associated behaviors, as shown in Figure <ref type="figure" target="#fig_8">4</ref>. do not stop (machine learning process). Both experts and past consumers are responsible for determining the quality features of each new product based on their experience/expertise. However, the users who will play this role must have good awareness and sufficient experience. As a result, new features will be identified or assigned every time a new product is announced either manually by consumers/experts or automatically using some heuristics methods.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Products Assessment</head><p>This process is at the heart of our approach, which will be implemented as a machine learning process. A large amount of information can be used to predict consumers' preferences scheme, including user-profiles and associated behaviors, as shown in Figure <ref type="figure" target="#fig_8">4</ref>.</p><p>Based on the assumption in 3.1, it focuses on subjective-assessment of the quality of IoT products based on the experiences of past consumers and quality experts (rating activities). The ratings of different users can be obtained by making a number of comparisons between the RS objects (products, users). Every IoT product can be assessed using both explicit and implicit ratings. The explicit rating is a direct way to obtain user opinions about a specific product or service. User ratings will be collected from past user preferences, including likes, star ratings, numerical ratings, etc. The implicit rating is an indirect way to obtain user opinions about a specific product or service. User ratings will be predicted by tracking users' past behaviors, including clicks, views, favorites, and purchase data <ref type="bibr" target="#b32">[33,</ref><ref type="bibr" target="#b34">35,</ref><ref type="bibr" target="#b38">39]</ref>.</p><p>As a result, there are also various tools that can be considered for collecting user requirements directly or indirectly, including different requirements guidance such as conversational dialogs, profiles, etc. These tools are important for improving the recommender's self-learning processes, by ensuring that enough information is collected from each consumer profile and multiple sources. In addition, they increase the RS's ability to model consumer's preferential behaviors (profiling).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2.2.">Recommendation Formulation Phase</head><p>This phase is used to formulate a set of useful recommendations to help new consumers using different filtering processes. Filtering is a term commonly used to describe the process by which certain elements are selected and others excluded according to Based on the assumption in Section 3.1, it focuses on subjective-assessment of the quality of IoT products based on the experiences of past consumers and quality experts (rating activities). The ratings of different users can be obtained by making a number of comparisons between the RS objects (products, users).</p><p>Every IoT product can be assessed using both explicit and implicit ratings. The explicit rating is a direct way to obtain user opinions about a specific product or service. User ratings will be collected from past user preferences, including likes, star ratings, numerical ratings, etc. The implicit rating is an indirect way to obtain user opinions about a specific product or service. User ratings will be predicted by tracking users' past behaviors, including clicks, views, favorites, and purchase data <ref type="bibr" target="#b32">[33,</ref><ref type="bibr" target="#b34">35,</ref><ref type="bibr" target="#b38">39]</ref>.</p><p>As a result, there are also various tools that can be considered for collecting user requirements directly or indirectly, including different requirements guidance such as conversational dialogs, profiles, etc. These tools are important for improving the recommender's self-learning processes, by ensuring that enough information is collected from each consumer profile and multiple sources. In addition, they increase the RS's ability to model consumer's preferential behaviors (profiling).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2.2.">Recommendation Formulation Phase</head><p>This phase is used to formulate a set of useful recommendations to help new consumers using different filtering processes. Filtering is a term commonly used to describe the process by which certain elements are selected and others excluded according to predefined criteria or rules <ref type="bibr" target="#b15">[16,</ref><ref type="bibr" target="#b39">40]</ref>.</p><p>These recommendations are formulated by filtering IoT products to meet consumer implicit/explicit requirements, as shown in Figure <ref type="figure" target="#fig_11">5</ref>. Explicit requirements represent direct user needs, which are keywords or conditions that a user places when searching for a specific product within the database. Implicit requirements represent a set of indirect user needs, such as interests, desires, custom constraints. To satisfy the explicit consumer requirements, the user will be recommended with products declared in the databases that match their search keywords using a simple inquiry process, while satisfying the implicit requirements of the consumer requires advanced filtering processes using hybrid filtering rules.</p><p>As a result, the new consumer will be allowed to obtain the highest quality IoT products available in the markets. They can also make the right decisions before purchasing any product using the utility function. The utility calculation can help the new consumer to understand the usefulness of each recommended product according to their needs.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Filtering Items Based on Initial Search-Conditions</head><p>This process is aimed to meet explicit consumer needs, representing the first level of recommendations that will be formulated. Each consumer should specify keywords for the IoT product(s) they want to purchase using a query engine. It is assumed that RS will respond by performing a query operation using given search conditions. Therefore, an initial list of products matching the search conditions will be generated by retrieving data from the database.</p><p>Nevertheless, this process will produce low-quality recommendations, because the implicit requirements of the consumer are not yet recommended. The effectiveness of any RS depends on the validity of its recommendations in terms of users' needs <ref type="bibr" target="#b32">[33,</ref><ref type="bibr" target="#b38">39]</ref>. As a result, to efficiently respond to a user's needs, the new consumer must request advanced recommendations to satisfy their implied requirements (interests, custom-constraints). Further filtering of the resulting lists using new conditions is required. To satisfy the explicit consumer requirements, the user will be recommended with products declared in the databases that match their search keywords using a simple inquiry process, while satisfying the implicit requirements of the consumer requires advanced filtering processes using hybrid filtering rules.</p><p>As a result, the new consumer will be allowed to obtain the highest quality IoT products available in the markets. They can also make the right decisions before purchasing any product using the utility function. The utility calculation can help the new consumer to understand the usefulness of each recommended product according to their needs.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Filtering Items Based on Initial Search-Conditions</head><p>This process is aimed to meet explicit consumer needs, representing the first level of recommendations that will be formulated. Each consumer should specify keywords for the IoT product(s) they want to purchase using a query engine. It is assumed that RS will respond by performing a query operation using given search conditions. Therefore, an initial list of products matching the search conditions will be generated by retrieving data from the database.</p><p>Nevertheless, this process will produce low-quality recommendations, because the implicit requirements of the consumer are not yet recommended. The effectiveness of any RS depends on the validity of its recommendations in terms of users' needs <ref type="bibr" target="#b32">[33,</ref><ref type="bibr" target="#b38">39]</ref>. As a result, to efficiently respond to a user's needs, the new consumer must request advanced recommendations to satisfy their implied requirements (interests, custom-constraints). Further filtering of the resulting lists using new conditions is required.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Filter Based on Consumer's Interests</head><p>This process aims to reduce the number of IoT products resulting from the inquiry process by excluding products that do not suit the consumer's preferences. A new shortlist of interesting products will be generated based on past consumers preferences, including the known past users' ratings and other direct/indirect information.</p><p>The proposed RS must also be able to deep mine the past consumers' log files to predict such interest-based recommendations, as shown in Figure <ref type="figure" target="#fig_12">6</ref>. A mining process will be implemented to extract multi-attributes content for products that users have preferred in the past; whether they are items or contents.</p><p>Sensors 2022, 22, x FOR PEER REVIEW 9 of 22 will be implemented to extract multi-attributes content for products that users have preferred in the past; whether they are items or contents. The hybrid approach can be an effective machine learning approach in doing this task. It allows combining both of the collaborative and content-based filtering methods, to obtain accurate predictions as well as to generate heuristics <ref type="bibr" target="#b27">[28,</ref><ref type="bibr" target="#b28">29,</ref><ref type="bibr" target="#b33">34,</ref><ref type="bibr" target="#b34">35,</ref><ref type="bibr" target="#b38">39,</ref><ref type="bibr" target="#b39">40]</ref>.</p><p>There are two filtering rules that are necessary to make predictions during this filtering process: (1) Items similarity. (2) User similarity. These rules will be used to make various comparisons between the main RS objects (users, items) to predict interesting consumer products. However, these comparisons also require measuring the similarity between objects.</p><p>Item similarity is a rule that can be used to provide suggestions to a user based on his previous choices <ref type="bibr" target="#b40">[41]</ref>. This rule assumes that many useful recommendations can be inferred by using similar choices (Item-Item Filtering). A user can like the same items based on information derived from their search records, preferences, comments, views, etc, as shown in Figure <ref type="figure" target="#fig_16">7</ref>.</p><p>Item similarity can be applied in different ways to assist consumers, for example to suggest initial search conditions, or new product options with high-rates. It is a very effective rule when adopting a heuristic approach to predict new short-lists of IoT products that respond to consumer interests.</p><p>Users Similarities is a rule that can be used to check the differences between users by checking their similarities <ref type="bibr" target="#b32">[33,</ref><ref type="bibr" target="#b41">42]</ref>. Sometimes, users may have the same preferences on a particular item or content, which may lead to infer that they have the same mood or interest, as shown in Figure <ref type="figure" target="#fig_15">8</ref>. The hybrid approach can be an effective machine learning approach in doing this task. It allows combining both of the collaborative and content-based filtering methods, to obtain accurate predictions as well as to generate heuristics <ref type="bibr" target="#b27">[28,</ref><ref type="bibr" target="#b28">29,</ref><ref type="bibr" target="#b33">34,</ref><ref type="bibr" target="#b34">35,</ref><ref type="bibr" target="#b38">39,</ref><ref type="bibr" target="#b39">40]</ref>.</p><p>There are two filtering rules that are necessary to make predictions during this filtering process: (1) Items similarity. (2) User similarity. These rules will be used to make various comparisons between the main RS objects (users, items) to predict interesting consumer products. However, these comparisons also require measuring the similarity between objects.</p><p>Item similarity is a rule that can be used to provide suggestions to a user based on his previous choices <ref type="bibr" target="#b40">[41]</ref>. This rule assumes that many useful recommendations can be inferred by using similar choices (Item-Item Filtering). A user can like the same items based on information derived from their search records, preferences, comments, views, etc, as shown in Figure <ref type="figure" target="#fig_16">7</ref>.</p><p>Item similarity can be applied in different ways to assist consumers, for example to suggest initial search conditions, or new product options with high-rates. It is a very effective rule when adopting a heuristic approach to predict new short-lists of IoT products that respond to consumer interests.  This figure illustrates two scenarios for user similarities, where the user-user filtering allows recommending items or contents based on user preferences.</p><p>On the other hand, the term "similarity measure" refers to how similar data objects are in the recommendations system. It is commonly used in the context of data mining to measure the distance between objects in the dimensions that represent the features <ref type="bibr" target="#b42">[43,</ref><ref type="bibr" target="#b43">44]</ref>. For instance, two objects become very similar when the distance between them Users Similarities is a rule that can be used to check the differences between users by checking their similarities <ref type="bibr" target="#b32">[33,</ref><ref type="bibr" target="#b41">42]</ref>. Sometimes, users may have the same preferences on a particular item or content, which may lead to infer that they have the same mood or interest, as shown in Figure <ref type="figure" target="#fig_15">8</ref>.  This figure illustrates two scenarios for user similarities, where the user-user filtering allows recommending items or contents based on user preferences.</p><p>On the other hand, the term "similarity measure" refers to how similar data objects are in the recommendations system. It is commonly used in the context of data mining to measure the distance between objects in the dimensions that represent the features This figure illustrates two scenarios for user similarities, where the user-user filtering allows recommending items or contents based on user preferences.</p><p>On the other hand, the term "similarity measure" refers to how similar data objects are in the recommendations system. It is commonly used in the context of data mining to measure the distance between objects in the dimensions that represent the features <ref type="bibr" target="#b42">[43,</ref><ref type="bibr" target="#b43">44]</ref>. For instance, two objects become very similar when the distance between them becomes small, and vice versa. The similarity between any data object is measured within specific ranges. For example, the similarity of distance measures usually varies between [0, 1], as follows <ref type="bibr" target="#b44">[45]</ref>:</p><formula xml:id="formula_0">Similarity = 1 if X = Y Where X, Y are two objects (1) Similarity = 0 if X = Y<label>(2)</label></formula><p>Although data objects may be different; points, vectors, or combinations, most of the similarity measures are subjective and applicable in many applications <ref type="bibr" target="#b32">[33]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Filter Based on Constraints Satisfaction</head><p>Previous shortlist of interesting products may not meet the consumer's personal constraints. This occurs because the consumer mood may not match the recommended options, or they may have custom constraints (personal interests). For instance, they may look for low prices, special brands or producers, specific quality features, etc. Thus, this process aims to satisfy the custom constraints of the new consumer, which seems to be a Constraint Satisfaction Problem (CSPs).</p><p>A solution for a CSP requires a concrete reproduction of variables (a set of values), where all specified constraints can be met <ref type="bibr" target="#b45">[46]</ref>. In other words, it is the ability to assign a value to each variable in a way that satisfies all the constraints with these values <ref type="bibr" target="#b46">[47]</ref>. In the same vein, creating a knowledge base about consumer requirements is essential to satisfy different types of constraints, as shown in Figure <ref type="figure" target="#fig_21">9</ref>. becomes small, and vice versa. The similarity between any data object is measured within specific ranges. For example, the similarity of distance measures usually varies between [0, 1], as follows <ref type="bibr" target="#b44">[45]</ref>:</p><formula xml:id="formula_1">Similarity = 1 if X = Y</formula><p>Where X, Y are two objects (1)</p><formula xml:id="formula_2">Similarity = 0 if X Y<label>(2)</label></formula><p>Although data objects may be different; points, vectors, or combinations, most of the similarity measures are subjective and applicable in many applications <ref type="bibr" target="#b32">[33]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Filter Based on Constraints Satisfaction</head><p>Previous shortlist of interesting products may not meet the consumer's personal constraints. This occurs because the consumer mood may not match the recommended options, or they may have custom constraints (personal interests). For instance, they may look for low prices, special brands or producers, specific quality features, etc. Thus, this process aims to satisfy the custom constraints of the new consumer, which seems to be a Constraint Satisfaction Problem (CSPs).</p><p>A solution for a CSP requires a concrete reproduction of variables (a set of values), where all specified constraints can be met <ref type="bibr" target="#b45">[46]</ref>. In other words, it is the ability to assign a value to each variable in a way that satisfies all the constraints with these values <ref type="bibr" target="#b46">[47]</ref>. In the same vein, creating a knowledge base about consumer requirements is essential to satisfy different types of constraints, as shown in Figure <ref type="figure" target="#fig_21">9</ref>. A knowledge base can be used to define explicit rules. These rules are necessary to ensure that possible consumer constraints are managed using a finite set of variables, values, and constraints. It also allows linking user requirements to enable filtering of the previous shortlist.</p><p>The special values related to the new consumer will be compared to the database entries, to filter the previous shortlist of products of interest. As a result, a new recommendation will be generated, which is a shortlist based on consumer constraints. It is another shortlist that is much closer to the real needs of a consumer. However, the consumer may need additional help to make the right decision by calculating the utility of the recommended options. A knowledge base can be used to define explicit rules. These rules are necessary to ensure that possible consumer constraints are managed using a finite set of variables, values, and constraints. It also allows linking user requirements to enable filtering of the previous shortlist.</p><p>The special values related to the new consumer will be compared to the database entries, to filter the previous shortlist of products of interest. As a result, a new recommendation will be generated, which is a shortlist based on consumer constraints. It is another shortlist that is much closer to the real needs of a consumer. However, the consumer may need additional help to make the right decision by calculating the utility of the recommended options.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Filtering Based on the Item's Utility</head><p>A useful recommendation can be defined as "a phase in which the calculated prediction is used to support the user's decision by some recommendation processes" <ref type="bibr" target="#b33">[34]</ref>.</p><p>Filtering based on the item's utility is a process used to calculate the utility of the recommended products to a new consumer. Although the previous shortlists are intended to satisfy the consumer's needs (interests and constraints). However, some of the recommended options may not be very useful to the consumer. This occurs because filtering processes were considered only one dimension; single-criterion ratings (numeric or binary ratings of products by past users).</p><p>We have considered adopting multi-criteria ratings to improve the quality of recommendations as well as better understand each user's preferences. A single overall rating may hide the underlying heterogeneity of users' preferences for different aspects of a given item. As a result, this RS should enable users to represent more complex preferences, by allowing them to specify their individual preferences and rate each item. The ratings provided will be used to formulate new recommendations based on multi-criteria ratings.</p><p>The utility function can be calculated according to the following formulas <ref type="bibr" target="#b33">[34,</ref><ref type="bibr" target="#b43">44,</ref><ref type="bibr" target="#b47">48]</ref>:</p><formula xml:id="formula_3">R : Users × Items → R0 × R1 × • • • × Rk (3)</formula><p>It is worth noting that the recommendations system is part of the information filtering systems. There are two main types of RS: (1) non-personalized. (2) Personalized. Non-personalized RS is a system that recommends to a user the most popular items, such as the most frequently purchased products, top-selling books, and top-downloaded movies. Personalized RS is a system that analyzes different data to formulate customized recommendations, including users' profiles, users' relationships, users' purchases, etc.</p><p>Traditionally, RSs are based on methods like the nearest neighbor, clustering, and matrix factorization. Over time, these systems have also benefited from deep learning techniques. Deep learning has achieved tremendous success across multiple domains, including image recognition, natural language processing, context information, etc. There are many recent RS powered by complex deep learning systems, such as those at YouTube and Amazon <ref type="bibr" target="#b42">[43,</ref><ref type="bibr">49]</ref>. These techniques can be generally considered to be sub-field of machine learning, which focus on learning the deep representations of data <ref type="bibr" target="#b25">[26,</ref><ref type="bibr" target="#b49">50]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.">Experiments</head><p>This section presents the experimental setup used to implement the proposed approach. It aims to check the applicability of the approach and the accuracy of its recommendations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1.">Case Study Description</head><p>Rehab is an offline marketplace with a physical location in downtown Khartoum. It sells different types of consumer electronics such as computers, phones, headphones, and accessories. It is also an IoT marketplace that contains a central platform for IoT solutions, including physical hardware, specialized software, and applications.</p><p>The size of Rehab gradually increases, while users take a long time to purchase everything they need. For someone who is interested in working on an IoT project but is not sure where to start, they are expected to face many challenges to obtain a quality product that best suits their needs. It would be ideal if we had a smart application to help large groups of consumers undertake a simple shopping experience, especially the disabled, sick, and elderly.</p><p>As a result, experiments were conducted to develop an Intelligent IoT Marketing System (IIoTMS) at the marketplace. In addition, implementing a hybrid recommendation system as part of a centralized platform for IoT products can help solve these problems.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2.">Application Scenario</head><p>As mentioned earlier, the proposed approach requires the participation of different users who may reside in different locations. This scenario requires developing a cloud-based system to allow each user to interact easily; most users prefer to use their smartphones.</p><p>A number of smart technologies can be integrated into the IIoTMS environment for an easy shopping experience. It is assumed that once a new consumer reaches the marketplace, they will use the available smart glass. This glass will be used to run the shopping app and connect the consumer's smartphone to the Internet. Indoor navigation (IN) technology has also been adopted to guide consumers in the marketplace. IN is one of the best navigation solutions <ref type="bibr" target="#b50">[51]</ref>. It allows consumers to take the best and shortest route to check-out and place all required items in their shopping cart along the way.</p><p>As a result, each consumer will be able to browse the contents of the marketplace via a digital menu displayed on the smart glass, and check the availability of any of the product items with access to the specified location.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2.1.">System Architecture</head><p>To allow the modelling of required system functions, a high-level architecture for the IIoTMS has been provided. This architecture helps divide the functional areas of the system into higher level components, as shown in Figure <ref type="figure" target="#fig_23">10</ref>.</p><p>Sensors 2022, 22, x FOR PEER REVIEW 13 of 22</p><p>tion system as part of a centralized platform for IoT products can help solve these problems.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2.">Application Scenario</head><p>As mentioned earlier, the proposed approach requires the participation of different users who may reside in different locations. This scenario requires developing a cloud-based system to allow each user to interact easily; most users prefer to use their smartphones.</p><p>A number of smart technologies can be integrated into the IIoTMS environment for an easy shopping experience. It is assumed that once a new consumer reaches the marketplace, they will use the available smart glass. This glass will be used to run the shopping app and connect the consumer's smartphone to the Internet. Indoor navigation (IN) technology has also been adopted to guide consumers in the marketplace. IN is one of the best navigation solutions <ref type="bibr" target="#b50">[51]</ref>. It allows consumers to take the best and shortest route to check-out and place all required items in their shopping cart along the way.</p><p>As a result, each consumer will be able to browse the contents of the marketplace via a digital menu displayed on the smart glass, and check the availability of any of the product items with access to the specified location.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2.1.">System Architecture</head><p>To allow the modelling of required system functions, a high-level architecture for the IIoTMS has been provided. This architecture helps divide the functional areas of the system into higher level components, as shown in Figure <ref type="figure" target="#fig_23">10</ref>. IIoTMS architecture consists of three layers, including cloud computing, smartphones, and smart glasses. Each layer provides a specific type of service, but each service may require one or more components to interact with one another.</p><p>The cloud-based layer is a layer that used to store users and products data. It is also used to run the hybrid RS algorithm for consumers' recommendation. The provided service will connect to smartphone applications via the Internet using the HTTP protocol to send and receive data. Smartphone-based layer is a layer designed to run a client-side recommendation service (medium-sized applications). This layer allows users connect to IIoTMS architecture consists of three layers, including cloud computing, smartphones, and smart glasses. Each layer provides a specific type of service, but each service may require one or more components to interact with one another.</p><p>The cloud-based layer is a layer that used to store users and products data. It is also used to run the hybrid RS algorithm for consumers' recommendation. The provided service will connect to smartphone applications via the Internet using the HTTP protocol to send and receive data. Smartphone-based layer is a layer designed to run a client-side recommendation service (medium-sized applications). This layer allows users connect to the Internet/other devices. It provides a user application that allows users to collaborate in assessing product quality. In addition, it will be connected to smart glass via WIFI or Bluetooth, to receive product barcodes and send information about each product. Smart glass-based layer is a layer used to store product locations in the marketplace. It represents a limited resource embedded system that is widely used to facilitate our life with many different useful features. Thus, the provided service will help new consumers search/access product items easily.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2.2.">System Deployment</head><p>A deployment diagram has been created to show physical resources (hardware configuration), as shown in Figure <ref type="figure" target="#fig_25">11</ref>. It focused on the actual runtime units and associations between them, including components, modules, nodes, connections, or any hardware/software required to complete the system.</p><p>There are different types of devices that can be used to deploy the IIoTMS, including the cloud, smartphones, and smart glasses. Each device has an execution environment for implementing a specific set of components listed. It also requires many tools to implement system parts, including Android Studio, Node.js platform, Python, MongoDB, and IoT Dataset. System parts interact with each other as an integrated entity using different types of protocols, including WIFI, Bluetooth, and HTTP. the Internet/other devices. It provides a user application that allows users to collaborate in assessing product quality. In addition, it will be connected to smart glass via WIFI or Bluetooth, to receive product barcodes and send information about each product. Smart glass-based layer is a layer used to store product locations in the marketplace. It represents a limited resource embedded system that is widely used to facilitate our life with many different useful features. Thus, the provided service will help new consumers search/access product items easily.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2.2.">System Deployment</head><p>A deployment diagram has been created to show physical resources (hardware configuration), as shown in Figure <ref type="figure" target="#fig_25">11</ref>. It focused on the actual runtime units and associations between them, including components, modules, nodes, connections, or any hardware/software required to complete the system. There are different types of devices that can be used to deploy the IIoTMS, including the cloud, smartphones, and smart glasses. Each device has an execution environment for implementing a specific set of components listed. It also requires many tools to implement system parts, including Android Studio, Node.js platform, Python, MongoDB, and IoT Dataset. System parts interact with each other as an integrated entity using different types of protocols, including WIFI, Bluetooth, and HTTP.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.">Results</head><p>This section presents the main findings of the study. The focus will be on measuring aspects related to IIoTMS implementation, including the performance of IIoTMS classification model, system usability, and user satisfaction. These aspects represent important indicators of the system, while it will be compared later to another similar system in the next section.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.1.">Performance of IIoTMS</head><p>The performance of IIoTMS classification model will greatly affect the marketing of IoT products in the marketplace. As any RS can be evaluated using four classes of met- </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.">Results</head><p>This section presents the main findings of the study. The focus will be on measuring aspects related to IIoTMS implementation, including the performance of IIoTMS classification model, system usability, and user satisfaction. These aspects represent important indicators of the system, while it will be compared later to another similar system in the next section.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.1.">Performance of IIoTMS</head><p>The performance of IIoTMS classification model will greatly affect the marketing of IoT products in the marketplace. As any RS can be evaluated using four classes of metrics: (1) Predictive accuracy. (2) Classification accuracy. (3) Rank accuracy. (4) Non-accuracy <ref type="bibr" target="#b51">[52,</ref><ref type="bibr" target="#b52">53]</ref>.</p><p>Classification accuracy was chosen to validate the IIoTMS prediction model because it is the most appropriate metric in this type of application. In addition, it can be used to evaluate the successful decision-making ability of recommendation algorithms. This metric focuses on the amount of correct and incorrect classifications using a confusion matrix. It is a matrix to accumulate the numbers of true/false positive/negative recommendations regarding users' preferences, as shown in Table <ref type="table" target="#tab_1">1</ref>. The precision or true positive accuracy is calculated as a ratio of recommended items relative to the total number of items recommended. It represents the probability of the recommended product matching to user's preferences, as follows <ref type="bibr" target="#b51">[52]</ref>:</p><formula xml:id="formula_4">precision = tp tp + fp<label>(4)</label></formula><p>In the same vein, the true positive rate (recall) is calculated as the ratio of the recommended relevant items to the total number of related items. It represents is the probability of recommending the relevant item, as follows <ref type="bibr" target="#b51">[52]</ref>:</p><formula xml:id="formula_5">recall = tp tp + fn<label>(5)</label></formula><p>The relationship between precision and recall is inverse; increasing the size of the set of recommendations will increase recall but decrease accuracy. As a result, both metrics can be combined into another scale called F1. This scale is used as the standard harmonic mean of precision and recall, which is calculated as <ref type="bibr" target="#b51">[52]</ref>:</p><formula xml:id="formula_6">F1 = 2 (precision * recall) precision + recal<label>(6)</label></formula><p>The IIoTMS classification model was tested using test data containing information about 100 wearable devices. These products are divided as follows: 15 products are rated as 5 stars, 25 products are rated as 4 stars, 27 products are rated as 3 stars, 13 products are rated as 2 stars, and 20 products are rated as 1 stars. We analyzed the resulting recommendations using a confusion matrix. Based on the initial results, predictions versus actual values can be summarized using a confusion matrix, as shown in Figure <ref type="figure" target="#fig_28">12</ref>. IIoTMS shows good results in its performance which is reflected in a number of relevant metrics, as shown in Table <ref type="table" target="#tab_2">2</ref>.  IIoTMS shows good results in its performance which is reflected in a number of relevant metrics, as shown in Table <ref type="table" target="#tab_2">2</ref>. We further calculated the accuracy of IIoTMS. It is a measure expressing the ratio of true positives and true negatives to all positive and negative values, as shown in Table <ref type="table" target="#tab_4">3</ref>. The accuracy is an important indicator of how often the machine learning model can correctly predict. There are many data mining methods and techniques that can be applied to design RS, especially in terms of classification. For instance, Nearest Neighbors, Decision Trees, Ruled-based Classifiers, Bayesian Classifiers, Artificial Neural Networks, Support Vector Machines, and Association Rule Mining. As a result, choosing the right classifier for a specific recommendation task still requires a lot of exploration <ref type="bibr" target="#b23">[24,</ref><ref type="bibr" target="#b44">45,</ref><ref type="bibr" target="#b45">46,</ref><ref type="bibr" target="#b47">48]</ref>. It also should be noted that it is necessary to start with the simplest ML approach during the experiments. Complexity is only entered if performance gains are guaranteed because it requires a balance between several dimensions <ref type="bibr" target="#b53">[54]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Measure Value</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.2.">System Usability</head><p>To examine IIOTMS usability, the System Usability Scale (SUS) was used to study the user community. SUS is a focused questionnaire that was created by John Brooke in 1986, which is used to assess various types of computer systems such as software, mobile devices, websites, and applications. It consists of 10 questionnaire items with five responses for the respondents (from strongly agree to strongly disagree) <ref type="bibr">[55]</ref>.</p><p>By looking at the purchase records, the number of customers in Rehab can reach more than 2500 customers. It is a large community that requires a random sample of at least 100 participants. Consequently, a sample of 150 users was surveyed, of which 133 participants responded within a specified two-day period, as shown in Figure <ref type="figure" target="#fig_29">13</ref>.</p><p>Based on the scale interpretations, the average SUS score is 68, IIoTMS has a higher usability score (81.09 = excellent). Some important indicators are also extracted from the feedback, confirming the positive impression of the application. For example, 90.9% of the respondents want to use IIoTMS more frequently. A total 85.7% felt very confident using IIOTMS. devices, websites, and applications. It consists of 10 questionnaire items with five responses for the respondents (from strongly agree to strongly disagree) <ref type="bibr">[55]</ref>.</p><p>By looking at the purchase records, the number of customers in Rehab can reach more than 2500 customers. It is a large community that requires a random sample of at least 100 participants. Consequently, a sample of 150 users was surveyed, of which 133 participants responded within a specified two-day period, as shown in Figure <ref type="figure" target="#fig_29">13</ref>. Based on the scale interpretations, the average SUS score is 68, IIoTMS has a higher usability score (81.09 = excellent). Some important indicators are also extracted from the feedback, confirming the positive impression of the application. For example, 90.9% of the respondents want to use IIoTMS more frequently. A total 85.7% felt very confident using IIOTMS.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.3.">User Satisfaction</head><p>The study has also focused on estimating IIoTMS user satisfaction using the Customer Satisfaction Score (CSAT), as shown in Figures <ref type="figure" target="#fig_33">14</ref> and<ref type="figure" target="#fig_35">15</ref>. CSAT is a scale that covers aspects related to user satisfaction using simple questions with a binary response. This includes users' expectations about IIoTMS, decision-making ability, recommended product quality, and reliability.  </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.3.">User Satisfaction</head><p>The study has also focused on estimating IIoTMS user satisfaction using the Customer Satisfaction Score (CSAT), as shown in Figures <ref type="figure" target="#fig_33">14</ref> and<ref type="figure" target="#fig_35">15</ref>. CSAT is a scale that covers aspects related to user satisfaction using simple questions with a binary response. This includes users' expectations about IIoTMS, decision-making ability, recommended product quality, and reliability.</p><p>participants responded within a specified two-day period, as shown in Figure <ref type="figure" target="#fig_29">13</ref>. Based on the scale interpretations, the average SUS score is 68, IIoTMS has a higher usability score (81.09 = excellent). Some important indicators are also extracted from the feedback, confirming the positive impression of the application. For example, 90.9% of the respondents want to use IIoTMS more frequently. A total 85.7% felt very confident using IIOTMS.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.3.">User Satisfaction</head><p>The study has also focused on estimating IIoTMS user satisfaction using the Customer Satisfaction Score (CSAT), as shown in Figures <ref type="figure" target="#fig_33">14</ref> and<ref type="figure" target="#fig_35">15</ref>. CSAT is a scale that covers aspects related to user satisfaction using simple questions with a binary response. This includes users' expectations about IIoTMS, decision-making ability, recommended product quality, and reliability.  These results give indications about the system's ability to meet consumer requirements regarding product quality. These results give indications about the system's ability to meet consumer requirements regarding product quality.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.">Discussion</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.">Discussion</head><p>No doubt that recommending products in IoT is crucial to facilitating the popularity of this field. However, leading a new consumer to find relevant products that meet their needs with quality in mind is a very complex process. It mainly depends on meeting their explicit and implicit requirements.</p><p>Much effort has been made in this direction, but it seems that this is not enough. This study sought to do more by suggesting a consumer-oriented approach based on an effective recommendation technique. It takes into account the experiences of past consumer experts as key players in defining/assessing the quality characteristics of IoT products. In addition, it has relied on hybrid filtering techniques to make different comparisons between data items (products and users). This technique allows combining CB and CF techniques, to obtain accurate predictions as well as to make some heuristics.</p><p>Most of the hybrid RS apps can be implemented using the same machine learning algorithms but the difference is in the accuracy of recommendations. It appears that the IIoTMS is very conservative when it comes to predicting low-rated products. In addition, it has a very high accuracy of up to 95%. Moreover, 80% of users seem to feel that IIoTMS meets their expectations, while 77% are able to make the right decision before purchasing any IoT product. Furthermore, 83% of users are satisfied with the quality of products recommended by IIoTMS. A total 68% of users felt IIoTMS is reliable.</p><p>The results show that IIoTMS as an IoT recommender is more effective than others. This happens because the applied approach allows the integration of many different elements, such as concepts, data, methods, and technologies, to provide more useful recommendations. Indeed, there are many application scenarios for recommender systems in various fields. The use of these systems in the areas of smart shopping or smart marketing is the most interesting scenario. It draws the attention of many researchers; several architectures are proposed to connect IoT devices with each other, including the Social Internet of Things (SIoT) and the Multi-Internet of Things (MIoT). Accordingly, the proposed approach is worthy enough to be applied in complex architectures such as those presented before as in <ref type="bibr">[27,</ref><ref type="bibr" target="#b54">56]</ref>. It provides a general framework that includes all the actors required to make useful recommendations for IoT, including vendors or suppliers, consumers and quality experts. It also takes into account potential interactions between smart devices in a distributed environment.</p><p>For more credibility, the discussion will also focus on comparing IIoTMS with another similar IoT recommendation system. In <ref type="bibr" target="#b27">[28,</ref><ref type="bibr" target="#b28">29]</ref>, the authors proposed IoTSRS to recommend users with IoT services based on the object they own. This recommender uses a graph-based model that analyzes various entities and their relationships, including objects, services, and users. Although the graph-based approach has shown promising results in various fields, the current IoT service recommendation model is very primitive. For instance, IoTSRS is not able to deal with the sensor characteristics, which affect their ability to provide useful recommendations (i.e., sensor location, and mobility). IoTSRS has also not implemented a clear methodology to meet the needs of the user, while IIoTMS considers the application of a consumer-oriented approach to meet their needs. To substantiate this claim, results regarding the accuracy of the recommendations, system usability, and user satisfaction can be referred to in Section 5.</p><p>There are three principles that were followed during the development of IIoTMS that helped achieve these good results. It can be summarized as follows: (1) Focus on the tasks that will be performed by the users. (2) Follow clear methodologies in designing the system and assessing product quality. (3) Adopting machine learning approaches in the recommendation and a number of smart technologies. Accordingly, we can argue that the proposed IoTSRS is less effective than IIoTMS.</p><p>The results not only demonstrate the validity of assumptions, but can also be understood as conclusive evidence that the hybrid approach works reasonably well for recommending IoT products. There are many interesting questions that can be drawn for future research. Future researchers can extend the research to address typical limitations in recommender systems, such as cold start problems, sparsity, scalability, overspecialization, grey sheep problem, etc. Some researchers can continue to explore the quality factors of the IoT in an advanced way. The biggest concern is the lack of a reference model for IoT quality.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7.">Conclusions</head><p>In this paper, we propose a new approach to assessing IoT products and recommending high-quality products to new consumers. We have seen that new consumers of IoT face different challenges to choose smart products that best suit their needs. We have also noticed that IoT markets are filled with many poor-quality products, especially in terms of device quality. Therefore, we have presented a consumer-oriented approach to help those potential consumers. The proposed approach is based on techniques of recommendation systems in which different elements are combined together to provide useful recommendations. We focused on applying hybrid techniques, as they allow data mining and avoid shallowness. Consumer requirements are thus met using several levels of recommendations, including filtering items based on initial search conditions, filtering items based on consumer's interests, filtering items based on consumer's constraints, and utility calculations for the recommended items. Afterward, we made our experiments to implement this approach at the Rehab marketplace. The applications scenario is an Intelligent IoT Marketing System (IIoTMS). IIoTMS is a distributed system consisting of several components in which a number of users interact according to predefined roles and permissions. System tests demonstrated the applicability of the proposed approach. It provides accurate recommendations, ease of use, and user satisfaction.</p><p>The study represents a real contribution in terms of combining recommendation and IoT technologies. The proposed approach could work in many areas to serve consumers, particularly in connection with the outbreak of the COVID-19 pandemic, as all computerbased recommendation systems are becoming increasingly common and necessary. It can also be implemented using complex architectures such as MIoT and SIoT.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 1 .</head><label>1</label><figDesc>Figure 1. A methodology for assessing and recommending IoT products.</figDesc><graphic coords="4,170.66,97.19,371.94,230.40" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Figure 1 .</head><label>1</label><figDesc>Figure 1. A methodology for assessing and recommending IoT products.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Figure 2 .</head><label>2</label><figDesc>Figure 2. The establishment and assessment phase.</figDesc><graphic coords="5,169.13,98.03,345.36,277.92" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Figure 2 .</head><label>2</label><figDesc>Figure 2. The establishment and assessment phase.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>Sensors 2022 , 22 Figure 3 .</head><label>2022223</label><figDesc>Figure 3. The main actors' related activities.</figDesc><graphic coords="5,169.33,408.91,378.18,321.57" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head>Figure 3 .</head><label>3</label><figDesc>Figure 3. The main actors' related activities.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_7"><head>Sensors 2022 ,</head><label>2022</label><figDesc>22, x FOR PEER REVIEW 7 of 22</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_8"><head>Figure 4 .</head><label>4</label><figDesc>Figure 4. The learning-based assessment process.</figDesc><graphic coords="6,165.78,431.57,361.68,131.47" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_9"><head>Figure 4 .</head><label>4</label><figDesc>Figure 4. The learning-based assessment process.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_10"><head>22 Figure 5 .</head><label>225</label><figDesc>Figure 5. The recommendations formulation.</figDesc><graphic coords="7,168.61,266.66,381.96,247.86" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_11"><head>Figure 5 .</head><label>5</label><figDesc>Figure 5. The recommendations formulation.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_12"><head>Figure 6 .</head><label>6</label><figDesc>Figure 6. Filtering based on consumer's interests.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_13"><head>Figure 6 .</head><label>6</label><figDesc>Figure 6. Filtering based on consumer's interests.</figDesc><graphic coords="8,170.01,275.70,381.72,208.50" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_14"><head>Sensors 2022 , 22 Figure 7 .</head><label>2022227</label><figDesc>Figure 7. Example for recommending a user using items similarities.</figDesc><graphic coords="9,167.73,97.09,321.84,223.68" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_15"><head>Figure 8 .</head><label>8</label><figDesc>Figure 8. Example for recommending a user based on user similarities.</figDesc><graphic coords="9,168.78,415.44,321.84,329.28" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_16"><head>Figure 7 .</head><label>7</label><figDesc>Figure 7. Example for recommending a user using items similarities.</figDesc><graphic coords="9,168.78,162.96,321.84,223.68" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_17"><head>Sensors 2022 , 22 Figure 7 .</head><label>2022227</label><figDesc>Figure 7. Example for recommending a user using items similarities.</figDesc><graphic coords="9,167.73,349.57,321.84,329.28" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_18"><head>Figure 8 .</head><label>8</label><figDesc>Figure 8. Example for recommending a user based on user similarities.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_19"><head>Figure 8 .</head><label>8</label><figDesc>Figure 8. Example for recommending a user based on user similarities.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_20"><head>Sensors 2022 ,</head><label>2022</label><figDesc>22, x FOR PEER REVIEW 11 of 22</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_21"><head>Figure 9 .</head><label>9</label><figDesc>Figure 9. Filtering based on consumer's constraints.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_22"><head>Figure 9 .</head><label>9</label><figDesc>Figure 9. Filtering based on consumer's constraints.</figDesc><graphic coords="10,169.33,451.33,382.98,230.52" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_23"><head>Figure 10 .</head><label>10</label><figDesc>Figure 10. High-level system architecture.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_24"><head>Figure 10 .</head><label>10</label><figDesc>Figure 10. High-level system architecture.</figDesc><graphic coords="12,170.01,387.09,387.42,243.36" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_25"><head>Figure 11 .</head><label>11</label><figDesc>Figure 11. IIoTMS deployment diagram.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_26"><head>Figure 11 .</head><label>11</label><figDesc>Figure 11. IIoTMS deployment diagram.</figDesc><graphic coords="13,163.34,321.21,286.58,221.99" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_27"><head>Sensors 2022 , 22 Figure 12 .</head><label>20222212</label><figDesc>Figure 12. Predictions versus actual values on test data using the confusion matrix.</figDesc><graphic coords="14,168.72,532.72,209.41,207.21" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_28"><head>Figure 12 .</head><label>12</label><figDesc>Figure 12. Predictions versus actual values on test data using the confusion matrix.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_29"><head>Figure 13 .</head><label>13</label><figDesc>Figure 13. The SUS score of the IIoTMS.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_30"><head>Figure 14 .</head><label>14</label><figDesc>Figure 14. Users' expectations and their ability to make the right decisions.</figDesc><graphic coords="16,168.83,595.34,368.68,159.66" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_31"><head>Figure 13 .</head><label>13</label><figDesc>Figure 13. The SUS score of the IIoTMS.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_32"><head>Figure 13 .</head><label>13</label><figDesc>Figure 13. The SUS score of the IIoTMS.</figDesc><graphic coords="16,168.71,97.12,346.73,185.87" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_33"><head>Figure 14 .</head><label>14</label><figDesc>Figure 14. Users' expectations and their ability to make the right decisions.Figure 14. Users' expectations and their ability to make the right decisions.</figDesc><graphic coords="16,168.17,399.44,366.05,160.85" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_34"><head>Figure 14 . 22 Figure 15 .</head><label>142215</label><figDesc>Figure 14. Users' expectations and their ability to make the right decisions.Figure 14. Users' expectations and their ability to make the right decisions. Sensors 2022, 22, x FOR PEER REVIEW 18 of 22</figDesc><graphic coords="16,168.71,460.76,346.79,152.39" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_35"><head>Figure 15 .</head><label>15</label><figDesc>Figure 15. Recommended product quality, and IIoTMS reliability.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head>Table 1 .</head><label>1</label><figDesc>The elements of confusion matrix.</figDesc><table><row><cell>Title 1</cell><cell>Relevant</cell><cell>Irrelevant</cell><cell>Total</cell></row><row><cell>Recommended</cell><cell>tp</cell><cell>fp</cell><cell>tp + fp</cell></row><row><cell>Not Recommended</cell><cell>fn</cell><cell>tn</cell><cell>fn + tn</cell></row><row><cell>Total</cell><cell>tp + fn</cell><cell>fp + tn</cell><cell>N</cell></row><row><cell cols="3">tp: true positive, fp: false positive, fn: false negative, tn: true negative.</cell><cell></cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head>Table 2 .</head><label>2</label><figDesc>The performance of IIoTMS classifier.</figDesc><table /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_3"><head>Table 2 .</head><label>2</label><figDesc>The performance of IIoTMS classifier.</figDesc><table><row><cell>Measure</cell><cell>Value</cell></row><row><cell>Precision</cell><cell>1.0000</cell></row><row><cell>Negative Predictive Value</cell><cell>0.9444</cell></row><row><cell>False Positive Rate</cell><cell>0.0000</cell></row><row><cell>False Discovery Rate</cell><cell>0.0000</cell></row><row><cell>False Negative Rate</cell><cell>0.3333</cell></row><row><cell>F1 Score</cell><cell>0.8000</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_4"><head>Table 3 .</head><label>3</label><figDesc>The accuracy of the IIoTMS.</figDesc><table><row><cell>Measure</cell><cell>Value</cell></row><row><cell>Accuracy</cell><cell>0.9500</cell></row><row><cell>ACC = (TP + TN)/(P + N).</cell><cell></cell></row></table></figure>
+		</body>
+		<back>
+
+			<div type="funding">
+<div><p>This research received no external funding. Institutional Review Board Statement: Not applicable.</p></div>
+			</div>
+			<div type="availability">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Data Availability Statement:</head><p>We did not report any data.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Acknowledgments:</head><p>The authors thank everyone who supported us and contributed with us throughout this study. Special thanks to Arafat Mohammed, Abu-Bakr Al-Safi, and GUERROUT Elhachemi.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Conflicts of Interest:</head><p>The authors declare no conflict of interest.</p></div>
+			</div>
+
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<monogr>
+		<title level="m" type="main">Internet of Things A to</title>
+		<author>
+			<persName><forename type="first">Q</forename><forename type="middle">F</forename><surname>Hassan</surname></persName>
+		</author>
+		<idno>978-1-119-45674-2</idno>
+		<editor>Applications, 1st ed.</editor>
+		<editor>Sons, J.W.</editor>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<publisher>John Wiley &amp; Sons</publisher>
+			<pubPlace>Hoboken, NJ, USA</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">The Internet of Things: A survey</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Atzori</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Iera</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Morabito</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.comnet.2010.05.010</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Comput. Netw</title>
+		<imprint>
+			<biblScope unit="volume">54</biblScope>
+			<biblScope unit="page" from="2787" to="2805" />
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Industrial internet of things: Recent advances, enabling technologies and open challenges</title>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">Z</forename><surname>Khan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">H</forename><surname>Rehman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">M</forename><surname>Zangoti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">K</forename><surname>Afzal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Armi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Salah</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.compeleceng.2019.106522</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Comput. Electr. Eng</title>
+		<imprint>
+			<biblScope unit="volume">81</biblScope>
+			<date type="published" when="2020">2020. 106522</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">AI-Enabled Sensing and Decision-Making for IoT Systems</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Qinxia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Nazir</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Ullah Khan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Lianlian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ahmad</surname></persName>
+		</author>
+		<idno type="DOI">10.1155/2021/6616279</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Complexity</title>
+		<imprint>
+			<date type="published" when="2021">2021, 2021, 6616279</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Applications Domains of Internet of Things: A Survey</title>
+		<author>
+			<persName><forename type="first">Ram</forename><surname>Kumar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Sampathrao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Vijay</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">B</forename><surname>Sanjeeva</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Int. J. Eng. Technol. Sci. Res</title>
+		<imprint>
+			<biblScope unit="volume">3</biblScope>
+			<biblScope unit="page" from="54" to="59" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Towards an Improved Energy Efficient and End-to-End Secure Protocol for IoT Healthcare Applications</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Ahmad</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Ullah</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Feng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Khan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ashraf</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Adnan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Nazir</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">U</forename><surname>Khan</surname></persName>
+		</author>
+		<idno type="DOI">10.1155/2020/8867792</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Secur. Commun. Netw</title>
+		<imprint>
+			<biblScope unit="volume">8867792</biblScope>
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<monogr>
+		<title level="m" type="main">Real-time analysis of online sources for supporting business intelligence illustrated with bitcoin investments and IoT smart-meter sensors in smart cities</title>
+		<author>
+			<persName><forename type="first">I</forename><surname>García-Magariño</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">M</forename><surname>Nasralla</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Nazir</surname></persName>
+		</author>
+		<idno type="DOI">10.3390/electronics9071101</idno>
+		<imprint>
+			<date type="published" when="1101">2020. 1101</date>
+			<biblScope unit="volume">9</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<monogr>
+		<ptr target="https://www.the-iot-marketplace.com/" />
+		<title level="m">The IoT Marketplace-IoT Kits with Sensors, Gateways and Cloud Connectivity; Libelium: Zaragoza, Spain. 2022. Available online</title>
+		<imprint>
+			<date type="published" when="2022-02-14">14 February 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">Iot</forename><surname>Telus</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Marketplace</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Telus</surname></persName>
+		</author>
+		<ptr target="https://iot.telus.com/en/business/on/" />
+		<imprint>
+			<date type="published" when="2021-01">2021. January 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<monogr>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">K</forename><surname>Sikder</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Petracca</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Aksu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Jaeger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">S</forename><surname>Uluagac</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/CCA.2014.6981462</idno>
+		<idno type="arXiv">arXiv:1802.02041</idno>
+		<title level="m">Survey on Sensor-based Threats to Internet-of-Things (IoT) Devices and Applications</title>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Internet of things: Current challenges in the quality assurance and testing methods</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Bures</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Cerny</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">S</forename><surname>Ahmed</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the International Conference on Information Science and Applications ICISA</title>
+		<meeting>the International Conference on Information Science and Applications ICISA<address><addrLine>Hong Kong, China; Singapore</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2018-06">June 2018. 2018</date>
+			<biblScope unit="page" from="1" to="10" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Aspects of Quality in Internet of Things (IoT) Solutions: A Systematic Mapping Study</title>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">S</forename><surname>Ahmed</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Bures</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Frajtak</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Cerny</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">Y</forename><surname>Jan</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/ACCESS.2019.2893493</idno>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Access</title>
+		<imprint>
+			<biblScope unit="volume">7</biblScope>
+			<biblScope unit="page" from="13758" to="13780" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<monogr>
+		<title level="m" type="main">IoT System Tests: Checking for Failure; Supplyframe Hardware</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Amos</surname></persName>
+		</author>
+		<ptr target="https://medium.com/supplyframe-hardware/iot-system-tests-checking-for-" />
+		<imprint>
+			<date type="published" when="2018-02-05">2018. 5 February 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Quality-enabled decentralized IoT architecture with efficient resources utilization</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Mocnej</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Pekar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">K G</forename><surname>Seah</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Papcun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Kajati</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Cupkova</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Koziorek</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Zolotova</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.rcim.2020.102001</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Robot. Comput. Integr. Manuf</title>
+		<imprint>
+			<biblScope unit="volume">67</biblScope>
+			<date type="published" when="2020">2020. 102001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Delivering value to customers</title>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">H</forename><surname>Waston</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Peter</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Drucker</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Qual. Prog</title>
+		<imprint>
+			<biblScope unit="volume">35</biblScope>
+			<biblScope unit="page" from="55" to="61" />
+			<date type="published" when="2002">2002</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Analyzing and Evaluating Smart Cities for IoT Based on Use Cases Using the Analytic Network Process</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Nazir</surname></persName>
+		</author>
+		<idno type="DOI">10.1155/2021/6674479</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Mob. Inf. Syst</title>
+		<imprint>
+			<biblScope unit="volume">6674479</biblScope>
+			<date type="published" when="2021">2021, 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Managing the Quality of Experience in the Multimedia Internet of Things: A layered-based approach</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Floris</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Atzori</surname></persName>
+		</author>
+		<idno type="DOI">10.3390/s16122057</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Sensors</title>
+		<imprint>
+			<biblScope unit="volume">16</biblScope>
+			<date type="published" when="2016">2016. 20571</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">A Quality Model for Evaluating IoT Applications</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Kim</surname></persName>
+		</author>
+		<idno type="DOI">10.17706/IJCEE.2016.8.1.66-76</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Int. J. Comput. Electr. Eng</title>
+		<imprint>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="page" from="66" to="76" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Evaluating an IoT Application Using Software Measures</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">M</forename><surname>Carvalho</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">M C</forename><surname>Andrade</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Barbosa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">I M</forename><surname>Bezerra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">M</forename><surname>Oliveira</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the International Conference on Distributed, Ambient, and Pervasive Interactions</title>
+		<meeting>the International Conference on Distributed, Ambient, and Pervasive Interactions<address><addrLine>Vancouver, BC, Canada; Cham, Switzerland</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2017-07">2017. July 2017. 2017</date>
+			<biblScope unit="volume">10291</biblScope>
+			<biblScope unit="page" from="22" to="33" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Software quality model for Internet of Things governance</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">J C</forename><surname>Tambotoh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">M</forename><surname>Isa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">L</forename><surname>Gaol</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Soewito</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">L H S</forename><surname>Warnars</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2016 International Conference on Data and Software Engineering, ICoDSE</title>
+		<meeting>the 2016 International Conference on Data and Software Engineering, ICoDSE<address><addrLine>Denpasar, Indonesia</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2016-10">2016. October 2016</date>
+			<biblScope unit="page" from="1" to="6" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Dealing with Conflicts between Non-Functional Requirements of UbiComp and IoT Applications</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">M</forename><surname>Carvalho</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/RE.2017.51</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2017 IEEE 25th International Requirements Engineering Conference (RE)</title>
+		<meeting>the 2017 IEEE 25th International Requirements Engineering Conference (RE)<address><addrLine>Lisbon, Portugal</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2017-09">September 2017</date>
+			<biblScope unit="page" from="544" to="549" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Towards a Catalog of Conflicts for HCI Quality Characteristics in UbiComp and IoT Applications: Process and First Results</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">M</forename><surname>Carvalho</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">M C</forename><surname>Andrade</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">M</forename><surname>Oliveira</surname></persName>
+		</author>
+		<author>
+			<persName><surname>De</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2018 12th International Conference on Research Challenges in Information Science (RCIS)</title>
+		<meeting>the 2018 12th International Conference on Research Challenges in Information Science (RCIS)<address><addrLine>Nantes, France</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2018-05">May 2018</date>
+			<biblScope unit="page">6</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">An Internet of things QoS estimate approach based on multi-dimension QoS</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Rong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 9th International Conference on Computer Science and Education</title>
+		<meeting>the 9th International Conference on Computer Science and Education<address><addrLine>Vancouver, BC, Canada</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2014-08">2014. August 2014</date>
+			<biblScope unit="page" from="998" to="1002" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<monogr>
+		<author>
+			<persName><forename type="first">M</forename><surname>Altulyan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Yao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">S</forename><surname>Kanhere</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><forename type="middle">Z</forename><surname>Sheng</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2007.06758</idno>
+		<title level="m">Recommender Systems for the Internet of Things: A Survey</title>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Diversified Personalized Recommendation Optimization Based on Mobile Data</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Cao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Lv</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Yang</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/TITS.2020.3040909</idno>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Trans. Intell. Transp. Syst</title>
+		<imprint>
+			<biblScope unit="volume">22</biblScope>
+			<biblScope unit="page" from="2133" to="2139" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<monogr>
+		<title level="m" type="main">Deep learning-enhanced framework for performance evaluation of a recommending interface with varied recommendation position and intensity based on eye-tracking equipment data processing</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Sulikowski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Zdziebko</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="page">266</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">An approach to evaluate trust and reputation of things in a Multi-IoTs scenario</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Ursino</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Virgili</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s00607-020-00818-5</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Computing</title>
+		<imprint>
+			<biblScope unit="volume">102</biblScope>
+			<biblScope unit="page" from="2257" to="2298" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Performance evaluation of recommendation algorithms on Internet of Things services</title>
+		<author>
+			<persName><forename type="first">I</forename><surname>Mashal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Alsaryrah</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">Y</forename><surname>Chung</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.physa.2016.01.051</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Phys. A Stat. Mech. Its Appl</title>
+		<imprint>
+			<biblScope unit="volume">451</biblScope>
+			<biblScope unit="page" from="646" to="656" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Testing and evaluating recommendation algorithms in internet of things</title>
+		<author>
+			<persName><forename type="first">I</forename><surname>Mashal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Alsaryrah</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">Y</forename><surname>Chung</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s12652-016-0357-4</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Ambient Intell. Humaniz. Comput</title>
+		<imprint>
+			<biblScope unit="volume">7</biblScope>
+			<biblScope unit="page" from="889" to="900" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<monogr>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">K</forename><surname>Shabanabegum</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Anusha</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Seethalakshmi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Shunmugam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Vadivukkarasi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Vijayakumar</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.matpr.2020.11.302</idno>
+		<title level="m">IOT enabled food recommender with NIR system. Mater. Today Proc. 2020</title>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<monogr>
+		<title level="m" type="main">Quality of Telecommunication Services-Terms and Definitions Related to the Quality of Service; International Telecommunication Union</title>
+		<author>
+			<persName><surname>Itu-T</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2008">2008</date>
+			<biblScope unit="volume">E</biblScope>
+			<biblScope unit="page" from="1" to="30" />
+			<pubPlace>Geneva, Switzerland</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">ISO 9000: Quality Management Systems-Fundamentals Ans Vocabulary</title>
+		<author>
+			<persName><surname>Iso</surname></persName>
+		</author>
+		<ptr target="https://www.iso.org/obp/ui/#iso" />
+	</analytic>
+	<monogr>
+		<title level="m">:std:iso:9000:ed-4:v1:en</title>
+		<imprint>
+			<date type="published" when="2005-10-07">2005. 7 October 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<monogr>
+		<title level="m" type="main">Learning to make Recommendations. A Medium Corporation</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Shetty</surname></persName>
+		</author>
+		<ptr target="https://towardsdatascience.com/learning-to-make-recommendations-745d13883951" />
+		<imprint>
+			<date type="published" when="2021-01">2021. January 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<monogr>
+		<title level="m" type="main">Introduction to recommender systems handbook</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Ricci</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Rokach</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Shapira</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">B</forename><surname>Kantor</surname></persName>
+		</author>
+		<editor>Recommender Systems Handbook</editor>
+		<editor>Ricci, F., Rokach, L., Shapira, B., Kantor, P.B.</editor>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+			<publisher>Springer</publisher>
+			<biblScope unit="page" from="1" to="35" />
+			<pubPlace>Boston, MA, USA</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Adversarial machine learning in recommender systems (AML-RECSYS). WSDM &apos;20</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Deldjoo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Di Noia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">A</forename><surname>Merra</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3336191.3371877</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 13th International Conference on Web Search and Data Mining</title>
+		<meeting>the 13th International Conference on Web Search and Data Mining<address><addrLine>Houston, TX, USA</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2020-02">February 2020</date>
+			<biblScope unit="page" from="869" to="872" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<monogr>
+		<title level="m" type="main">IoT Use Case Database. IoT ONE Solution</title>
+		<author>
+			<persName><forename type="first">One</forename><surname>Iot</surname></persName>
+		</author>
+		<ptr target="https://www.iotone.com/usecases" />
+		<imprint>
+			<date type="published" when="2022-01-12">2022. 12 January 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<monogr>
+		<title level="m" type="main">What Is an IoT Marketplace? Canonical Ltd.: London, UK, 2021</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Hall</surname></persName>
+		</author>
+		<ptr target="https://snapcraft.io/blog/what-is-an-iot-marketplace" />
+		<imprint>
+			<date type="published" when="2022-01-13">13 January 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<monogr>
+		<title level="m" type="main">Software Product Quality Control</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Wagner</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+			<publisher>Springer</publisher>
+			<pubPlace>Stuttgart, Germany</pubPlace>
+		</imprint>
+	</monogr>
+	<note>ISBN 9783642385704</note>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<monogr>
+		<title level="m" type="main">Recommender Systems with Deep Learning Architectures. Towards Data Science</title>
+		<author>
+			<persName><forename type="first">I</forename><surname>Ilin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Chikin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Solodskih</surname></persName>
+		</author>
+		<ptr target="https://towardsdatascience.com/recommender-systems-with-deep-learning-architectures" />
+		<imprint>
+			<date type="published" when="2018">2018. 1adf4eb0f7a6. 22 November 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Recommendation systems: Principles, methods and evaluation. Egypt</title>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">O</forename><surname>Isinkaye</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><forename type="middle">O</forename><surname>Folajimi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">A</forename><surname>Ojokoh</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.eij.2015.06.005</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Inform. J</title>
+		<imprint>
+			<biblScope unit="volume">16</biblScope>
+			<biblScope unit="page" from="261" to="273" />
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">Machine Learning Algorithms for Recommender System-A comparative analysis</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">P</forename><surname>Sahu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Nautiyal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Prasad</surname></persName>
+		</author>
+		<idno type="DOI">10.7753/IJCATR0602.1005</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Int. J. Comput. Appl. Technol. Res</title>
+		<imprint>
+			<biblScope unit="volume">6</biblScope>
+			<biblScope unit="page" from="97" to="100" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">Deep learning based recommender system: A survey and new perspectives</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Yao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Tay</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3158369</idno>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Comput. Surv</title>
+		<imprint>
+			<biblScope unit="volume">52</biblScope>
+			<biblScope unit="page" from="1" to="35" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title level="a" type="main">Products Suggestions</title>
+		<author>
+			<persName><surname>Amazon</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Available online: Amazon.com</title>
+		<imprint>
+			<date type="published" when="2019-02-02">2019. 2 February 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<analytic>
+		<title level="a" type="main">An overview of recommender systems in the internet of things</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Felfernig</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">P</forename><surname>Christoph</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">U</forename><surname>Stefan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Atas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Ngoc</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Tran</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Azzoni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Kiraly</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Dolui</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10844-018-0530-7</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Intell. Inf. Syst</title>
+		<imprint>
+			<biblScope unit="volume">52</biblScope>
+			<biblScope unit="page" from="285" to="309" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<monogr>
+		<author>
+			<persName><forename type="first">S</forename><surname>Polamuri</surname></persName>
+		</author>
+		<title level="m">Five Most Popular Similarity Measures Implementation in Python. Available online: Dataaspirant.com</title>
+		<imprint>
+			<date type="published" when="2022-01-17">17 January 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<analytic>
+		<title level="a" type="main">Network-based heuristics for constraint-satisfaction problems</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Dechter</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Pearl</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Search in Artificial Intelligence</title>
+		<meeting><address><addrLine>New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="1988">1988</date>
+			<biblScope unit="page" from="370" to="425" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<analytic>
+		<title level="a" type="main">An Integrated Environment for the Development of Knowledge-Based Recommender Applications</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Felfernig</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Friedrich</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Jannach</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zanker</surname></persName>
+		</author>
+		<idno type="DOI">10.2753/JEC1086-4415110201</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Int. J. Electron. Commer</title>
+		<imprint>
+			<biblScope unit="volume">2</biblScope>
+			<biblScope unit="page" from="109" to="129" />
+			<date type="published" when="2006">2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<analytic>
+		<title level="a" type="main">New recommendation techniques for multicriteria rating systems</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Adomavicius</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><forename type="middle">O</forename><surname>Kwon</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Intell. Syst</title>
+		<imprint>
+			<biblScope unit="volume">22</biblScope>
+			<biblScope unit="page" from="48" to="55" />
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<monogr>
+		<title level="m" type="main">Machine Learning for Recommender Systems-Part 1 (Algorithms, Evaluation and Cold Start)</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Kordík</surname></persName>
+		</author>
+		<ptr target="https://medium.com/recombee-blog/machine-learning-for-recommender-systems-part-1-algorithms-" />
+		<imprint>
+			<date type="published" when="2018-10-13">2018. 13 October 2021</date>
+		</imprint>
+	</monogr>
+	<note>evaluation-and-cold-start-6f696683d0ed</note>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<monogr>
+		<title level="m" type="main">Deep Learning Based Recommender Systems. towards Data Science</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Loy</surname></persName>
+		</author>
+		<ptr target="https://towardsdatascience.com/deep-learning-based-recommender" />
+		<imprint>
+			<date type="published" when="2020-03-02">2020. 2 March 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<monogr>
+		<title level="m" type="main">Indoor Navigation Solutions</title>
+		<ptr target="https://www.infsoft.com/" />
+		<imprint>
+			<date type="published" when="2019-12-12">2019. 12 December 2021</date>
+			<publisher>Infsoft Gmbh</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b51">
+	<analytic>
+		<title level="a" type="main">Setting goals and choosing metrics for recommender system evaluations</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Schröder</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Thiele</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Lehner</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">CEUR Workshop Proc</title>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="volume">811</biblScope>
+			<biblScope unit="page" from="78" to="85" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b52">
+	<analytic>
+		<title level="a" type="main">Classification and Comparison of the Hybrid Collaborative Filtering Systems</title>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">S</forename><surname>Gohari</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Tarokh</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Int. J. Res</title>
+		<imprint>
+			<biblScope unit="volume">6</biblScope>
+			<biblScope unit="page" from="129" to="148" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b53">
+	<analytic>
+		<title level="a" type="main">Using Machine Learning on Compute Engine to Make Product Recommendations</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Cloud</surname></persName>
+		</author>
+		<ptr target="https://cloud.google.com/architecture/recommendations-using-machine-learning-on-compute-engine" />
+	</analytic>
+	<monogr>
+		<title level="s">Google Cloud Architecture Center</title>
+		<imprint>
+			<date type="published" when="2016-01">2016. January 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b54">
+	<analytic>
+		<title level="a" type="main">The Social Internet of Things (SIoT)-When Social Networks meet the Internet of Things: Concept, Architecture and Network Characterization</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Atzori</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Iera</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Morabito</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Nitti</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.comnet.2012.07.010</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Comput. Netw</title>
+		<imprint>
+			<biblScope unit="volume">56</biblScope>
+			<biblScope unit="page" from="3594" to="3608" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from fastapi import FastAPI
 from starlette.responses import JSONResponse
 
@@ -6,7 +8,6 @@ from Services.FileHandler import FileHandler
 
 from Services.PDFProcessor import PDFProcessor
 from env import *
-import concurrent.futures
 from pydantic import BaseModel
 
 #docker run --rm -d --init --ulimit core=0 -p 8070:8070 lfoppiano/grobid:0.8.0
@@ -22,34 +23,38 @@ class PostUrlModel(BaseModel):
 
 @app.post("/")
 async def read_root(data: PostUrlModel):
-    print(f"Received URL: {data}")
-    url = data.URL
 
+
+    url = data.URL
 
     print("Starting the download process")
 
     FileHandler.downloadFileLink(url, FILE_PATH)
+    starting_time = datetime.now()
 
     if not FileHandler.checkPDFCorruption(FILE_PATH):
         return JSONResponse(content={"error": "Corrupted PDF file"})
 
+
     pdfProcessor = PDFProcessor()
     # Turn the PDF into text/dict
 
-    # Execute in parallel using ThreadPoolExecutor
-    with concurrent.futures.ThreadPoolExecutor() as executor:
-        text_future = executor.submit(pdfProcessor.extractText, FILE_PATH)
-        dict_future = executor.submit(pdfProcessor.extractDict, FILE_FOLDER_PATH)
+    fileDict = pdfProcessor.extractDict()
 
-    # Get results
-    fileText = text_future.result()
-    fileDict = dict_future.result()
 
-    # Takes fileText and FileDict to build the articlee
-    articleBuilder = ArticleBuilder(fileText,fileDict)
+    # Takes FileDict to build the article
+    articleBuilder = ArticleBuilder(fileDict)
 
     # Build the article object
     myArticle = articleBuilder.build()
     myArticle.URL = url
 
+    time_elapsed = datetime.now() - starting_time
+    print('Time elapsed (hh:mm:ss.ms) {}'.format(time_elapsed))
+
     return JSONResponse(content=myArticle.__dict__())
+
+
+@app.get("/")
+async def read_root():
+    return {"Hello": "World"}

@@ -1,0 +1,732 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Understanding Vector-Valued Neural Networks and Their Relationship with Real and Hypercomplex-Valued Neural Networks</title>
+				<funder ref="#_MfynnJ8">
+					<orgName type="full">São Paulo Research Foundation (FAPESP)</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">Polish National Agency for Academic Exchange</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">Fuzzy Neural Networks</orgName>
+				</funder>
+				<funder ref="#_hnwxuAW">
+					<orgName type="full">National Council for Scientific and Technological Development (CNPq)</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2023-09-14">14 Sep 2023</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author role="corresp">
+							<persName><forename type="first">Marcos</forename><forename type="middle">Eduardo</forename><surname>Valle</surname></persName>
+							<email>valle@ime.unicamp.br</email>
+							<affiliation key="aff0">
+								<orgName type="department" key="dep1">Department Applied Mathematics</orgName>
+								<orgName type="department" key="dep2">Institute of Mathematics, Statistics, and Scientific Computing</orgName>
+								<orgName type="institution">Universidade Estadual de Campinas (Unicamp)</orgName>
+								<address>
+									<addrLine>Campinas -Brazil</addrLine>
+								</address>
+							</affiliation>
+							<affiliation key="aff0">
+								<orgName type="department" key="dep1">Department Applied Mathematics</orgName>
+								<orgName type="department" key="dep2">Institute of Mathematics, Statistics, and Scientific Computing</orgName>
+								<orgName type="institution">Universidade Estadual de Campinas (Unicamp)</orgName>
+								<address>
+									<addrLine>Campinas -Brazil</addrLine>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Understanding Vector-Valued Neural Networks and Their Relationship with Real and Hypercomplex-Valued Neural Networks</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2023-09-14">14 Sep 2023</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">27066378DAEE5D47AAC39D6300778E1C</idno>
+					<idno type="DOI">10.48550/arXiv.2309.07716</idno>
+					<idno type="arXiv">arXiv:2309.07716v1[cs.LG]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.0" ident="GROBID" when="2023-12-10T20:22+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>Multidimensional signal and image processing</term>
+					<term>vector-valued neural network</term>
+					<term>hypercomplex-valued neural network</term>
+					<term>deep learning</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Despite the many successful applications of deep learning models for multidimensional signal and image processing, most traditional neural networks process data represented by (multidimensional) arrays of real numbers. The intercorrelation between feature channels is usually expected to be learned from the training data, requiring numerous parameters and careful training. In contrast, vector-valued neural networks are conceived to process arrays of vectors and naturally consider the intercorrelation between feature channels. Consequently, they usually have fewer parameters and often undergo more robust training than traditional neural networks. This paper aims to present a broad framework for vectorvalued neural networks, referred to as V-nets. In this context, hypercomplex-valued neural networks are regarded as vector-valued models with additional algebraic properties. Furthermore, this paper explains the relationship between vector-valued and traditional neural networks. Precisely, a vector-valued neural network can be obtained by placing restrictions on a real-valued model to consider the intercorrelation between feature channels. Finally, we show how V-nets, including hypercomplex-valued neural networks, can be implemented in current deep-learning libraries as real-valued networks.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>I. INTRODUCTION</head><p>Neural networks achieved outstanding performance in many signal and image processing tasks, especially with the advent of the deep learning paradigm <ref type="bibr" target="#b0">[1]</ref>, <ref type="bibr" target="#b1">[2]</ref>. Despite their many successful applications, traditional neural networks are theoretically designed to process real-valued or, at most, complex-valued data. Accordingly, signals and images are represented by (possibly multidimensional) arrays of real or complex numbers <ref type="bibr" target="#b0">[1]</ref>, <ref type="bibr" target="#b2">[3]</ref>, <ref type="bibr" target="#b3">[4]</ref>. Furthermore, traditional neural networks a priori do not consider possible intercorrelation between feature channels. The relationship between features is expected to be learned from the training data. Consequently, besides relying on appropriate loss functions and effective optimizers, traditional deep learning models usually have too many parameters and demand a long training time.</p><p>In contrast, vector-valued neural networks (V-nets) are designed to process arrays of vectors. They naturally take into account the intercorrelation between feature channels. Hence, V-nets are expected to have fewer parameters than traditional neural networks. Furthermore, they should be less susceptible to being trapped in a local minimum of the loss function surface during the training. Hypercomplex-valued neural networks are examples of robust and lightweight V-nets for dealing with vector-valued data <ref type="bibr" target="#b4">[5]</ref>, <ref type="bibr" target="#b5">[6]</ref>, <ref type="bibr" target="#b6">[7]</ref>, <ref type="bibr" target="#b7">[8]</ref>.</p><p>This paper aims to present a detailed framework for V-nets, making plain and understandable their relationship with traditional networks and hypercomplex-valued neural networks. Precisely, we first present the mathematical background for vector-valued neural networks. Then, we address the relationship between real and hypercomplex-valued neural networks, focusing on dense and convolutional layers.</p><p>On the one hand, hypercomplex-valued neural networks are regarded as vector-valued models with additional algebraic properties. On the other hand, V-nets can be viewed as traditional neural networks with restrictions to take into account the intercorrelation between the feature channels. Using these relationships, we show how to emulate vector-valued (and hypercomplex-valued) neural networks using traditional models, allowing us to implement them using current deep-learning libraries.</p><p>The paper is structured as follows. Section II provides the mathematical background for V-nets, including hypercomplex algebras and examples <ref type="bibr" target="#b8">[9]</ref>, <ref type="bibr" target="#b9">[10]</ref>, <ref type="bibr" target="#b10">[11]</ref>. Basic vector-valued matrix operations and their relationship with traditional linear algebra are briefly reviewed in Section III. Section IV introduces V-nets, with a focus on dense and convolutional layers. This section also addresses the approximation capability of shallow dense networks and explains how to implement V-nets using the current deeplearning libraries designed for real-valued data. The paper finishes with concluding remarks in Section V.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>II. VECTOR AND HYPERCOMPLEX ALGEBRAS</head><p>Despite their many successful applications, traditional neural networks are designed to process arrays of real numbers. However, many image and signal-processing tasks -such as those related to multivariate images and 3D audio signals <ref type="bibr" target="#b7">[8]</ref>, <ref type="bibr" target="#b11">[12]</ref> -are concerned with vector-valued data, which can be better explored by considering models designed to deal with arrays of vectors. Because addition and multiplication are core operations for designing effective neural networks, this section reviews some key concepts of algebra. Broadly speaking, an algebra is a vector space (with component-wise vector addition) enriched with a multiplication of vectors. Such mathematical structure yields the background for developing vector-valued and hypercomplex-valued neural networks.</p><p>Definition 1 (Algebra <ref type="bibr" target="#b10">[11]</ref>). An algebra V is a vector space over F with an additional bilinear operation called multiplication.</p><p>As a bilinear operation, the multiplication of x, y ∈ V, denoted by the juxtaposition xy, satisfies (x + y)z = xz + yz and z(x + y) = zx + zy, ∀x, y, z ∈ V, and α(xy) = (αx)y = x(αy), ∀α ∈ F and x, y ∈ V.</p><p>Remark 1. Because we are mainly concerned with the implementation of models on traditional computers, for the sake of simplicity, we only consider algebras over the field of real numbers, that is, F = R.</p><p>Furthermore, we will only be concerned with finite dimensional vector spaces. In other words, we assume that V is a vector space of dimension n, i.e., dim(V) = n.</p><p>Let E = {e 1 , e 2 , . . . , e n } be an ordered basis for V. Given x ∈ V, there is an unique n-tuple</p><formula xml:id="formula_0">(x 1 , x 2 , . . . , x n ) ∈ R n such that x = n i=1</formula><p>x i e i .</p><p>The scalars x 1 , . . . , x n are the coordinates of x relative to the ordered basis E. In computational applications, x ∈ V is given by its coordinates relative to the ordered basis E = {e 1 , . . . , e n }. Precisely, x is usually given by a vector in R n , and the canonical basis is often implicitly considered. In order to further distinguish x ∈ V from the n-tuple (x 1 , . . . , x n ) ∈ R n , we introduce the following isomorphism: Definition 2 (Isomorphism between V and R n ). Given an ordered basis E = {e 1 , . . . , e n }, the mapping</p><formula xml:id="formula_1">ϕ : V → R n given by ϕ(x) =      x 1 . . . x n      ∈ R n , ∀x ∈ V,<label>(1)</label></formula><p>yields an isomorphism between V and R n .</p><p>Using the isomorphism ϕ, V inherits the topology and metric from R n . For example, we can define the absolute value of x ∈ V with respect to the basis E = {e 1 , . . . , e n } as the Euclidean norm of ϕ(x):</p><formula xml:id="formula_2">|x| := ϕ(x) 2 = x 2 1 + x 2 2 + . . . + x 2 n .<label>(2)</label></formula><p>We would like to remark, however, that the absolute value of x given by ( <ref type="formula" target="#formula_2">2</ref>) is not an invariant; it depends on the basis E = {e 1 , . . . , e n }. Like traditional linear algebra, the basis E plays a crucial role in the algebra V.</p><p>Let us now show how multiplication is defined on V. Given an ordered basis E = {e 1 , . . . , e n }, the multiplication is completely determined by the n 3 parameters p ijk ∈ R which appear in the products</p><formula xml:id="formula_3">e i e j = n k=1 p ijk e k , ∀i, j = 1, . . . , n.<label>(3)</label></formula><p>The products in (3) can be arranged in the so-called multiplication table: e j . . .</p><formula xml:id="formula_4">e i • • • n k=1 p ijk e k • • • . . .</formula><p>The properties of an algebra can be obtained by analyzing the basis elements or the multiplication table. For example, an algebra V is considered commutative if</p><formula xml:id="formula_5">xy = yx, ∀x, y ∈ V.</formula><p>Given an ordered basis E = {e 1 , . . . , e n }, the algebra is commutative if and only if e i e j = e j e i , ∀i, j = 1, . . . , n.</p><p>Equivalently, from the multiplication table, we conclude that an algebra is commutative if and only if</p><formula xml:id="formula_6">p ijk = p jik , ∀i, j, k = 1, . . . , n.</formula><p>Analogously, an algebra V is associative if</p><formula xml:id="formula_7">(xy)z = x(yz), ∀x, y, z ∈ V.</formula><p>Thus, the algebra is associative if and only if (e i e j )e k = e i (e j e k ), ∀i, j, k = 1, . . . , n.</p><p>In other words, an algebra is associative if and only if</p><formula xml:id="formula_8">n µ=1 p ijµ p kµℓ = n µ=1 p jkµ p iµℓ , ∀i, j, k, ℓ = 1, . . . , n.</formula><p>The interest in machine learning techniques and neural network models based on hypercomplex algebras, including predominantly complex numbers and quaternions, has a long history <ref type="bibr" target="#b12">[13]</ref>, <ref type="bibr" target="#b13">[14]</ref>. Many researchers (including myself) list the capability to treat multidimensional data as a single entity as one prominent advantage of hypercomplex-valued models. According to Definition 1, however, any algebra provides the mathematical background for dealing with arrays of vectors. Therefore, I suggest defining hypercomplex algebras as algebra with additional (geometric or) algebraic properties. Precisely, I propose the following:</p><p>Definition 3 (Hypercomplex algebra <ref type="bibr" target="#b8">[9]</ref>, <ref type="bibr" target="#b9">[10]</ref>). A hypercomplex algebra, denoted by H, is a finitedimensional algebra in which the product has a two-sided identity.</p><p>From Definition 3, a hypercomplex algebra H is equipped with an unique element e 0 such that</p><formula xml:id="formula_9">xe 0 = e 0 x = x, ∀x ∈ V.</formula><p>The identity is usually the first element of the ordered basis. Thus, E = {e 0 , e 1 , . . . , e n } is an ordered basis of an hypercomplex algebra and dim(H) = n + 1. Moreover, we often consider the canonical basis τ = {1, i 1 , . . . , i n }. Accordingly, a hypercomplex number is given by</p><formula xml:id="formula_10">x = x 0 + x 1 i 1 + . . . + x n i n .</formula><p>The multiplication table of a hypercomplex algebra with respect to the canonical basis τ = {1, i 1 , . . . , i n } is</p><formula xml:id="formula_11">1 i 1 i j i n 1 1 i 1 i j i n . . . i i i i • • • p ij0 + n k=1 p ijk i k • • • . . . Remark 2.</formula><p>We would like to remark that Definition 3 is consistent with the general approach of Kantor and Solodovnik and includes well-known hypercomplex algebras as particular instances <ref type="bibr" target="#b8">[9]</ref>. In particular, all Clifford and Cayley-Dickson algebras are examples of hypercomplex algebras.</p><p>Let us return our attention to an arbitrary finite-dimensional algebra V. Using the distributive law and the multiplication table, the product of x = n i=1 x i e i and y = n j=1 y j e j satisfies xy = n i=1</p><p>x i e i Because the product is bilinear, the function</p><formula xml:id="formula_12">B k : V × V → R given by B k (x, y) = n i=1 n j=1</formula><p>x i y j p ijk , ∀k = 1, . . . , n, is a bilinear form. Therefore, we obtain the following proposition <ref type="bibr" target="#b14">[15]</ref>:</p><formula xml:id="formula_13">Proposition 1. Let E = {e 1 , .</formula><p>. . , e n } be an ordered basis of an algebra V. The multiplication of x = n i=1 x i e i and y = n j=1 y j e j satisfies</p><formula xml:id="formula_14">xy = n k=1 B k (x, y)e k ,<label>(4)</label></formula><p>where B k : V × V → R is a bilinear form whose matrix representation in the ordered basis E is</p><formula xml:id="formula_15">B k =         p 11k p 12k . . . p 1nk p 21k p 22k . . . p 2nk . . . . . . . . . . . . p n1k p n2k . . . p nnk         ∈ R n×n , ∀k = 1, . . . , n.</formula><p>Thus, we have</p><formula xml:id="formula_16">B k (x, y) = ϕ(x) T B k ϕ(y).</formula><p>Using Proposition 1, we introduce the following definition that plays an important role in the approximation capability of V-nets such as the vector-valued multilayer perception (V-MLP) <ref type="bibr" target="#b14">[15]</ref>:</p><p>Definition 4 (Non-degenerate algebra). An algebra V is non-degenerate if all the bilinear forms B 1 , . . . , B n in (4) are non-degenerate 1 . Otherwise, we say that the algebra V is degenerate.</p><p>In addition to expressing the multiplication of two vectors through bilinear forms, it can also be represented as a matrix-vector operation. Precisely, the multiplication to the left by a vector a</p><formula xml:id="formula_17">= n i=1 a i e i ∈ V 1 A bilinear form B k : V × V → R is non-degenerate if its matrix representation B k is non-singular with respect to any ordered basis E = {e1, . . . , en}.</formula><p>yields a linear operator A L : V → V defined by A L (x) = ax, for all x ∈ V. Therefore, the matrix representation of A L relative to an ordered basis E = {e 1 , . . . , e n } yields a mapping</p><formula xml:id="formula_18">M L : V → R n×n</formula><p>given by</p><formula xml:id="formula_19">M L (a) =      | | | ϕ(ae 1 ) ϕ(ae 2 ) . . . ϕ(ae n ) | | |      =         n i=1 a i p i11 n i=1 a i p i21 . . . n i=1 a i p in1 n i=1 a i p i12 n i=1 a i p i22 . . . n i=1 a i p in2 . . . . . . . . . . . . n i=1 a i p i1n n i=1 a i p i2n . . . n i=1 a i p inn         .</formula><p>In words, M L : V → R n×n maps a vector a ∈ V to its matrix representation in the multiplication by the left with respect to the ordered basis E. Alternatively, we can write</p><formula xml:id="formula_20">M L (a) = n i=1 a i P T i: , with P T i: =         p i11 p i21 . . . p in1 p i12 p i22 . . . p in2 . . . . . . . . . . . . p i1n p i2n . . . p inn         . (<label>5</label></formula><formula xml:id="formula_21">)</formula><p>Using the matrix representation, we have</p><formula xml:id="formula_22">ϕ(ax) = M L (a)ϕ(x) = n i=1 a i P T i: ϕ(x),<label>(6)</label></formula><p>for all a = n i=1 a i e i ∈ V and x ∈ V. Note that (6) provides an efficient formula for computing vector multiplication using traditional matrix operations.</p><p>Example 1 (Quaternions). Consider the quaternions with the canonical basis τ = {1, i, j, k}. The product</p><formula xml:id="formula_23">of x = x 0 + x 1 i + x 2 j + x 3 k and y = y 0 + y 1 i + y 2 j + y 3 k satisfies ϕ(xy) =         x 0 -x 1 -x 2 -x 3 x 1 x 0 -x 3 x 2 x 2 x 3 x 0 -x 1 x 3 -x 2 x 1 x 0                 y 0 y 1 y 2 y 3         = M L (x)ϕ(y).</formula><p>Note that M L (x) = x 0 P 0: + x 1 P 1: + x 2 P 2: + x n P n: , where P 0: = I 4×4 is the identity matrix and</p><formula xml:id="formula_24">P T 1: =         0 -1 0 0 1 0 0 0 0 0 0 -1 0 0 1 0         , P T 2: =         0 0 -1 0 0 0 0 1 1 0 0 0 0 -1 0 0        </formula><p>, and</p><formula xml:id="formula_25">P T 3: =         0 0 0 -1 0 0 -1 0 0 1 0 0 1 0 0 0         .</formula><p>Example 2 (Parametrized "Hypercomplex" Algebras). Recently, Zhang et al. introduced the so-called parametrized "hypercomplex" algebras <ref type="bibr" target="#b15">[16]</ref>, <ref type="bibr" target="#b6">[7]</ref>. A parametrized "hypercomplex" algebra is defined as follows using the matrix representation of the multiplication: Given matrices P 1 , . . . , P n ∈ R n×n and an ordered basis E = {e 1 , . . . , e n }, the product in a parametrized "hypercomplex" algebra is defined by</p><formula xml:id="formula_26">xy = ϕ -1 n i=1 x i P i ϕ(y) ,<label>(7)</label></formula><p>for all x = n i=1 x i e i and y = n i=1 y i e i . Note that ( <ref type="formula" target="#formula_26">7</ref>) is equivalent to <ref type="bibr" target="#b5">(6)</ref>. Therefore, despite being referred to as "hypercomplex", the multiplication given by <ref type="bibr" target="#b6">(7)</ref> does not necessarily have an identity. Thus, a parameterized "hypercomplex" algebras may not meet the criteria to be classified as a hypercomplex algebra as per the Definition 3. Nevertheless, the multiplication defined by <ref type="bibr" target="#b6">(7)</ref> has been effectively used to learn the algebra of vector-valued neural networks <ref type="bibr" target="#b6">[7]</ref>, <ref type="bibr" target="#b15">[16]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>III. VECTOR-VALUED MATRIX COMPUTATION</head><p>Matrix computation is a key concept for developing efficient vector-and hypercomplex-valued network models because some fundamental building blocks, like dense and convolutional layers, compute affine transformations followed by a non-linear activation function. In this section, we present some basic vector-valued matrix computation concepts <ref type="bibr" target="#b4">[5]</ref>.</p><p>As in the traditional matrix algebra, the product of two vector-valued matrices A ∈ V M ×L and B ∈ V L×N results in a new matrix C ∈ V M ×N with entries defined by</p><formula xml:id="formula_27">c ij = L ℓ=1</formula><p>a iℓ b ℓj , ∀i = 1, . . . , M and j = 1, . . . , N.</p><p>To take advantage of fast scientific computing software, we compute the above operation using real-valued matrix operations as follows. Using the isomorphism ϕ : V → R n and the mapping M L : V → R n×n defined respectively by ( <ref type="formula" target="#formula_1">1</ref>) and ( <ref type="formula" target="#formula_20">5</ref>), we obtain</p><formula xml:id="formula_28">ϕ(c ij ) = L ℓ=1 ϕ (a iℓ b ℓj ) = L ℓ=1 M L (a iℓ )ϕ(b ℓj ).</formula><p>Equivalently, using real-valued matrix operations, we have</p><formula xml:id="formula_29">ϕ(C) = M L (A)ϕ(B),<label>(8)</label></formula><p>where M L and ϕ are extended as follows for vector-valued matrices:</p><formula xml:id="formula_30">M L (A) =      M L (a 11 ) M L (a 12 ) . . . M L (a 1L ) . . . . . . . . . . . . M L (a M 1 ) M L (a M 2 ) . . . M L (a M L )      ∈ R nM ×nL ,<label>(9)</label></formula><p>and</p><formula xml:id="formula_31">ϕ(B) =         ϕ(b 11 ) . . . ϕ(b 1N ) ϕ(b 21 ) . . . ϕ(b 2N ) . . . . . . . . . ϕ(b L1 ) . . . ϕ(b LN )         ∈ R nL×N .<label>(10)</label></formula><p>Therefore, reorganizing the elements of ϕ(C), we can write</p><formula xml:id="formula_32">C = ϕ -1 (M L (A)ϕ(B)) ,</formula><p>which allows the computation of vector-valued matrix products using the real-valued linear algebra often available in scientific computing software.</p><p>To further reduce the computing time, the real-valued matrix M L (A) ∈ R nM ×nL can be computed using the Kronecker product. The Kronecker product between two real-valued matrices A = (a ij ) ∈ R N ×M and B ∈ R P ×Q , denoted by A ⊗ B, yields the block matrix defined by</p><formula xml:id="formula_33">A ⊗ B =         a 11 B a 12 B . . . a 1M B a 21 B a 22 B . . . a 2M B . . . . . . . . . . . . a N 1 B a N 2 B . . . a N M B         ∈ R N P ×M Q .</formula><p>Basic properties and some applications of the Kronecker product can be found in <ref type="bibr" target="#b16">[17]</ref>, <ref type="bibr" target="#b17">[18]</ref>.</p><p>As per the references <ref type="bibr" target="#b6">[7]</ref>, <ref type="bibr" target="#b15">[16]</ref>, we employ the Kronecker product to calculate M L (A) in the following manner. From (6), we have</p><formula xml:id="formula_34">M L (A) = n k=1      a 11k P T k:</formula><p>a 12k P T k:</p><p>. . . a iLk P T k:</p><p>. . . . . . . . . . . .</p><formula xml:id="formula_35">a M 1k P T k: a M 2k P T k: . . . a M Lk P T k:      . Let A k ∈ R M ×L , for k = 1, .</formula><p>. . , n, be the real-valued matrices such that</p><formula xml:id="formula_36">A = n k=1 A k e k .</formula><p>In words, A k is the "matrix" component associated with the basis element e k of A.</p><formula xml:id="formula_37">Using A k ∈ R M ×L ,</formula><p>we conclude that</p><formula xml:id="formula_38">M L (A) = n k=1 A k ⊗ P T k: .<label>(11)</label></formula><p>Therefore, C = AB can be efficiently computed by the equation</p><formula xml:id="formula_39">C = ϕ -1 n k=1 A k ⊗ P T k: ϕ(B) .</formula><p>Example 3 (Quaternion matrix product). Consider the quaternion-valued matrix</p><formula xml:id="formula_40">A =   1 + 2i 3i + 4j 5j + 6k 7 + 8j 9 + 10k 11i + 12k   ∈ Q 2×3 ,</formula><p>and the column vector</p><formula xml:id="formula_41">x =      1 + 2i + 3j + 4k 5 + 6i + 7j + 8k 9 + 10i + 11j + 12k      ∈ Q 3×1 .</formula><p>Using quaternion matrix algebra, we obtain</p><formula xml:id="formula_42">y = Ax =   -176 + 45i + 96j + 11k -306 -3i + 140j + 363k   ∈ Q 2×1 .</formula><p>To determine the quaternion-valued vector y using real-valued matrix computation, we first compute </p><formula xml:id="formula_43">M L (A) =   1 0 0 7 9 0   ⊗         1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1         + . . . +   0 0 6 0 10 12   ⊗         0 0 0 -1 0 0 -1 0 0 1 0 0 1 0 0 0         =                     1 -2 0 0 0 -3 -4 0 0 0 -5 -6<label>2</label></formula><formula xml:id="formula_44">                   </formula><p>.</p><p>Then, we obtain  </p><formula xml:id="formula_45">ϕ(y) =                     1 -2 0 0 0 -3 -4 0 0 0 -5 -6<label>2</label></formula><formula xml:id="formula_46">                                                   <label>1</label></formula><formula xml:id="formula_47">                                =                     -176 45 96 11 -306 -3 140 363                    </formula><p>, which corresponds to a row scan of the elements of the quaternion-valued vector y.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>IV. VECTOR-VALUED NEURAL NETWORKS (V-NETS)</head><p>Vector-valued neural networks (V-nets) are artificial neural networks conceived to process arrays of vectors. Let us begin addressing dense layers of neurons defined on a finite-dimensional algebra V.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A. Dense Layers and the Approximation Capability of the Vector-Valued Multilayer Perceptron</head><p>Dense layers, also known as fully connected layers, are the building blocks of several neural network architectures <ref type="bibr" target="#b2">[3]</ref>. In particular, the famous multilayer perceptron (MLP) network is given by the composition of a sequence of dense layers <ref type="bibr" target="#b3">[4]</ref>.</p><p>Dense layers are composed of several parallel neurons, each receiving inputs through synaptic connections. Each neuron processes data through a linear combination of its inputs by the synaptic weights (trainable parameters), to which a scalar bias term is added. A non-linear activation function can be applied to yield the neuron's output. In mathematical terms, the output of the ith vector-valued neuron in a dense layer is defined by</p><formula xml:id="formula_48">y i = ψ (s i + b i ) with s i = N j=1 w ij x j , ∀i = 1, . . . , M,</formula><p>where x 1 , . . . , x N ∈ V are the vector-valued inputs, w ij ∈ V represents the synaptic weighted from input j to neuron i, b i ∈ V denotes the bias, and ψ : V → V is a vector-valued activation function.</p><p>Because R is a one-dimensional vector space, traditional and vector-valued dense layers are equivalent when dim(V) = 1.</p><p>Remark 3. Because an algebra V may not be commutative, a dense layer can be alternatively defined as follows:</p><formula xml:id="formula_49">y i = ψ (s i + b i ) with s i = N j=1</formula><p>x j w ji , ∀i = 1, . . . , M.</p><p>Choosing the appropriate activation function for an image or signal-processing task can prove to be a challenging issue. To keep things simple, this paper focuses only on the so-called split activation functions <ref type="bibr" target="#b18">[19]</ref>, <ref type="bibr" target="#b11">[12]</ref>. Briefly, a split activation function is obtained by applying a real-valued function in each coordinate of its vector-valued argument. Formally, we have:</p><p>Definition 5 (Split Activation Functions). Let E = {e 1 , . . . , e n } be an ordered basis for a vector space V. A split activation function ψ : V → V is derived from a real-valued function ψ R : R → R as follows:</p><formula xml:id="formula_50">ψ(x) = n i=1 ψ R (x i )e i , ∀x = n i=1</formula><p>x i e i ∈ V.</p><p>Remark 4. A split-activation function given by ( <ref type="formula" target="#formula_51">12</ref>) satisfies the identity</p><formula xml:id="formula_52">ϕ ψ(x) = ψ R ϕ(x) ,<label>(13)</label></formula><p>where ϕ is the isomorphism defined by (1) and ψ R is computed component-wise. Recall that, in practice,</p><p>x ∈ V is identified by ϕ(x). Thus, ( <ref type="formula" target="#formula_52">13</ref>) is useful as it shows that the representation ϕ(ψ(x)) of ψ(x) can be found by evaluating ψ R on ϕ(x), which represents x.</p><p>The split relu and split sigmoid functions are examples of vector-valued activation functions used in V-nets, including hypercomplex-valued neural networks <ref type="bibr" target="#b13">[14]</ref>.</p><p>Despite being computationally expensive due to its numerous parameters, dense layers are widely used because they result in the universal approximation theorem. Briefly, the universal approximation theorem asserts that MLP networks can approximate continuous functions with any desired accuracy on a compact. More specifically, the set of single hidden-layer MLP networks with an appropriate activation function is dense in the set of all continuous functions over a compact. In mathematical terms, the universal approximation theorem for real-valued MLP networks poses conditions on the activation function ψ : R → R such that the set</p><formula xml:id="formula_53">H R =    M i=1 α i ψ   N j=1 w ij x j + b i   : M ∈ N, α i , w ij , b i ∈ R    ,</formula><p>of all single hidden-layer networks is dense on the set C(K) of all continuous functions over a compact <ref type="bibr" target="#b19">20]</ref>, <ref type="bibr" target="#b20">[21]</ref>, <ref type="bibr" target="#b21">[22]</ref>. Many currently used activation functions like the relu and the logistic functions result in the universal approximation capability. A comprehensive review of the approximation capability of traditional MLP networks can be found in <ref type="bibr" target="#b22">[23]</ref>.</p><formula xml:id="formula_54">K ⊆ R N [</formula><p>Recently, many researchers addressed the approximation capabilities of neural networks, including deep and shallow models based on piece-wise linear activation functions <ref type="bibr" target="#b23">[24]</ref>. Moreover, the approximation capability of hypercomplex-valued neural networks has been investigated by several researchers, including Arena et al., <ref type="bibr" target="#b18">[19]</ref>, <ref type="bibr" target="#b24">[25]</ref>, Buchholz and Sommer <ref type="bibr" target="#b25">[26]</ref>, <ref type="bibr" target="#b26">[27]</ref>, and more recently <ref type="bibr" target="#b14">[15]</ref>, <ref type="bibr" target="#b27">[28]</ref>. More generally, based on Arena et al. <ref type="bibr" target="#b18">[19]</ref> and Vital et al. <ref type="bibr" target="#b14">[15]</ref>, we can state the following theorem concerning vectorvalued multilayer perceptron (V-MLP) networks:</p><p>Theorem 1 (Universal Approximation Theorem for V-MLP Networks). Let ψ R : R → R be a real-valued activation function that yields approximation capability to the set H R of all single hidden-layer MLP networks and satisfies lim t→-∞ ψ R (t) = 0. Consider a finite-dimensional non-degenerate algebra V, let ψ : V → V be the split activation function derived from ψ R , and let K ⊂ V N be a compact set. The class of single hidden-layer V-MLP networks with a real-valued dense output layer given by</p><formula xml:id="formula_55">H V =    M i=1 α i ψ   N j=1 w ij x j + b i   : M ∈ N, α i ∈ R, w ij , b i ∈ V    , (<label>14</label></formula><formula xml:id="formula_56">)</formula><p>is dense in the set C(K) of all continuous functions from K to V. Furthermore, if V ≡ H is a hypercomplex algebra, then the class of single hidden-layer hypercomplex-valued MLP networks given by</p><formula xml:id="formula_57">H H =    M i=1 α i ψ   N j=1 w ij x j + b i   : M ∈ N, α i ∈ H, w ij , b i ∈ H    , (<label>15</label></formula><formula xml:id="formula_58">)</formula><p>is dense in the set C(K).</p><p>Theorem 1 says that V-MLP networks with split activation function inherit the approximation capability of a real-valued model if the algebra is non-degenerate. Furthermore, the split activation function must be derived from an activation function ψ R such that lim t→-∞ ψ R (t) = 0. In this case, given a continuous function f : K → V and ǫ &gt; 0, Theorem 1 ensures that there exists a shallow V-MLP network</p><formula xml:id="formula_59">N : V N → V, with real-valued dense output layer, such that |f (x) -N (x)| &lt; ǫ, ∀x ∈ K.<label>(16)</label></formula><p>Note that the V-MLP network maps V N into V despite the output layer being a real-valued dense layer.</p><p>Moreover, the real-valued dense layer can be replaced by a vector-valued one if V is a hypercomplex al-gebra. In other words, a V-MLP of exclusively vector-valued dense layers has the universal approximation property if V is a finite-dimensional non-degenerate algebra with identity.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>B. Relationship Between Real and Vector-Valued Dense Layers</head><p>This subsection discusses the relationship between traditional and vector-valued dense layers. To simplify the exposition, we formulate a dense layer using matrix operations.</p><p>From a computational point of view, dense layers are efficiently implemented using matrix and vector operations. Accordingly, the output y = (y 1 , . . . , y M ) ∈ V M of a dense layer with M vector-valued neurons in parallel is determined by the equation</p><formula xml:id="formula_60">y = ψ(s + b) with s = W x,<label>(17)</label></formula><p>where</p><formula xml:id="formula_61">x = (x 1 , . . . , x N ) ∈ V N is the input vector, W = (w ij ) ∈ V M ×N is the matrix containing the synaptic weights, b = (b 1 , . . . , b M ) ∈ V M</formula><p>is the bias vector, and ψ : V M → V M is defined in a component-wise manner by means of the following equation for some ψ : V → V:</p><formula xml:id="formula_62">[ψ(s)] i = ψ(s i ), ∀i = 1, . . . , M.</formula><p>In practice, we usually work with the real-valued representation of the inputs and outputs because current deep-learning libraries operate almost exclusively with floating-point numbers. Precisely, using the isomorphism ϕ given by (10), we consider ϕ(x) ∈ R nN and ϕ(y) ∈ R nM instead of x ∈ V N and y ∈ V M , respectively. Now, from ( <ref type="formula" target="#formula_29">8</ref>) and ( <ref type="formula" target="#formula_52">13</ref>), a vector-valued dense layer given by ( <ref type="formula" target="#formula_60">17</ref>) can be emulated by a real-valued dense layer defined by</p><formula xml:id="formula_63">ϕ(y) = ψ R ϕ(s) + ϕ(b) with ϕ(s) = M L (W )ϕ(x),<label>(18)</label></formula><p>where ϕ(x) ∈ R nN is a real-valued input vector, M L (W ) ∈ R nM ×nN is a real-valued synaptic weight matrix, ϕ(b) ∈ R nM is a real-valued bias vector, and ϕ(y) ∈ R nM is the real-valued output. In other words, a vector-valued dense layer can be computed using a real-valued dense layer by appropriately rearranging the elements of the vector-valued arrays. In particular, from <ref type="bibr" target="#b10">(11)</ref>, we have</p><formula xml:id="formula_64">M L (W ) = n k=1 W k ⊗ P T k: ,</formula><p>where the vector-value matrix is written as W = W 1 e 2 + . . . + W n e k using the basis E = {e 1 , . . . , e n } and the matrices P T 1: , . . . , P T :n depends on the algebra. Therefore, the real-valued matrix M L (W ) associated with a vector-valued dense layer has n(M N ) distinct trainable parameters. In contrast, the synaptic weight matrix of a traditional dense layer has n 2 M N trainable parameters. Including the bias vector, we conclude that a vector-valued dense layer has nM (N + 1) parameters while an equivalent traditional dense layer has nM (nN + 1) parameters. Thus, vector-valued dense layers can be interpreted as constrained versions of traditional dense layers, where the synaptic weights are obtained by imposing a structure that depends on the algebra. Furthermore, the constraints imposed by the algebra follow from supposing that intercorrelations exist between the feature channels.</p><p>Finally, in certain applications, the network may require the output of real-valued vectors instead of vector-valued arrays, even though the input is vector-valued because of the intercorrelation between the feature channels. For example, the real part of the output of hypercomplex-valued neural networks has been for acute lymphoblastic leukemia detection through blood smear digital microscopic images in <ref type="bibr" target="#b5">[6]</ref>.</p><p>One can handle such scenarios by focusing on a single component of a vector-valued output. Precisely, the output of a vector-valued dense layer can be written as y = n k=1 y k e k ∈ V M , where y 1 , . . . , y n are all real-vectors in R M . Thus, one can consider the component y k ∈ R M , for some k ∈ {1, . . . , n}, as the real-valued output of the network. However, the output component y k of a vector-valued dense layer with split activation function is equivalent to the output of a real-valued dense layer applied on a flattened version of the input. Indeed, using a split activation function, we conclude from (17) that </p><formula xml:id="formula_65">y k = ψ R (s k + b k ),</formula><formula xml:id="formula_66">s ki = N j=1 B k (w ij , x j ) = N j=1 ϕ(w ij ) T B k ϕ(x j ) = N j=1 ŵij ϕ(x j ), ∀i = 1, . . . , M,<label>(19)</label></formula><p>where ŵij = ϕ(w ij ) T B k ∈ R 1×n is a row vector for all i and j. Using matrix notation, <ref type="bibr" target="#b18">(19)</ref> can be written as s k = Ŵ ϕ(x) where</p><formula xml:id="formula_67">Ŵ =      ŵ11 . . . ŵ1N . . . . . . . . . ŵM1 . . . ŵMN      ∈ R M ×(nN ) .</formula><p>Concluding, the kth component of the vector-valued output</p><formula xml:id="formula_68">y ∈ V M satisfies y k = ψ R ( Ŵ ϕ(x) + b k ),</formula><p>which means y k is the output of a real-valued dense layer computed on the flattened version ϕ(x) ∈ R nN of the input x ∈ V N .</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>C. Vector-valued Convolutions and Some Remarks on Other Building Blocks</head><p>Convolutional layers are important building blocks in current deep learning models. Broadly speaking, convolutional layers are special layers in which the units are connected to small sections in the feature maps of the preceding layer through a set of weights called a filter bank <ref type="bibr" target="#b0">[1]</ref>. Moreover, all units share the same filter banks. Besides reducing significantly the number of parameters, convolutional layers exhibit spatial invariance and are effective for the detection of local patterns.</p><p>A vector-valued convolutional layer is defined as follows. Let x be the input (image or signal) with C feature channels. We denote by x(p, c) ∈ V the content of x in the cth channel at location p ∈ D x , where D x denotes the domain of x. The weights of a convolutional layer with K filters are arranged in an array W such that W(q, c, k) ∈ V corresponds to the weight of the kth filter in the cth channel at q ∈ D, where D denotes the filters' domain <ref type="foot" target="#foot_0">2</ref> . The vector-valued convolution of W and x, denoted by W * x, is given by the sum of the cross-correlation of W(:, c, k) and x(:, c) over all channels c = 1, . . . , C.</p><p>Precisely, we have</p><formula xml:id="formula_69">(W * x)(p, k) = C c=1 q∈D W(q, c, k)x(p + S(q), c), p ∈ D y , ∀k = 1, . . . , K,<label>(20)</label></formula><p>where p + S(q) denotes a translation that can take strides into account and D y denotes the domain of y.</p><p>The output y of a convolutional layer is obtained by evaluating an activation function on the addition of a bias term b with the convolution W * x. In mathematical terms, we have y = ψ(W * x + b), where the activation function ψ : V → V is applied in an entry-wise manner.</p><p>We would like to remark that a traditional convolutional layer is obtained when W(q, c, k) and x(p, c) are real numbers instead of vectors. In this case, the convolution W * x is obtained by summing over all the real-valued feature channels. In contrast, the vector-valued convolution operates under the assumption that there is an intercorrelation between n feature channels, which is achieved through the use of vector multiplication in <ref type="bibr" target="#b19">(20)</ref>.</p><p>Like dense layers, vector-valued convolutional layers can be emulated using real-valued convolutional layers, which is particularly useful for implementing convolutional neural networks using current deep learning libraries. Accordingly, using the isomorphism ϕ : V → R n , the Kronecker product, and the linearity of the convolution operation, we have</p><formula xml:id="formula_70">ϕ W * x = n ℓ=1 W ℓ ⊗ P T ℓ: * ϕ(x) = n ℓ=1 (M ℓ * ϕ(x)) ,<label>(21)</label></formula><p>where W = W 1 e 1 + . . . + W n e n is the representation of the filters with respect to the basis E = {e 1 , . . . , e n }, M ℓ = W ℓ ⊗ P T ℓ: are real-valued filters obtained using the Kronecker product, and ϕ(x) is obtained concatenating the components x 1 , . . . , x n of x = x 1 e 1 + . . . + x n e n into the feature axis.</p><p>Examples of the vector-valued convolutions and their implementation can be found in <ref type="bibr" target="#b5">[6]</ref>, <ref type="bibr" target="#b6">[7]</ref>, <ref type="bibr" target="#b28">[29]</ref>. We would like to remark that split activation functions are particularly helpful in the emulation of vectorvalued convolutional layers by real-valued ones. Indeed, from (13), the concatenation ϕ(y) of the output y is obtained by evaluating a real-valued activation function ψ R entry-wise in the sum ϕ(W * x) + ϕ(b), with ϕ(W * x) given by <ref type="bibr" target="#b20">(21)</ref>.</p><p>In addition to convolutional layers, modern deep learning models utilize other structures, such as pooling layers and batch normalization <ref type="bibr" target="#b2">[3]</ref>. While vector-valued versions of these structures are a topic of future research, we can currently use a simpler approach. This approach involves combining traditional structures with real-valued emulation of vector-valued convolutional and dense layers, as described in equations ( <ref type="formula" target="#formula_63">18</ref>) and <ref type="bibr" target="#b20">(21)</ref>. Although this approach may seem overly simplistic, it can still provide valuable insights into the vector-valued blocks. For example, when a max-pooling layer is applied to the real-valued representation of a vector-valued image, the result is equivalent to computing the max-pooling with the maximum given by the so-called marginal or Cartesian product ordering of vectors <ref type="bibr" target="#b29">[30]</ref>. Additionally, this pooling layer corresponds to extending the pooling layer in a split manner, as shown in equation <ref type="bibr" target="#b11">(12)</ref>.</p><p>V. CONCLUDING REMARKS Despite the many successful applications of traditional neural networks for signal and image processing tasks, they do not initially take into account the intercorrelation between feature channels. Such intercorrelation is learned from the dataset, but it demands careful consideration when selecting optimization methods and hyperparameters, as well as using appropriate regularization strategies. In contrast, vector-valued neural networks (V-nets) naturally incorporate the intercorrelation between feature channels through the vector algebra. Furthermore, using hypercomplex algebras can lead to additional geometric and algebraic properties in the network model. This paper provided the basic concepts of V-nets. We began reviewing the concept of algebra, which is obtained by enriching a vector space with a multiplication. We defined a hypercomplex algebra as an algebra with an identity. Therefore, hypercomplex-valued neural networks are V-nets with additional geometric or algebraic properties. In particular, from Example 2, we conclude that the recently introduced parameterized "hypercomplex" neural networks are, in fact, V-nets <ref type="bibr" target="#b6">[7]</ref>, <ref type="bibr" target="#b15">[16]</ref>. In addition, this paper establishes the relationship between V-nets and traditional neural networks. Precisely, we showed how vector-valued dense and convolutional layers can be emulated using real-valued ones. Such emulation is particularly helpful for the implementation of V-nets using current deep-learning libraries like tensorflow and pytorch. Besides making the implementation of V-nets straightforward, we can utilize automatic differentiating features to train V-nets without having to deal with complicated vector or hypercomplex calculus for the gradients. Moreover, other traditional building blocks can be combined with vector-valued convolutional and dense. Such a straightforward approach yielded promising results in image and signal processing applications <ref type="bibr" target="#b5">[6]</ref>, <ref type="bibr" target="#b6">[7]</ref>, <ref type="bibr" target="#b11">[12]</ref>. Besides the practical considerations, this paper also addressed important theoretical issues. Namely, Theorem 1 concerns the approximation capability of vector-valued multilayer perceptron defined on finite-dimensional non-degenerate algebras.</p><p>Concluding, V-nets are obtained by imposing certain intercorrelation between the features. As a consequence, they provide a graceful approach to the bias-variance trade-off by incorporating into the neural network's operation additional characteristics of the data. Future research should focus on selecting the appropriate algebra for image and signal processing applications. Efficient techniques for learning the most suited algebra for a task also require further research. Furthermore, vector-valued activation functions beyond the split functions, as well as deep-learning building blocks and tools like batch normalization and dropout strategies, should be further investigated in the future.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head></head><label></label><figDesc>where s = n k=1 s k e k and b = n k=1 b k e k . Now, let s ki denote the ith entry of s k . From Proposition 1, we have</figDesc></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="2" xml:id="foot_0"><p>For example, the domain D is usually a rectangular grid in image processing tasks.</p></note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div><p>ACKNOWLEDGMENT I would like to acknowledge that this paper is partially based on a minicourse I held at the <rs type="affiliation">Institute for Research and Applications of Fuzzy Modeling, University of Ostrava in the Czech Republic in February 2023</rs>. This minicourse was part of the <rs type="institution">Strategic Research Partnership called "Mathematical Aspects of Complex, Hypercomplex</rs>, and <rs type="funder">Fuzzy Neural Networks</rs>," which was supported by the <rs type="funder">Polish National Agency for Academic Exchange</rs>. I am grateful to <rs type="person">Agnieszka Niemczynowicz</rs>, the partnership coordinator, and the project collaborators for their valuable insights and discussions.</p></div>
+			</div>
+			<div type="funding">
+<div><p>This work has been partially supported by the <rs type="funder">National Council for Scientific and Technological Development (CNPq)</rs> under grants <rs type="grantNumber">315820/2021-7</rs> and <rs type="funder">São Paulo Research Foundation (FAPESP)</rs> under grant <rs type="grantNumber">2022/01831-2</rs>.</p></div>
+			</div>
+			<listOrg type="funding">
+				<org type="funding" xml:id="_hnwxuAW">
+					<idno type="grant-number">315820/2021-7</idno>
+				</org>
+				<org type="funding" xml:id="_MfynnJ8">
+					<idno type="grant-number">2022/01831-2</idno>
+				</org>
+			</listOrg>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Deep learning</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Lecun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Bengio</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Hinton</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">521</biblScope>
+			<biblScope unit="issue">7553</biblScope>
+			<biblScope unit="page" from="436" to="444" />
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<monogr>
+		<title level="m" type="main">Deep Learning in neural networks: An overview</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Schmidhuber</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2015">1 2015</date>
+			<biblScope unit="page" from="85" to="117" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<monogr>
+		<author>
+			<persName><forename type="first">Aurelien</forename><surname>Géron</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">-</forename><surname>Hands</surname></persName>
+		</author>
+		<title level="m">On Machine Learning with Scikit-Learn and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems</title>
+		<meeting><address><addrLine>Sebastopol, California, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>O Reilly</publisher>
+			<date type="published" when="2019">10 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<monogr>
+		<author>
+			<persName><forename type="first">S</forename><surname>Haykin</surname></persName>
+		</author>
+		<title level="m">Neural Networks and Learning Machines</title>
+		<meeting><address><addrLine>Upper Saddle River, NJ</addrLine></address></meeting>
+		<imprint>
+			<publisher>Prentice-Hall</publisher>
+			<date type="published" when="2009">2009</date>
+			<biblScope unit="volume">3</biblScope>
+		</imprint>
+	</monogr>
+	<note>rd ed</note>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">A general framework for hypercomplex-valued extreme learning machines</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Vieira</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">E</forename><surname>Valle</surname></persName>
+		</author>
+		<ptr target="https://linkinghub.elsevier.com/retrieve/pii/S2772415822000062" />
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Computational Mathematics and Data Science</title>
+		<imprint>
+			<biblScope unit="volume">3</biblScope>
+			<biblScope unit="page">100032</biblScope>
+			<date type="published" when="2022">6 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Acute Lymphoblastic Leukemia Detection Using Hypercomplex-Valued Convolutional Neural Networks</title>
+	</analytic>
+	<monogr>
+		<title level="m">2022 International Joint Conference on Neural Networks (IJCNN)</title>
+		<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2022">7 2022</date>
+			<biblScope unit="page" from="1" to="8" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">PHNNs: Lightweight Neural Networks via Parameterized Hypercomplex Convolutions</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Grassucci</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Comminiello</surname></persName>
+		</author>
+		<ptr target="https://ieeexplore.ieee.org/document/9983846/" />
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Neural Networks and Learning Systems</title>
+		<imprint>
+			<biblScope unit="page" from="1" to="13" />
+			<date type="published" when="2022">10 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Dual quaternion ambisonics array for six-degreeof-freedom acoustic representation</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Grassucci</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Mancini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Brignone</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Uncini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Comminiello</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Pattern Recognition Letters</title>
+		<imprint>
+			<biblScope unit="volume">166</biblScope>
+			<biblScope unit="page" from="24" to="30" />
+			<date type="published" when="2023-02">2 2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<monogr>
+		<title level="m" type="main">Hypercomplex Numbers: An Elementary Introduction to Algebras</title>
+		<author>
+			<persName><forename type="first">I</forename><forename type="middle">L</forename><surname>Kantor</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">S</forename><surname>Solodovnikov</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="1989">1989</date>
+			<publisher>Springer</publisher>
+			<pubPlace>New York</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">F</forename><surname>Catoni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Boccaletti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Cannata</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Catoni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Nichelatti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Zampetti</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="s">The Mathematics of Minkowski Space-Time. Birkhäuser Basel</title>
+		<imprint>
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<monogr>
+		<title level="m" type="main">An Introduction to Nonassociative Algebras. Project Gutenberg</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Schafer</surname></persName>
+		</author>
+		<ptr target="https://www.gutenberg.org/ebooks/25156" />
+		<imprint>
+			<date type="published" when="1961">1961</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">A survey of quaternion neural networks</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Parcollet</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Morchid</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Linarès</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Artificial Intelligence Review</title>
+		<imprint>
+			<biblScope unit="volume">53</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page">2020</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<monogr>
+		<title level="m" type="main">Complex-Valued Neural Networks with Multi-Valued Neurons, 1st ed., ser. Studies in Computational Intelligence</title>
+		<author>
+			<persName><forename type="first">I</forename><forename type="middle">N</forename><surname>Aizenberg</surname></persName>
+		</author>
+		<editor>J. Kacprzyk</editor>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+			<publisher>Springer</publisher>
+			<biblScope unit="volume">353</biblScope>
+			<pubPlace>Berlin Heidelberg</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<monogr>
+		<title level="m" type="main">Complex-Valued Neural Networks, 2nd ed., ser. Studies in Computational Intelligence</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Hirose</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2012">2012</date>
+			<publisher>Springer</publisher>
+			<pubPlace>Heidelberg, Germany</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<monogr>
+		<title level="m" type="main">Extending the universal approximation theorem for a broad class of hypercomplexvalued neural networks</title>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">L</forename><surname>Vital</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Vieira</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">E</forename><surname>Valle</surname></persName>
+		</author>
+		<editor>Intelligent Systems, J. C. Xavier-Junior and R. A. Rios</editor>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+			<publisher>Springer International Publishing</publisher>
+			<biblScope unit="page" from="646" to="660" />
+			<pubPlace>Cham</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Beyond fully-connected layers with quaternions: Parameterization of hypercomplex multiplications with 1/n parameters</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Tay</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Chan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">T</forename><surname>Luu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">C</forename><surname>Hui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Fu</surname></persName>
+		</author>
+		<idno>abs/2102.08597</idno>
+		<ptr target="https://arxiv.org/abs/2102.08597" />
+	</analytic>
+	<monogr>
+		<title level="j">CoRR</title>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Kronecker Product Extensions of Linear Operators</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Stenger</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">SIAM Journal on Numerical Analysis</title>
+		<imprint>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page">1968</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">The ubiquitous Kronecker product</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">F</forename><surname>Loan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Computational and Applied Mathematics</title>
+		<imprint>
+			<biblScope unit="volume">123</biblScope>
+			<biblScope unit="issue">1-2</biblScope>
+			<biblScope unit="page" from="85" to="100" />
+			<date type="published" when="2000">2000</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Multilayer perceptrons to approximate quaternion valued functions</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Arena</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Fortuna</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Muscato</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">G</forename><surname>Xibilia</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Neural Networks</title>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="335" to="342" />
+			<date type="published" when="1997">3 1997</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Approximation by superpositions of a sigmoidal function</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Cybenko</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/BF02551274</idno>
+		<ptr target="https://link.springer.com/article/10.1007/BF02551274" />
+	</analytic>
+	<monogr>
+		<title level="m">Mathematics of Control, Signals and Systems</title>
+		<imprint>
+			<date type="published" when="1989-12">1989. 12 1989</date>
+			<biblScope unit="volume">2</biblScope>
+			<biblScope unit="page" from="303" to="314" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Approximation capabilities of multilayer feedforward networks</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Hornik</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Neural Networks</title>
+		<imprint>
+			<biblScope unit="volume">4</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="251" to="257" />
+			<date type="published" when="1991">1991</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Multilayer feedforward networks with a nonpolynomial activation function can approximate any function</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Leshno</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><forename type="middle">Y</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Pinkus</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Schocken</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Neural Networks</title>
+		<imprint>
+			<biblScope unit="volume">6</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="861" to="867" />
+			<date type="published" when="1993">1993</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Approximation theory of the MLP model in neural networks</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Pinkus</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Acta Numerica</title>
+		<imprint>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="page" from="143" to="195" />
+			<date type="published" when="1999">1 1999</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Optimal approximation of piecewise smooth functions using deep ReLU neural networks</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Petersen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Voigtlaender</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Neural Networks</title>
+		<imprint>
+			<biblScope unit="volume">108</biblScope>
+			<biblScope unit="page" from="296" to="330" />
+			<date type="published" when="2018">12 2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Quaternion algebra</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Arena</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Fortuna</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Muscato</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">G</forename><surname>Xibilia</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Neural Networks in Multidimensional Domains, ser. Lecture Notes in Control and Information Sciences</title>
+		<meeting><address><addrLine>London</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="1998">1998</date>
+			<biblScope unit="volume">234</biblScope>
+			<biblScope unit="page" from="43" to="47" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Hyperbolic Multilayer Perceptron</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Buchholz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Sommer</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the International Joint Conference on Neural Networks</title>
+		<meeting>the International Joint Conference on Neural Networks</meeting>
+		<imprint>
+			<date type="published" when="2000">2000</date>
+			<biblScope unit="volume">2</biblScope>
+			<biblScope unit="page" from="129" to="133" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Clifford Algebra Multilayer Perceptrons</title>
+	</analytic>
+	<monogr>
+		<title level="m">Geometric Computing with Clifford Algebras</title>
+		<meeting><address><addrLine>Berlin Heidelberg</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2001">2001</date>
+			<biblScope unit="page" from="315" to="334" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">The universal approximation theorem for complex-valued neural networks</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Voigtlaender</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Applied and Computational Harmonic Analysis</title>
+		<imprint>
+			<biblScope unit="volume">64</biblScope>
+			<biblScope unit="page">2023</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Deep Quaternion Networks</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">J</forename><surname>Gaudet</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">S</forename><surname>Maida</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the International Joint Conference on Neural Networks</title>
+		<meeting>the International Joint Conference on Neural Networks</meeting>
+		<imprint>
+			<date type="published" when="2018-07-10">2018-July, 10 2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">On the morphological processing of hue</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Aptoula</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Lefèvre</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Image and Vision Computing</title>
+		<imprint>
+			<biblScope unit="volume">27</biblScope>
+			<biblScope unit="issue">9</biblScope>
+			<biblScope unit="page" from="1394" to="1401" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+	<note>View publication stats</note>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>
