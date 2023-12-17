@@ -2,13 +2,6 @@ API_KEY = "d850g9d4-3c42-4858-9a4a-40c1e3b609ec"
 
 import os
 
-#Link the route to the method : It calls the handlers
-#Handler : Decomposer la requéte et try catch
-#Service : Fonctions logiques
-#Models :
-#Middlewares : Kima handlers
-
-
 CLIENT_ID="7ec3040f690a4b5f85297d08867c91f2"
 CLIENT_SECRET="p8e--nS2vIzbwJEO0DSjxGe5XVGAF41-H5xH"
 

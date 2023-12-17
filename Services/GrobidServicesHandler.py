@@ -1,9 +1,6 @@
-import json
-
-import xmltodict
 from grobid_client.grobid_client import GrobidClient
 from Services.FileHandler import FileHandler
-from env import XML_FILE_PATH
+
 
 
 class GrobidServicesHandler:

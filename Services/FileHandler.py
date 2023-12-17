@@ -6,7 +6,6 @@ import PyPDF2 as PyPDF2
 import requests
 import xmltodict
 
-from env import UNZIP_PATH
 
 
 class FileHandler:
