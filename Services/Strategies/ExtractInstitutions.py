@@ -25,5 +25,5 @@ class ExtractInstitutions():
             affiliations = self.extract_affiliations(authors)
             self.article.institutions = affiliations
         except:
-            pass
+            self.article.institutions = None
         return self

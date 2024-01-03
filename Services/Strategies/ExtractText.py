@@ -6,7 +6,11 @@ class ExtractText():
             text = ""
             for div in textDivs:
                 if "head" in div:
-                    text += div["head"] + "\n"
+                    if isinstance(div["head"], dict):
+                        if "#text" in div["head"]:
+                            text += div["head"]["#text"] + "\n"
+                    elif isinstance(div["head"], str):
+                        text += div["head"] + "\n"
                 if "p" in div:
                     paragraphs = div["p"]
                     if isinstance(paragraphs, list):
@@ -20,6 +24,6 @@ class ExtractText():
                         text += paragraphs + "\n"
             self.article.text = text
         except:
-            pass
+           self.article.text = ""
         return self
 

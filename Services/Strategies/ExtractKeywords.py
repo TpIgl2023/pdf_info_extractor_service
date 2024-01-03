@@ -5,5 +5,5 @@ class ExtractKeywords():
             keywords = self.dict['teiHeader']['profileDesc']['textClass']['keywords']['term']
             self.article.keywords = keywords
         except:
-            pass
+            self.article.keywords = []
         return self

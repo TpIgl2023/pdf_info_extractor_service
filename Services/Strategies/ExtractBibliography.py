@@ -39,5 +39,5 @@ class ExtractBibliography():
                     bibliography_elements.append(self.extract_bibliography(element))
                 self.article.bibliography = bibliography_elements
             except:
-                pass
+                self.article.bibliography = []
             return self

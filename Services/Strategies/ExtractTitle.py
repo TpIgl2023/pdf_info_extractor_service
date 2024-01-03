@@ -3,5 +3,5 @@ class ExtractTitle():
         try:
             self.article.title = self.dict['teiHeader']['fileDesc']['titleStmt']['title']['#text']
         except:
-            pass
+            self.article.title = None
         return self

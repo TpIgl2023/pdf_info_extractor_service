@@ -31,5 +31,5 @@ class ExtractPublicationDate():
                                                                  :-3] + "Z"} if formatted_date else None)
             self.article.publishingDate = dateJSON
         except:
-            pass
+            self.article.publishingDate = None
         return self

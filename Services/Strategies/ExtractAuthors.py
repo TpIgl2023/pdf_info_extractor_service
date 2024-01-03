@@ -61,5 +61,5 @@ class ExtractAuthors():
             authors = self.dict['teiHeader']['fileDesc']['sourceDesc']['biblStruct']['analytic']['author']
             self.article.authors = self.handleAuthorsArray(authors)
         except:
-            pass
+            self.article.authors = []
         return self
