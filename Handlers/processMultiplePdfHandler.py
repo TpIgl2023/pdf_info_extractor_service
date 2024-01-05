@@ -28,14 +28,17 @@ def convert_to_xml_filename(pdf_filename):
     xml_filename = f"{base_name}.grobid.tei.xml"
     return xml_filename
 
+
+
 async def processMultiplePdfHandler(URLs):
     try:
+        FileHandler.delete_files_in_folder(FILE_FOLDER_PATH)
         print("Starting the download process")
         # Download every file in the list
 
         download_multiple_files_parallel(FileHandler, FILE_FOLDER_PATH, URLs)
 
-        GrobidServicesHandler.pdfToXML(FILE_FOLDER_PATH)
+        GrobidServicesHandler.pdfToXML(FILE_FOLDER_PATH,nb=len(URLs))
 
         extractedPDFs = []
         extractedCounter = 0

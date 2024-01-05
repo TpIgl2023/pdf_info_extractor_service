@@ -4,11 +4,12 @@ from starlette.responses import JSONResponse
 from Middlwares.Auth import get_api_key
 from Services.ArticleBuilder import ArticleBuilder
 from Services.FileHandler import FileHandler
-from env import FILE_PATH
+from env import FILE_PATH, FILE_FOLDER_PATH
 
 
 async def process_pdf(URL : str,api_key: str = Security(get_api_key)):
     try:
+        FileHandler.delete_files_in_folder(FILE_FOLDER_PATH)
         print("Starting the download process")
         FileHandler.downloadFileLink(URL, FILE_PATH)
 

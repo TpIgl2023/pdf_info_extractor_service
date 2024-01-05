@@ -156,7 +156,7 @@
                 "application": {
                     "@version": "0.8.0",
                     "@ident": "GROBID",
-                    "@when": "2024-01-05T00:20+0000",
+                    "@when": "2024-01-05T15:19+0000",
                     "desc": "GROBID - A machine learning software for extracting information from scholarly documents",
                     "ref": {
                         "@target": "https://github.com/kermitt2/grobid"

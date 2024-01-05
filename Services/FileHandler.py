@@ -81,6 +81,17 @@ class FileHandler:
         with open(path, 'w', encoding='utf-8') as f:
             f.write(text)
 
+    @staticmethod
+    def delete_files_in_folder(folder_path):
+        for filename in os.listdir(folder_path):
+            file_path = os.path.join(folder_path, filename)
+            try:
+                if os.path.isfile(file_path):
+                    os.unlink(file_path)
+                    print(f"Deleted: {file_path}")
+            except Exception as e:
+                print(f"Error deleting {file_path}: {e}")
+
 
 
 
